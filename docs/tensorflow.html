@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-09-15 Sat 15:40 -->
+<!-- 2018-10-04 Thu 21:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tensorflow</title>
@@ -80,7 +80,7 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#org0ee3872">3. TF Serve</a></li>
-<li><a href="#org4836153">4. TF Estimator API</a>
+<li><a href="#org44f7002">4. TF Estimator</a>
 <ul>
 <li><a href="#org87ace93">4.1. Predict</a></li>
 <li><a href="#org9b4f03e">4.2. Eval</a></li>
@@ -97,6 +97,8 @@ for the JavaScript code in this tag.
 <li><a href="#org1030526">5.6. Indicator and Embedding columns</a></li>
 </ul>
 </li>
+<li><a href="#org0a76d02">6. Hooks</a></li>
+<li><a href="#orga424ded">7. Experiment</a></li>
 </ul>
 </div>
 </div>
@@ -223,8 +225,8 @@ def conv2d(*args, **kwargs)
 </p>
 </div>
 </div>
-<div id="outline-container-org4836153" class="outline-2">
-<h2 id="org4836153"><span class="section-number-2">4</span> TF Estimator API</h2>
+<div id="outline-container-org44f7002" class="outline-2">
+<h2 id="org44f7002"><span class="section-number-2">4</span> TF Estimator</h2>
 <div class="outline-text-2" id="text-4">
 
 <div class="figure">
@@ -238,7 +240,20 @@ References:
 <ul class="org-ul">
 <li><a href="http://ruder.io/text-classification-tensorflow-estimators/">http://ruder.io/text-classification-tensorflow-estimators/</a></li>
 <li><a href="https://developers.googleblog.com/2017/12/creating-custom-estimators-in-tensorflow.html">https://developers.googleblog.com/2017/12/creating-custom-estimators-in-tensorflow.html</a></li>
+<li><a href="https://arxiv.org/abs/1708.02637">https://arxiv.org/abs/1708.02637</a></li>
 </ul>
+
+<p>
+At the heart of our framework is Estimator, a class that both provides
+an interface for downstream infrastructure, as well as a convenient
+harness for developers. Te interface for users of Estimator is loosely
+modeled afer Scikit-learn and consists of only four methods: <code>train</code>
+trains the model, given training data. <code>evaluate</code> computes evaluation
+metrics over test data, <code>predict</code> performs inference on new data given a
+trained model, and fnally, <code>export_savedmodel</code> exports a SavedModel, a
+serialization format which allows the model to be used in TensorFlow
+Serving, a prebuilt production server for TensorFlow models.
+</p>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -271,6 +286,25 @@ References:
 </tr>
 </tbody>
 </table>
+
+<p>
+Estimators receive a configuration object called <code>RunConfig</code> which
+communicates everything that the Estimator needs to know about the
+environment in which the model will be run: how many workers are
+available,, how to save intermediate checkpoints etc.
+</p>
+
+
+<div class="figure">
+<p><img src="images/tensorflow/TF Estimator/screenshot_2018-09-16_22-17-13.png" alt="screenshot_2018-09-16_22-17-13.png" />
+</p>
+</div>
+
+<p>
+<code>train</code>, <code>evaluate</code> and <code>predict</code> take an input function, which is expected
+to produce two dictionaries: one containing Tensors with inputs
+(features), and one containing Tensors with labels.
+</p>
 </div>
 
 <div id="outline-container-org87ace93" class="outline-3">
@@ -623,10 +657,61 @@ embedding_column = tf.feature_column.embedding_column(
 </div>
 </div>
 </div>
+<div id="outline-container-org0a76d02" class="outline-2">
+<h2 id="org0a76d02"><span class="section-number-2">6</span> Hooks</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Hooks are useful for custom processing that has to happen alongside
+the main loop. For example, we can use hooks for recordkeeping,
+debugging, monitoring or reporting. Hooks are activated by passing
+them to the <code>train</code> call. Estimators use hooks internally to implement
+checkpointing, summaries and more.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">class TimeBasedStopHook(tf.train.SessionRunHook):
+    def begin(self):
+        self.started_at = time.time()
+
+    def after_run(self, run_context, run_values):
+        if time.time() - self.started_at &gt;= TRAIN_TIME:
+            run_context.request_stop()
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga424ded" class="outline-2">
+<h2 id="orga424ded"><span class="section-number-2">7</span> Experiment</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+The core of the distributed execution support is provided with the
+<code>Experiment</code> class.
+</p>
+
+
+
+<div class="figure">
+<p><img src="images/tensorflow/Experiment/screenshot_2018-09-16_22-26-07.png" alt="screenshot_2018-09-16_22-26-07.png" />
+</p>
+</div>
+
+<p>
+In each TensorFlow cluster, there are several parameter servers, and
+several worker tasks. Most workers are handling the training process,
+which basically calls the Estimator <code>train</code> method with the training
+<code>input_fn</code>.
+</p>
+
+<p>
+The primary mode of replica training in Estimators is between-graph
+replication and asynchronous training.
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jethro Kuan</p>
-<p class="date">Created: 2018-09-15 Sat 15:40</p>
+<p class="date">Created: 2018-10-04 Thu 21:36</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
