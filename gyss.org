@@ -60,7 +60,7 @@ The industrial revolutions:
 - Supervised learning vs unsupervised learning
 *** Concentration of power
 - Companies have only existed for 200 years, society can change and
-  nations evolved at soem point, it's not clear if even nations can continue.
+  nations evolved at some point, it's not clear if even nations can continue.
   - Many companies are far more powerful than countries -- could they
     begin to take the role of nations today?
 *** Working on a healthy way towards the 4th Industrial Revolution?
@@ -126,7 +126,7 @@ The industrial revolutions:
   - Automate the mundane jobs, leaving the jobs that require creativity
 - How do you want to distribute wealth, in Europe, people are already
   are working a lot less than in the US and they are choosing
-  different models of a wealth distribution, so it boils downw to a
+  different models of a wealth distribution, so it boils down to a
   question of society and what people choose.
 *** Computers and Morality
 - Humans are programmed to preserve ourselves
