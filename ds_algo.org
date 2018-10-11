@@ -319,6 +319,8 @@ $h(v) = max\left(h(v.left), h(v.right)\right) + 1$
   if have changes it has negative cycle
 - if all weights are the same, use BFS
 *** Dijkstra $O(E\log V)$
+[[https://blog.evjang.com/2018/08/dijkstras.html][Interesting article on how Dijkstra's algorithm is everywhere]]
+
 - Doesn't work with negative edge weights
 - can terminate once end is found
 #+BEGIN_SRC text

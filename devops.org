@@ -53,3 +53,23 @@ eg. I want to select these pods, add it to replication sets
 
 [[https://github.com/schoolofdevops/course-outlines][School of Dev Ops]]
 [[https://katacoda.com/][KataCoda]]
+
+** Articles on Kubernetes
+http://www.doxsey.net/blog/kubernetes--the-surprisingly-affordable-platform-for-personal-projects
+
+Argues that Kubernetes is affordable and worth the try for personal
+projects.
+
+The main arguments are:
+
+ 1. Kubernetes is reliable and scalable.
+ 2. It's cheap to run: run HTTP proxy for each node, instead of using
+    Google's HTTP load balancer.
+ 3. Kubernetes makes rollback deployments trivial, since everything is
+    containerised.
+
+http://carlosrdrz.es/kubernetes-for-small-projects/
+
+A response to the above article. Basically arguing that Kubernetes is
+very complex and has a lot of moving parts, which is wholly
+unnecessary for side projects.
