@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-04 Thu 21:36 -->
+<!-- 2018-10-11 Thu 14:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Theory Of Computation</title>
@@ -116,7 +116,7 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#org96e2741">4. Nondeterministic Finite Automata</a>
 <ul>
-<li><a href="#orgfa03e79">4.1. Definition</a></li>
+<li><a href="#org810f7c9">4.1. Definition</a></li>
 <li><a href="#orge5bc650">4.2. The Language of an NFA</a></li>
 <li><a href="#orgf076014">4.3. The Equivalence of DFA and NFA</a></li>
 <li><a href="#orge9012e8">4.4. Finite Automata with Epsilon-Transitions</a></li>
@@ -164,12 +164,15 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#org71d49b9">8. Pushdown Automata</a>
 <ul>
-<li><a href="#org810f7c9">8.1. Definition</a></li>
+<li><a href="#orgd6cc4a7">8.1. Definition</a></li>
 <li><a href="#orgaaabd13">8.2. Formal Definition</a></li>
 <li><a href="#orgbfe61f8">8.3. <span class="todo TODO">TODO</span> Instantaneous Descriptions</a></li>
 <li><a href="#orgd846c1d">8.4. Equivalence of CFG and PDA</a></li>
+<li><a href="#org5a50c9a">8.5. Simplification of CFG</a></li>
 </ul>
 </li>
+<li><a href="#orga8ba4f5">9. Pumping Lemma for CFGs</a></li>
+<li><a href="#orgf520d4a">10. CYK Algorithm</a></li>
 </ul>
 </div>
 </div>
@@ -408,8 +411,8 @@ have exponentially more states than the NFA.
 </p>
 </div>
 
-<div id="outline-container-orgfa03e79" class="outline-3">
-<h3 id="orgfa03e79"><span class="section-number-3">4.1</span> Definition</h3>
+<div id="outline-container-org810f7c9" class="outline-3">
+<h3 id="org810f7c9"><span class="section-number-3">4.1</span> Definition</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 An NFA has:
@@ -1229,8 +1232,8 @@ described in terms of generators.
 </p>
 </div>
 
-<div id="outline-container-org810f7c9" class="outline-3">
-<h3 id="org810f7c9"><span class="section-number-3">8.1</span> Definition</h3>
+<div id="outline-container-orgd6cc4a7" class="outline-3">
+<h3 id="orgd6cc4a7"><span class="section-number-3">8.1</span> Definition</h3>
 <div class="outline-text-3" id="text-8-1">
 <p>
 It is in essence a nondeterministic finite automaton with
@@ -1394,11 +1397,83 @@ following three features.
 </p>
 </div>
 </div>
+
+<div id="outline-container-org5a50c9a" class="outline-3">
+<h3 id="org5a50c9a"><span class="section-number-3">8.5</span> Simplification of CFG</h3>
+<div class="outline-text-3" id="text-8-5">
+<p>
+There are 3 simplifications:
+</p>
+
+<ol class="org-ol">
+<li>Elimination of useless symbols
+
+<ol class="org-ol">
+<li>Remove all <i>non-reachable</i> symbols: starting from \(S\), if it is
+impossible to reach a symbol, then it is non-reachable and can be
+removed. Example: \(S \rightarrow a, B \rightarrow b\), then \(B\) is not reachable.</li>
+<li>Remove all <i>non-generating</i> symbols: for each symbol, check if the
+symbol can ever generate a terminating string. If not, remove
+it. Example: \(A \rightarrow A | Ab\), \(A\) is non-generating and can be removed.</li>
+<li>It is important to remove non-generating symbols first, because
+it can lead to more non-reachable symbols.</li>
+</ol></li>
+
+<li>Removal of unit productions
+
+<ol class="org-ol">
+<li>Unit productions look like \(A \rightarrow B\). We do unit production
+elimination to get a grammar into Chomsky Normal form.</li>
+
+<li>To eliminate unit productions, we substitute the unit symbol
+into the production.</li>
+</ol></li>
+
+<li>Removal of \(\epsilon\) productions
+
+<ol class="org-ol">
+<li>Start from any symbol, remove the \(\epsilon\) production, by
+substituting all possibilities. E.g. \(S \rightarrow AB | AC\), and we
+eliminate $&epsilon;$-productions from \(B\): \(S \rightarrow AB | A | AC\).</li>
+<li>Eliminate until no more $&epsilon;$-productions.</li>
+<li>When an $&epsilon;$-production is eliminated from a symbol, it does not
+need to be reapplied if it appears again in the same symbol.</li>
+</ol></li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga8ba4f5" class="outline-2">
+<h2 id="orga8ba4f5"><span class="section-number-2">9</span> Pumping Lemma for CFGs</h2>
+<div class="outline-text-2" id="text-9">
+
+<div class="figure">
+<p><img src="Pumping Lemma for CFGs/600px-Pumping_lemma_for_context-free_languages.svg_2018-10-09_12-22-03.png" alt="600px-Pumping_lemma_for_context-free_languages.svg_2018-10-09_12-22-03.png" />
+</p>
+</div>
+
+<p>
+If \(s\) is sufficiently long, its derivation tree w.r.t. a Chomsky
+normal form grammar must contain some nonterminal \(N\) twice on some
+tree path (upper picture). Repeating \(n\) times the derivation part \(N
+\Rightarrow \dots \Rightarrow vNx\) obtains a derivation for \(u v^n w x^n y\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf520d4a" class="outline-2">
+<h2 id="orgf520d4a"><span class="section-number-2">10</span> CYK Algorithm</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+<a href="https://en.wikipedia.org/wiki/CYK_algorithm">https://en.wikipedia.org/wiki/CYK_algorithm</a>
+</p>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jethro Kuan</p>
-<p class="date">Created: 2018-10-04 Thu 21:36</p>
+<p class="date">Created: 2018-10-11 Thu 14:43</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

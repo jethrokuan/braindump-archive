@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-04 Thu 21:36 -->
+<!-- 2018-10-11 Thu 14:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Coding Interview Preparation</title>
@@ -125,6 +125,8 @@ for the JavaScript code in this tag.
 <li><a href="#org519bdb0">2.7. Checking sub-sequence</a></li>
 <li><a href="#orgb279643">2.8. Flatten a List</a></li>
 <li><a href="#org1372373">2.9. has two sum</a></li>
+<li><a href="#orgf15042d">2.10. Big Integer Multiply</a></li>
+<li><a href="#org17c467e">2.11. Next Permutation</a></li>
 </ul>
 </li>
 </ul>
@@ -579,11 +581,67 @@ has three sum is the same, sort the array and run has two sum.
 </p>
 </div>
 </div>
+<div id="outline-container-orgf15042d" class="outline-3">
+<h3 id="orgf15042d"><span class="section-number-3">2.10</span> Big Integer Multiply</h3>
+<div class="outline-text-3" id="text-2-10">
+<div class="org-src-container">
+<pre class="src src-python">def multiply(num1, num2):
+    sign = -1 if (num1[0] &lt; 0) ^ (num2[0] &lt; 0) else 1
+    num1[0] = abs(num1[0])
+    num2[0] = abs(num2[0])
+    result = [0] * (len(num1) + len(num2))
+    for i in reversed(range(len(num1))):
+        for j in reversed(range(len(num2))):
+            result[i + j + 1] += num1[i] * num2[j]
+            result[i + j] += result[i + j + 1] // 10
+            result[i + j + 1] %= 10
+
+    # remove starting 0s
+    result = result[next((
+        i for i, x in enumerate(result) if x != 0), len(result)):] or [0]
+    result[0] *= sign
+    return result
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org17c467e" class="outline-3">
+<h3 id="org17c467e"><span class="section-number-3">2.11</span> Next Permutation</h3>
+<div class="outline-text-3" id="text-2-11">
+<div class="org-src-container">
+<pre class="src src-python">def next_permutation(perm):
+
+    # Find the first entry from the right that is smaller than the entry
+    # immediately after it.
+    inversion_point = len(perm) - 2
+    while (inversion_point &gt;= 0
+           and perm[inversion_point] &gt;= perm[inversion_point + 1]):
+        inversion_point -= 1
+    if inversion_point == -1:
+        return []  # perm is the last permutation.
+
+    # Swap the smallest entry after index inversion_point that is greater than
+    # perm[inversion_point]. Since entries in perm are decreasing after
+    # inversion_point, if we search in reverse order, the first entry that is
+    # greater than perm[inversion_point] is the entry to swap with.
+    for i in reversed(range(inversion_point + 1, len(perm))):
+        if perm[i] &gt; perm[inversion_point]:
+            perm[inversion_point], perm[i] = perm[i], perm[inversion_point]
+            break
+
+    # Entries in perm must appear in decreasing order after inversion_point,
+    # so we simply reverse these entries to get the smallest dictionary order.
+    perm[inversion_point + 1:] = reversed(perm[inversion_point + 1:])
+    return perm
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jethro Kuan</p>
-<p class="date">Created: 2018-10-04 Thu 21:36</p>
+<p class="date">Created: 2018-10-11 Thu 14:43</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
