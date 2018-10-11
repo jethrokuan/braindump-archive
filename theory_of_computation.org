@@ -741,3 +741,49 @@ at $q$ in the same condition as it was at $p$.
 
 First, we simplify our task by modifying $P$ slightly to give it the
 following three features.
+
+** Simplification of CFG
+There are 3 simplifications:
+
+1. Elimination of useless symbols
+
+   1. Remove all /non-reachable/ symbols: starting from $S$, if it is
+      impossible to reach a symbol, then it is non-reachable and can be
+      removed. Example: $S \rightarrow a, B \rightarrow b$, then $B$ is not reachable.
+   2. Remove all /non-generating/ symbols: for each symbol, check if the
+      symbol can ever generate a terminating string. If not, remove
+      it. Example: $A \rightarrow A | Ab$, $A$ is non-generating and can be removed.
+   3. It is important to remove non-generating symbols first, because
+      it can lead to more non-reachable symbols.
+
+2. Removal of unit productions
+
+   1. Unit productions look like $A \rightarrow B$. We do unit production
+      elimination to get a grammar into Chomsky Normal form.
+
+   2. To eliminate unit productions, we substitute the unit symbol
+      into the production.
+
+3. Removal of $\epsilon$ productions
+
+   1. Start from any symbol, remove the $\epsilon$ production, by
+      substituting all possibilities. E.g. $S \rightarrow AB | AC$, and we
+      eliminate $\epsilon$-productions from $B$: $S \rightarrow AB | A | AC$.
+   2. Eliminate until no more $\epsilon$-productions.
+   3. When an $\epsilon$-production is eliminated from a symbol, it does not
+      need to be reapplied if it appears again in the same symbol.
+
+* Pumping Lemma for CFGs
+
+#+DOWNLOADED: https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Pumping_lemma_for_context-free_languages.svg/600px-Pumping_lemma_for_context-free_languages.svg.png @ 2018-10-09 12:22:03
+[[file:Pumping Lemma for
+CFGs/600px-Pumping_lemma_for_context-free_languages.svg_2018-10-09_12-22-03.png]]
+
+If $s$ is sufficiently long, its derivation tree w.r.t. a Chomsky
+normal form grammar must contain some nonterminal $N$ twice on some
+tree path (upper picture). Repeating $n$ times the derivation part $N
+\Rightarrow \dots \Rightarrow vNx$ obtains a derivation for $u v^n w x^n y$.
+
+* CYK Algorithm
+https://en.wikipedia.org/wiki/CYK_algorithm
+
