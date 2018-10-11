@@ -1133,3 +1133,26 @@ phenomenon is called *Belady's anomaly*. LRU has the *stack property*:
 for algorithms with this property, a cache of size N+1 naturally
 includes the contents of a cache of size N. FIFO and Random (among
 others) do not obey this stack property.
+
+* Interesting Links
+** [[https://lwn.net/SubscriberLink/767630/594421f913c3d00a/][What is a CPU to do when it has nothing to do?]]
+
+When a CPU is idle (has no task scheduled), the CPU would have to run
+useless instructions until it is needed for real work. The kernel can
+put them into low-power idle states, but entry and exit of these idle
+states are not free. The kernel needs to predict the length of the
+idle state, and decide whether or not to put the CPU into a low-power
+state. This is the job of the idle loop.
+
+In this loop, the CPU scheduler notices that a CPU is idle because it has no work for the CPU to do. The scheduler then calls the governor, which does its best to predict the appropriate idle state to enter. There are currently two governors in the kernel, called "menu" and "ladder". 
+
+The tick is a timer run by the CPU scheduler for time-sharing the CPU:
+different jobs run for different number of ticks, and take turns in
+execution. This tick is not needed during idling, and running it
+prevents the CPU from entering deep idle states.
+
+In Linux kernel <= 4.16, the decision to stop the tick is made before
+the governor makes a recommendation. In 4.17 the decision of whether
+to stop the tick is made after the governor has made the
+recommendation.
+** TODO [[https://nadav.amit.zone/blog/linux-inline][How new-lines affect the Linux kernel performance]]
