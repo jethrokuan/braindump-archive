@@ -505,7 +505,7 @@ level of granularity at which the search operates.
 One way to avoid continuous problems is simply to /discretize/ the
 neighbourhood of each state. Many methods attempt to use the
 /gradient/ of the landscape to find a maximum: $x \leftarrow x +
-\delta \nabla (x)$, where $\delta is a small constant called the /step
+\delta \nabla (x)$, where $\delta$ is a small constant called the /step
 size/. For many problems, the /Newton-Raphson/ method is effective. It
 solves the roots for equations $g(x) = 0$, by computing a new
 estimate: $x \leftarrow x - g'(x)/g(x)$. To find a maximum or minimum
