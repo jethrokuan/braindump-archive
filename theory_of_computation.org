@@ -861,8 +861,9 @@ languages that have unambiguous grammars.
 
 * TODO Properties of Context-Free Languages
 ** Simplification of CFG
-
-There are 3 simplifications:
+The goal is to reduce all CFLs to Chomsky Normal Form. To get there,
+we must make several preliminary simplifications, which are useful in
+their own ways.
 
 1. Elimination of useless symbols
 
@@ -892,7 +893,34 @@ There are 3 simplifications:
    3. When an $\epsilon$-production is eliminated from a symbol, it does not
       need to be reapplied if it appears again in the same symbol.
 
-** Pumping Lemma for CFGs
+4. Conversion to Chomsky Normal Form
+
+After performing the preliminary simplifications, we can then:
+
+  1. Arrange that all bodies of length 2 or more consist only of variables
+  2. Break bodies of length 3 or more into a cascade of productions
+
+** Pumping Lemma for CFLs
+In any sufficiently long string in a CFL, it is possible to find at
+most 2 short, nearby substrings, that we can pump in tandem. First, we
+use several results, that we will state below.
+
+1. Conversion to CNF converts a parse tree into a binary tree.
+2. For a CNF grammar $G = (V, T, P, S)$, if the length of the longest
+   path is $n$, then $|w| \le 2^{n-1}$ for all terminal strings $w$.
+
+#+ATTR_LATEX: :options [Pumping Lemma for CFLs]
+#+BEGIN_theorem
+<<pumping-lemma-cfl>>
+Let $L$ be a CFL. Then there exists a constant $n$ (which
+depends on $L$) such that for every string $z$ in $L$ such that
+$| z |  \ge n$, we can break $z$ into three strings $z = uvwxy$
+such that:
+
+1. $ vx \ne \epsilon$
+2. $| vwx | \le n$
+3. For all $i \ge 0$, the string $uv^i wx^i y$ is also in $L$
+#+END_theorem
 
 #+DOWNLOADED: https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Pumping_lemma_for_context-free_languages.svg/600px-Pumping_lemma_for_context-free_languages.svg.png @ 2018-10-09 12:22:03
 [[file:Pumping Lemma for
@@ -903,6 +931,188 @@ normal form grammar must contain some nonterminal $N$ twice on some
 tree path (upper picture). Repeating $n$ times the derivation part $N
 \Rightarrow \dots \Rightarrow vNx$ obtains a derivation for $u v^n w x^n y$.
 
-** CYK Algorithm
-https://en.wikipedia.org/wiki/CYK_algorithm
+** Closure Properties of CFLs
+First, we introduce the notion of substitutions. Let $\Sigma$ be an
+alphabet, and suppose that for every symbol $a$ in $\Sigma$, we choose a
+language $L_a$. These chosen languages can be over any alphabets, not
+necessarily $\Sigma$ and not necessarily the same. The choice of languages
+defines a function $s$ on $\Sigma$, and we shall refer to $L_a$ as $s(a)$
+for each symbol $a$.
 
+If $w = a_1 a_2 \dots a_n$ in $\Sigma^*$, then $s(w)$ is the language of
+all strings $x_1 x_2 \dots x_n$ such that the string $x_i$ is in the
+language $s(a_i)$. $s(L)$ is the union of $s(w)$ for all strings $w$ in
+$L$.
+
+The substitution theorem states that if we can find a substitution
+function $a$ on a CFL, then the resultant language $s(a)$ is also a
+CFL.
+
+CFLs are closed under:
+
+1. Union
+
+$L_1 \cup L_2$ is the language $s(L)$, where $L$ is the language $\{1,
+2\}$, and $s(1) = L_1$ and $s(2) = L_2$.
+
+2. Concatenation
+
+$L_1 L_2$ is the language $s(L)$, $L = {12}$, and $s(1) = L_1$ and $s(2)
+= L_2$.
+
+3. Closure, and positive closure (asterisk and plus)
+
+$L$ is the language ${1}^*$, and $s$ is the substitution $s(1) = L_1$,
+then $L_1^* = s(L)$. Similarly, for positive closure, $L = \{1\}^+$ and
+$L_1^+ = s(L)$.
+
+4. Homomorphism
+$s(a) = \{h(a)\}$, for all $a$ in $\Sigma$. Then $h(L) = s(L)$.
+
+These are the base closure properties. CFLs are also closed under
+reversal. We can prove this by constructing a grammar for the reversed
+CFL.
+
+CFLs are not closed under intersection. However, CFLs are closed under
+the operation of "intersection with a regular language". To prove
+this, we use the PDA representation of CFLs, and FA representation of
+regular languages. We can run the FA in parallel with the PDA.
+
+CFLs are also closed under inverse homomorphism. The proof is similar
+to that of regular languages, but using a PDA, but is more complex
+because of the stack introduced in the PDA.
+
+** Decision Properties of CFLs
+First, we consider the complexity of converting from a CFG to a PDA,
+and vice versa. Let $n$ be the length of the entire representation of
+a PDA or CFG.
+
+Below, we list algorithms linear in the size of the input:
+
+- Converting a CFG to a PDA
+- Converting a PDA that accepts by final state to one that accepts by
+  empty stack
+- Converting a PDA that accepts by empty stack to one that accepts by
+  final state
+
+The running time of conversion from a PDA to a grammar is much more
+complex. The upper bound on the number of states and stack symbols is
+$n^3$, so there cannot be more than $n^3$ variables of the form $[pXq$
+constructed for the grammar. However, the running time of conversion
+could still be exponential because there are no limits to the number
+of symbols put on the stack.
+
+However, we can break the pushing of a long string of stack symbols
+into a sequence of at most $n$ steps that each pushes one symbol. Then
+each transition has no more than 2 stack symbols, and the total length
+of all the transition rules has grown by at most a constant factor,
+i.e. it is still $O(n)$. There are $O(n)$ transition rules, and each
+generates $O(n^2)$ productions, since there are only 2 states that need
+to be chosen in the productions that come from each rule. Hence, the
+constructed grammar has length $O(n^3)$, and can be constructed in
+cubic time.
+
+*** Running Time of Conversion to CNF
+1. Detecting reachable and generating symbols can be done in $O(n)$
+   time, and removing useless symbols takes $O(n)$ time and does not
+   increase the size of the grammar
+2. Constructing unit pairs and eliminating unit productions takes
+   $O(n^2)$ time, and results in a grammar whose length is $O(n)$.
+3. Replacing terminals by variables in production bodies takes $O(n)$
+   time and results in a grammar whose length is $O(n)$.
+4. Breaking production bodies of length 3 or more takes $O(n)$ time
+   and results in a grammar of length $O(n)$.
+
+However eliminating $\epsilon$-productions is tricky. If we have a production
+body of length $k$, we can construct from that one production $2^{k-1}$
+productions for the new grammar, so this part of the construction
+could take $O(2^n)$ time. However, we can break all long production
+bodies into a sequence of productions with bodies of length 2. This
+step takes $O(n)$ time and grows only linearly, and makes eliminating
+$\epsilon$-productions run in $O(n)$ time.
+
+In all, converting to CNF form is a $O(n^2)$ algorithm.
+
+*** Testing for emptiness of CFL
+This is equivalent to testing if $S$ is generating. The algorithm goes
+as follows:
+
+We maintain an array indexed by variable, which tells whether or not
+we have established that a variable is generating.For each variable
+there is a chain of all the positions in which the variable occurs
+(solid lines). The dashed lines suggest links from the productions to
+their counts.
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-10-12 17:24:55
+[[file:Properties of Context-Free Languages/screenshot_2018-10-12_17-24-55.png]]
+
+For each production, we count the number of positions holding
+variables whose ability to generate is not yet accounted for. Each
+time the count for a head variable reaches 0, we put the variable on a
+queue of generating variables whose consequences need to be explored.
+
+This algorithm takes $O(n)$ time:
+
+1. There are at most $n$ variables in a grammar of size $n$, creation
+   and initialization of the array can be done in $O(n)$ time.
+2. Initialization of the links and counts can be done in $O(n)$ time.
+3. When we discover a production has count 0:
+   1. Discover a production has count $0$, finding which variable is
+      at the head, checking whether it is already known to be
+      generating, and putting it on the queue if not. All these steps
+      are $O(1)$ for each production so $O(n)$ in total.
+   2. work done when visiting the production bodies that have the head
+      variable $A$. This work is proportional to the number of
+      positions with $A$. Hence, $O(n)$.
+
+*** Testing Membership in a CFL
+:PROPERTIES:
+:REFERENCE: https://en.wikipedia.org/wiki/CYK_algorithm
+:END:
+
+First, we can easily see that algorithms exponential in $n$ can
+decide membership. We can convert the grammar to CNF form. As the
+parse trees are binary trees, there will be exactly $2n-1$ nodes
+labeled by variables in the tree for a string $w$ of length $n$. The
+number of possible trees and node-labelings is only exponential in
+$n$.
+
+Fortunately, more efficient techniques exist, based on the idea of
+dynamic programming. Once such algorithm is the CYK Algorithm.
+
+We construct a triangular table, and begin the fill the table
+row-by-row upwards. The horizontal axis corresponds to the positions
+of the string $w = a_1 a_2 \dots a_n$, and the table entry $X_ij$ is the
+set of variables $A such that $A \overset{*}{\Rightarrow} a_i a_{i+1} \dots a_j$. We
+are interested in whether $S$ is in the set $X_{1n}$.
+
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-10-12 17:37:31
+[[file:Properties of Context-Free Languages/screenshot_2018-10-12_17-37-31.png]]
+
+It takes $O(n)$ time to compute any one entry of the table. Hence, the
+table-construction process takes $O(n^3)$ time.
+
+The algorithm for computing $X_{ij}$ is as such:
+
+*BASIS*: We compute the first row as follows. Since the string beginning
+ and ending at position $i$ is just the terminal $a_i$, and the grammar
+ is in $CNF$,the only way to derive the string $a_i$ is to use a
+ production of the form $A \rightarrow a_i$. Hence $X_ii$ is the set of variables
+ $A$ such that $A \rightarrow a_i$ is a production of $G$.
+
+*INDUCTION*: To compute $X_{ij}$ that is in row $j - i + 1$, we would have
+ computed all the $X$ in the rows below i.e. we know about all strings
+ shorter than $a_i a_{i+1} \dots a_j$, and we know all the proper prefix
+ and proper suffixes of that string.
+
+For $A$ to be in $X_{ij}$, we must find variables $B$, $C$, and integer
+$k$ such that:
+
+1. $i \le k < j$
+2. $B$ is in $X_{ik}$
+3. $C$ is in $I_{k+1,j}$
+4. $A \rightarrow BC$ is a production of $G$
+
+Finding such variables $A$ requires us to compare at most $n$ pairs of
+previously computed sets. Hence it can be done in $O(n)$ time.
