@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-08-30 Thu 15:33 -->
+<!-- 2018-10-12 Fri 17:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Operating Systems</title>
@@ -137,20 +137,20 @@ for the JavaScript code in this tag.
 <li><a href="#orge8bbb83">3.1. Scheduling Metrics</a></li>
 <li><a href="#org5bb517e">3.2. First Come First Served (FCFS)</a>
 <ul>
-<li><a href="#orgc77552e">3.2.1. Pros</a></li>
-<li><a href="#org57b489a">3.2.2. Cons</a></li>
+<li><a href="#org88a1745">3.2.1. Pros</a></li>
+<li><a href="#org75f9f16">3.2.2. Cons</a></li>
 </ul>
 </li>
 <li><a href="#orgc0544d6">3.3. Shortest Job First (SJF)</a>
 <ul>
-<li><a href="#orgf71bc2b">3.3.1. Pros</a></li>
-<li><a href="#org2adaf3b">3.3.2. Cons</a></li>
+<li><a href="#org1e393fb">3.3.1. Pros</a></li>
+<li><a href="#orgc7df0b2">3.3.2. Cons</a></li>
 </ul>
 </li>
 <li><a href="#orgf613c61">3.4. Shortest Time-to-Completion First (SRT)</a>
 <ul>
-<li><a href="#org58ae0f8">3.4.1. Pros</a></li>
-<li><a href="#orgb6467a9">3.4.2. Cons</a></li>
+<li><a href="#org0db1ce3">3.4.1. Pros</a></li>
+<li><a href="#orgf6399db">3.4.2. Cons</a></li>
 </ul>
 </li>
 <li><a href="#orgd8678e0">3.5. Round Robin</a>
@@ -190,8 +190,8 @@ for the JavaScript code in this tag.
 <li><a href="#orgb4a1d57">5.5.2. Evaluating locks</a></li>
 <li><a href="#org5452b06">5.5.3. Approach 1: Controlling Interrupts</a>
 <ul>
-<li><a href="#org88a1745">5.5.3.1. Pros</a></li>
-<li><a href="#org75f9f16">5.5.3.2. Cons</a></li>
+<li><a href="#org3be23fc">5.5.3.1. Pros</a></li>
+<li><a href="#org36feb4b">5.5.3.2. Cons</a></li>
 </ul>
 </li>
 <li><a href="#orgd693595">5.5.4. Approach 2: Test and Set</a>
@@ -282,6 +282,12 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#org45db498">11. Interesting Links</a>
+<ul>
+<li><a href="#org0e91a5a">11.1. What is a CPU to do when it has nothing to do?</a></li>
+<li><a href="#orga179cb9">11.2. <span class="todo TODO">TODO</span> How new-lines affect the Linux kernel performance</a></li>
 </ul>
 </li>
 </ul>
@@ -803,16 +809,16 @@ Average Turnaround time:
 (10 + 20 + 30)/3 = 20
 </p>
 </div>
-<div id="outline-container-orgc77552e" class="outline-4">
-<h4 id="orgc77552e"><span class="section-number-4">3.2.1</span> Pros</h4>
+<div id="outline-container-org88a1745" class="outline-4">
+<h4 id="org88a1745"><span class="section-number-4">3.2.1</span> Pros</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <p>
 Easy to implement
 </p>
 </div>
 </div>
-<div id="outline-container-org57b489a" class="outline-4">
-<h4 id="org57b489a"><span class="section-number-4">3.2.2</span> Cons</h4>
+<div id="outline-container-org75f9f16" class="outline-4">
+<h4 id="org75f9f16"><span class="section-number-4">3.2.2</span> Cons</h4>
 <div class="outline-text-4" id="text-3-2-2">
 <p>
 <i>Convoy effect</i>: a number of relatively-short potential consumers
@@ -834,16 +840,16 @@ of a resource get queued behind a heavyweight resource consumer.
 Schedule the job that takes the shortest TU.
 </p>
 </div>
-<div id="outline-container-orgf71bc2b" class="outline-4">
-<h4 id="orgf71bc2b"><span class="section-number-4">3.3.1</span> Pros</h4>
+<div id="outline-container-org1e393fb" class="outline-4">
+<h4 id="org1e393fb"><span class="section-number-4">3.3.1</span> Pros</h4>
 <div class="outline-text-4" id="text-3-3-1">
 <p>
 Optimizes for Turnaround time
 </p>
 </div>
 </div>
-<div id="outline-container-org2adaf3b" class="outline-4">
-<h4 id="org2adaf3b"><span class="section-number-4">3.3.2</span> Cons</h4>
+<div id="outline-container-orgc7df0b2" class="outline-4">
+<h4 id="orgc7df0b2"><span class="section-number-4">3.3.2</span> Cons</h4>
 <div class="outline-text-4" id="text-3-3-2">
 <p>
 Relies on unrealistic assumptions. For example, if A takes 100TU, and
@@ -862,16 +868,16 @@ Any time a new job enters the system, it determines the job that has
 the least time left, and schedules that one first.
 </p>
 </div>
-<div id="outline-container-org58ae0f8" class="outline-4">
-<h4 id="org58ae0f8"><span class="section-number-4">3.4.1</span> Pros</h4>
+<div id="outline-container-org0db1ce3" class="outline-4">
+<h4 id="org0db1ce3"><span class="section-number-4">3.4.1</span> Pros</h4>
 <div class="outline-text-4" id="text-3-4-1">
 <p>
 Good turnaround time
 </p>
 </div>
 </div>
-<div id="outline-container-orgb6467a9" class="outline-4">
-<h4 id="orgb6467a9"><span class="section-number-4">3.4.2</span> Cons</h4>
+<div id="outline-container-orgf6399db" class="outline-4">
+<h4 id="orgf6399db"><span class="section-number-4">3.4.2</span> Cons</h4>
 <div class="outline-text-4" id="text-3-4-2">
 <p>
 Bad for response time and interactivity.
@@ -1315,16 +1321,16 @@ void unlock() {
 </pre>
 </div>
 </div>
-<div id="outline-container-org88a1745" class="outline-5">
-<h5 id="org88a1745"><span class="section-number-5">5.5.3.1</span> Pros</h5>
+<div id="outline-container-org3be23fc" class="outline-5">
+<h5 id="org3be23fc"><span class="section-number-5">5.5.3.1</span> Pros</h5>
 <div class="outline-text-5" id="text-5-5-3-1">
 <ol class="org-ol">
 <li>Simplicity</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org75f9f16" class="outline-5">
-<h5 id="org75f9f16"><span class="section-number-5">5.5.3.2</span> Cons</h5>
+<div id="outline-container-org36feb4b" class="outline-5">
+<h5 id="org36feb4b"><span class="section-number-5">5.5.3.2</span> Cons</h5>
 <div class="outline-text-5" id="text-5-5-3-2">
 <ol class="org-ol">
 <li>Requires calling thread to perform a <i>privileged</i> operation</li>
@@ -2344,10 +2350,50 @@ others) do not obey this stack property.
 </div>
 </div>
 </div>
+
+<div id="outline-container-org45db498" class="outline-2">
+<h2 id="org45db498"><span class="section-number-2">11</span> Interesting Links</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-org0e91a5a" class="outline-3">
+<h3 id="org0e91a5a"><span class="section-number-3">11.1</span> <a href="https://lwn.net/SubscriberLink/767630/594421f913c3d00a/">What is a CPU to do when it has nothing to do?</a></h3>
+<div class="outline-text-3" id="text-11-1">
+<p>
+When a CPU is idle (has no task scheduled), the CPU would have to run
+useless instructions until it is needed for real work. The kernel can
+put them into low-power idle states, but entry and exit of these idle
+states are not free. The kernel needs to predict the length of the
+idle state, and decide whether or not to put the CPU into a low-power
+state. This is the job of the idle loop.
+</p>
+
+<p>
+In this loop, the CPU scheduler notices that a CPU is idle because it has no work for the CPU to do. The scheduler then calls the governor, which does its best to predict the appropriate idle state to enter. There are currently two governors in the kernel, called "menu" and "ladder". 
+</p>
+
+<p>
+The tick is a timer run by the CPU scheduler for time-sharing the CPU:
+different jobs run for different number of ticks, and take turns in
+execution. This tick is not needed during idling, and running it
+prevents the CPU from entering deep idle states.
+</p>
+
+<p>
+In Linux kernel &lt;= 4.16, the decision to stop the tick is made before
+the governor makes a recommendation. In 4.17 the decision of whether
+to stop the tick is made after the governor has made the
+recommendation.
+</p>
+</div>
+</div>
+<div id="outline-container-orga179cb9" class="outline-3">
+<h3 id="orga179cb9"><span class="section-number-3">11.2</span> <span class="todo TODO">TODO</span> <a href="https://nadav.amit.zone/blog/linux-inline">How new-lines affect the Linux kernel performance</a></h3>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jethro Kuan</p>
-<p class="date">Created: 2018-08-30 Thu 15:33</p>
+<p class="date">Created: 2018-10-12 Fri 17:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

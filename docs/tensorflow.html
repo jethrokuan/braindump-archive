@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-04 Thu 21:36 -->
+<!-- 2018-10-12 Fri 17:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tensorflow</title>
@@ -69,41 +69,41 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org81096aa">1. What is Tensorflow</a>
+<li><a href="#orgc893b36">1. What is Tensorflow</a>
 <ul>
-<li><a href="#org567b406">1.1. Glossary</a></li>
+<li><a href="#orgb7ecffd">1.1. Glossary</a></li>
 </ul>
 </li>
-<li><a href="#orgeb3da25">2. TF Slim</a>
+<li><a href="#orgd9f46f6">2. TF Slim</a>
 <ul>
-<li><a href="#org65474cc">2.1. <code>arg_scope</code></a></li>
+<li><a href="#orgc969de0">2.1. <code>arg_scope</code></a></li>
 </ul>
 </li>
-<li><a href="#org0ee3872">3. TF Serve</a></li>
-<li><a href="#org44f7002">4. TF Estimator</a>
+<li><a href="#org7bbb4b5">3. TF Serve</a></li>
+<li><a href="#orgd4302b2">4. TF Estimator</a>
 <ul>
-<li><a href="#org87ace93">4.1. Predict</a></li>
-<li><a href="#org9b4f03e">4.2. Eval</a></li>
-<li><a href="#org446e65e">4.3. Train</a></li>
+<li><a href="#orgcecca8d">4.1. Predict</a></li>
+<li><a href="#org93a5d59">4.2. Eval</a></li>
+<li><a href="#org8e6a08a">4.3. Train</a></li>
 </ul>
 </li>
-<li><a href="#org676da8b">5. TF Feature Columns</a>
+<li><a href="#orgc62c430">5. TF Feature Columns</a>
 <ul>
-<li><a href="#org2c6fe00">5.1. Numeric column</a></li>
-<li><a href="#orga716910">5.2. Bucketized column</a></li>
-<li><a href="#orgbba71f9">5.3. Categorical Identity Column</a></li>
-<li><a href="#org29b7bc8">5.4. Categorical vocabulary column</a></li>
-<li><a href="#org7581b1a">5.5. Feature Crosses</a></li>
-<li><a href="#org1030526">5.6. Indicator and Embedding columns</a></li>
+<li><a href="#org87b5c16">5.1. Numeric column</a></li>
+<li><a href="#orgcc368f1">5.2. Bucketized column</a></li>
+<li><a href="#org33d3978">5.3. Categorical Identity Column</a></li>
+<li><a href="#orgbe189ab">5.4. Categorical vocabulary column</a></li>
+<li><a href="#org7b2236d">5.5. Feature Crosses</a></li>
+<li><a href="#orga2fa44a">5.6. Indicator and Embedding columns</a></li>
 </ul>
 </li>
-<li><a href="#org0a76d02">6. Hooks</a></li>
-<li><a href="#orga424ded">7. Experiment</a></li>
+<li><a href="#orgacdfe64">6. Hooks</a></li>
+<li><a href="#org7483d9a">7. Experiment</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org81096aa" class="outline-2">
-<h2 id="org81096aa"><span class="section-number-2">1</span> What is Tensorflow</h2>
+<div id="outline-container-orgc893b36" class="outline-2">
+<h2 id="orgc893b36"><span class="section-number-2">1</span> What is Tensorflow</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 TensorFlow is open-source software library for numerical computation.
@@ -124,8 +124,8 @@ supports distributed computing.
 </div>
 </div>
 
-<div id="outline-container-org567b406" class="outline-3">
-<h3 id="org567b406"><span class="section-number-3">1.1</span> Glossary</h3>
+<div id="outline-container-orgb7ecffd" class="outline-3">
+<h3 id="orgb7ecffd"><span class="section-number-3">1.1</span> Glossary</h3>
 <div class="outline-text-3" id="text-1-1">
 <dl class="org-dl">
 <dt>tensor</dt><dd>A tf.Tensor object represents a partially defined
@@ -138,12 +138,12 @@ parts of this graph to achieve the desired results.</dd>
 </div>
 </div>
 </div>
-<div id="outline-container-orgeb3da25" class="outline-2">
-<h2 id="orgeb3da25"><span class="section-number-2">2</span> TF Slim</h2>
+<div id="outline-container-orgd9f46f6" class="outline-2">
+<h2 id="orgd9f46f6"><span class="section-number-2">2</span> TF Slim</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org65474cc" class="outline-3">
-<h3 id="org65474cc"><span class="section-number-3">2.1</span> <code>arg_scope</code></h3>
+<div id="outline-container-orgc969de0" class="outline-3">
+<h3 id="orgc969de0"><span class="section-number-3">2.1</span> <code>arg_scope</code></h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/framework/python/ops/arg_scope.py">https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/framework/python/ops/arg_scope.py</a>
@@ -217,16 +217,16 @@ def conv2d(*args, **kwargs)
 </div>
 </div>
 </div>
-<div id="outline-container-org0ee3872" class="outline-2">
-<h2 id="org0ee3872"><span class="section-number-2">3</span> TF Serve</h2>
+<div id="outline-container-org7bbb4b5" class="outline-2">
+<h2 id="org7bbb4b5"><span class="section-number-2">3</span> TF Serve</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 <a href="https://towardsdatascience.com/introducing-tfserve-simple-and-easy-http-server-for-tensorflow-model-inference-582ea1b07da8?source=rss----7f60cf5620c9---4">https://towardsdatascience.com/introducing-tfserve-simple-and-easy-http-server-for-tensorflow-model-inference-582ea1b07da8?source=rss----7f60cf5620c9---4</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org44f7002" class="outline-2">
-<h2 id="org44f7002"><span class="section-number-2">4</span> TF Estimator</h2>
+<div id="outline-container-orgd4302b2" class="outline-2">
+<h2 id="orgd4302b2"><span class="section-number-2">4</span> TF Estimator</h2>
 <div class="outline-text-2" id="text-4">
 
 <div class="figure">
@@ -307,8 +307,8 @@ to produce two dictionaries: one containing Tensors with inputs
 </p>
 </div>
 
-<div id="outline-container-org87ace93" class="outline-3">
-<h3 id="org87ace93"><span class="section-number-3">4.1</span> Predict</h3>
+<div id="outline-container-orgcecca8d" class="outline-3">
+<h3 id="orgcecca8d"><span class="section-number-3">4.1</span> Predict</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
  When <code>model_fn</code> is called with <code>mode == ModeKeys.PREDICT</code>, the model
@@ -334,8 +334,8 @@ if mode == tf.estimator.ModeKeys.PREDICT:
 </div>
 </div>
 
-<div id="outline-container-org9b4f03e" class="outline-3">
-<h3 id="org9b4f03e"><span class="section-number-3">4.2</span> Eval</h3>
+<div id="outline-container-org93a5d59" class="outline-3">
+<h3 id="org93a5d59"><span class="section-number-3">4.2</span> Eval</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 When <code>model_fn</code> is called with <code>mode == ModeKeys.EVAL</code>, the model function must evaluate the model, returning loss. 
@@ -369,8 +369,8 @@ accuracy = tf.metrics.accuracy(labels, predictions['class_ids'])
 </div>
 </div>
 
-<div id="outline-container-org446e65e" class="outline-3">
-<h3 id="org446e65e"><span class="section-number-3">4.3</span> Train</h3>
+<div id="outline-container-org8e6a08a" class="outline-3">
+<h3 id="org8e6a08a"><span class="section-number-3">4.3</span> Train</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 When <code>model_fn</code> is called with <code>mode == ModeKeys.TRAIN</code>, the model
@@ -395,8 +395,8 @@ return tf.estimator.EstimatorSpec(
 </div>
 </div>
 </div>
-<div id="outline-container-org676da8b" class="outline-2">
-<h2 id="org676da8b"><span class="section-number-2">5</span> TF Feature Columns</h2>
+<div id="outline-container-orgc62c430" class="outline-2">
+<h2 id="orgc62c430"><span class="section-number-2">5</span> TF Feature Columns</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Reference:
@@ -417,8 +417,8 @@ Feature columns bridge raw data with the data your model needs.
 There are nine functions in the <code>tf.feature_column</code> api.
 </p>
 </div>
-<div id="outline-container-org2c6fe00" class="outline-3">
-<h3 id="org2c6fe00"><span class="section-number-3">5.1</span> Numeric column</h3>
+<div id="outline-container-org87b5c16" class="outline-3">
+<h3 id="org87b5c16"><span class="section-number-3">5.1</span> Numeric column</h3>
 <div class="outline-text-3" id="text-5-1">
 <div class="org-src-container">
 <pre class="src src-python">numeric_feature_column = tf.feature_column.numeric_column(key="SepalLength",
@@ -434,8 +434,8 @@ matrix_feature_column = tf.feature_column.numeric_column(key="MyMatrix",
 </div>
 </div>
 
-<div id="outline-container-orga716910" class="outline-3">
-<h3 id="orga716910"><span class="section-number-3">5.2</span> Bucketized column</h3>
+<div id="outline-container-orgcc368f1" class="outline-3">
+<h3 id="orgcc368f1"><span class="section-number-3">5.2</span> Bucketized column</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 Often, you don't want to feed a number directly into the model, but
@@ -467,8 +467,8 @@ bucketized_feature_column = tf.feature_column.bucketized_column(
 </div>
 </div>
 
-<div id="outline-container-orgbba71f9" class="outline-3">
-<h3 id="orgbba71f9"><span class="section-number-3">5.3</span> Categorical Identity Column</h3>
+<div id="outline-container-org33d3978" class="outline-3">
+<h3 id="org33d3978"><span class="section-number-3">5.3</span> Categorical Identity Column</h3>
 <div class="outline-text-3" id="text-5-3">
 <p>
 Categorical identity columns are a special case of bucketized columns.
@@ -506,8 +506,8 @@ def input_fn():
 </div>
 </div>
 
-<div id="outline-container-org29b7bc8" class="outline-3">
-<h3 id="org29b7bc8"><span class="section-number-3">5.4</span> Categorical vocabulary column</h3>
+<div id="outline-container-orgbe189ab" class="outline-3">
+<h3 id="orgbe189ab"><span class="section-number-3">5.4</span> Categorical vocabulary column</h3>
 <div class="outline-text-3" id="text-5-4">
 
 <div class="figure">
@@ -564,8 +564,8 @@ hashed_feature_column =
 </div>
 </div>
 
-<div id="outline-container-org7581b1a" class="outline-3">
-<h3 id="org7581b1a"><span class="section-number-3">5.5</span> Feature Crosses</h3>
+<div id="outline-container-org7b2236d" class="outline-3">
+<h3 id="org7b2236d"><span class="section-number-3">5.5</span> Feature Crosses</h3>
 <div class="outline-text-3" id="text-5-5">
 <p>
 Combining features allows the model to learn separate weights
@@ -607,8 +607,8 @@ fc_san_francisco_boxed = tf.feature_column.crossed_column(
 </div>
 </div>
 
-<div id="outline-container-org1030526" class="outline-3">
-<h3 id="org1030526"><span class="section-number-3">5.6</span> Indicator and Embedding columns</h3>
+<div id="outline-container-orga2fa44a" class="outline-3">
+<h3 id="orga2fa44a"><span class="section-number-3">5.6</span> Indicator and Embedding columns</h3>
 <div class="outline-text-3" id="text-5-6">
 <p>
 Indicator columns treat each category as an element in a one-hot
@@ -657,8 +657,8 @@ embedding_column = tf.feature_column.embedding_column(
 </div>
 </div>
 </div>
-<div id="outline-container-org0a76d02" class="outline-2">
-<h2 id="org0a76d02"><span class="section-number-2">6</span> Hooks</h2>
+<div id="outline-container-orgacdfe64" class="outline-2">
+<h2 id="orgacdfe64"><span class="section-number-2">6</span> Hooks</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Hooks are useful for custom processing that has to happen alongside
@@ -680,8 +680,8 @@ checkpointing, summaries and more.
 </div>
 </div>
 </div>
-<div id="outline-container-orga424ded" class="outline-2">
-<h2 id="orga424ded"><span class="section-number-2">7</span> Experiment</h2>
+<div id="outline-container-org7483d9a" class="outline-2">
+<h2 id="org7483d9a"><span class="section-number-2">7</span> Experiment</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 The core of the distributed execution support is provided with the
@@ -711,7 +711,7 @@ replication and asynchronous training.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jethro Kuan</p>
-<p class="date">Created: 2018-10-04 Thu 21:36</p>
+<p class="date">Created: 2018-10-12 Fri 17:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
