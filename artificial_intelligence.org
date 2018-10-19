@@ -1044,7 +1044,7 @@ First, we can derive the expected utility of executing a policy $\pi$ in
 $s$:
 
 \begin{equation}
-U^\pi (s) = E\left[ \sum_{t=0}^\inf \gamma^t R(S_t) \right]
+U^\pi (s) = \mathbb{E} \left[ \sum_{t=0}^\infty \gamma^t R(S_t) \right]
 \end{equation}
 
 where the expectation is with respect to the probability distribution
@@ -1056,7 +1056,7 @@ that the optimal policy is independent of the starting state. This
 allows us to compute the true utility of the state as $U^{\pi^*} (s)$.
 The utility function allows the agent to select actions by using the
 principle of maximum expected utility from the earlier chapter: $\pi^*(s)
-= argmax_{a \in A(s) } \sum_{s^'} P(s' |s, a)U(s')$.
+= argmax_{a \in A(s) } \sum_{s^{i}} P(s' |s, a)U(s')$.
 
 ** Value Iteration
 The bellman equation illustrates that the utility of a state is the
@@ -1288,3 +1288,4 @@ Simon, noble prize in economics
 The complexity of the behaviour is the manifestation of the complexity
 of the environment and not the complexity of the program.
 #+END_QUOTE
+
