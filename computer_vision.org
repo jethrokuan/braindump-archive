@@ -672,3 +672,44 @@ Z = \begin{bmatrix}
   \sum_{x \in W} w(I-J)I_y
 \end{bmatrix}
 \end{equation}
+
+* Homography
+https://docs.opencv.org/3.4.1/d9/dab/tutorial_homography.html
+
+The planar homography relates the transformation between 2 planes, up
+to a scale factor:
+
+\begin{equation}
+s \begin{bmatrix}
+  x' \\
+  y' \\
+  1
+\end{bmatrix} =
+H \begin{bmatrix}
+  x \\
+  y \\
+  1
+\end{bmatrix} =
+\begin{bmatrix}
+  h_{11} & h_{12} & h_{13} \\
+  h_{21} & h_{22} & h_{23} \\
+  h_{31} & h_{32} & h_{33} \\
+\end{bmatrix}
+\begin{bmatrix}
+  x \\
+  y \\
+  1
+\end{bmatrix}
+\end{equation}
+
+The homography is a $3 \times 3$ matrix with 8 degrees of freedom, as it is
+estimated up to a scale.
+
+#+DOWNLOADED: https://docs.opencv.org/3.4.1/homography_perspective_correction_chessboard_matches.jpg @ 2018-10-19 11:08:50
+[[file:Homography/homography_perspective_correction_chessboard_matches_2018-10-19_11-08-50.jpg]]
+
+Homographies are used in:
+
+- camera pose estimation
+- panorama stitching
+- perspective removal/correction
