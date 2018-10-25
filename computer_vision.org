@@ -713,3 +713,10 @@ Homographies are used in:
 - camera pose estimation
 - panorama stitching
 - perspective removal/correction
+
+https://cseweb.ucsd.edu/classes/wi07/cse252a/homography_estimation/homography_estimation.pdf
+
+* Understanding Quarternions
+- https://www.3dgep.com/understanding-quaternions/
+- https://www.youtube.com/watch?v=d4EgbgTm0Bg
+
