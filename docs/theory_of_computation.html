@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-12 Fri 17:42 -->
+<!-- 2018-10-25 Thu 19:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Theory Of Computation</title>
@@ -91,107 +91,134 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2a4dfc2">1. Introduction</a>
+<li><a href="#orgb07df2f">1. Introduction</a>
 <ul>
-<li><a href="#org67b4e2c">1.1. Formal Proofs</a></li>
-<li><a href="#org92484ef">1.2. Inductive Proofs</a></li>
-<li><a href="#org58354f5">1.3. Structural Inductions</a></li>
+<li><a href="#orgb9615a8">1.1. Formal Proofs</a></li>
+<li><a href="#org268492c">1.2. Inductive Proofs</a></li>
+<li><a href="#orgc71988e">1.3. Structural Inductions</a></li>
 </ul>
 </li>
-<li><a href="#org89729e9">2. Automata Theory</a>
+<li><a href="#org181b691">2. Automata Theory</a>
 <ul>
-<li><a href="#org6db36ec">2.1. Definitions</a></li>
+<li><a href="#org21f1b90">2.1. Definitions</a></li>
 </ul>
 </li>
-<li><a href="#org722e711">3. Finite Automata</a>
+<li><a href="#orgd0cac2b">3. Finite Automata</a>
 <ul>
-<li><a href="#org85c2601">3.1. Deterministic Finite Automata</a>
+<li><a href="#orgd7682eb">3.1. Deterministic Finite Automata</a>
 <ul>
-<li><a href="#org2f9988e">3.1.1. Simpler Notations</a></li>
+<li><a href="#org2dea2b7">3.1.1. Simpler Notations</a></li>
 </ul>
 </li>
-<li><a href="#org7538d73">3.2. Language of a DFA</a></li>
-<li><a href="#orga570119">3.3. Extending Transition Function to Strings</a></li>
+<li><a href="#org4bc2c44">3.2. Language of a DFA</a></li>
+<li><a href="#orgf3293e9">3.3. Extending Transition Function to Strings</a></li>
 </ul>
 </li>
-<li><a href="#org321d4ec">4. Nondeterministic Finite Automata</a>
+<li><a href="#org96e2741">4. Nondeterministic Finite Automata</a>
 <ul>
-<li><a href="#org62fab09">4.1. Definition</a></li>
-<li><a href="#org44c81bc">4.2. The Language of an NFA</a></li>
-<li><a href="#org23ae0bf">4.3. The Equivalence of DFA and NFA</a></li>
-<li><a href="#org482e44b">4.4. Finite Automata with Epsilon-Transitions</a></li>
-<li><a href="#orgb9296f7">4.5. Epsilon-Closures</a></li>
-<li><a href="#org0228fda">4.6. Eliminating &epsilon;-Transitions</a></li>
+<li><a href="#orgd6cc4a7">4.1. Definition</a></li>
+<li><a href="#orge5bc650">4.2. The Language of an NFA</a></li>
+<li><a href="#orgf076014">4.3. The Equivalence of DFA and NFA</a></li>
+<li><a href="#orge9012e8">4.4. Finite Automata with Epsilon-Transitions</a></li>
+<li><a href="#org4f614d0">4.5. Epsilon-Closures</a></li>
+<li><a href="#orga0855e6">4.6. Eliminating &epsilon;-Transitions</a></li>
 </ul>
 </li>
-<li><a href="#org867ffc9">5. Regular Expressions</a>
+<li><a href="#org0edb414">5. Regular Expressions</a>
 <ul>
-<li><a href="#org31a9016">5.1. Precedence of regular expression operators</a></li>
-<li><a href="#orgdb22f4c">5.2. Equivalence of DFA and Regular Expressions</a>
+<li><a href="#org60d2f6b">5.1. Precedence of regular expression operators</a></li>
+<li><a href="#orgf0fb408">5.2. Equivalence of DFA and Regular Expressions</a>
 <ul>
-<li><a href="#org364c7f0">5.2.1. From DFA to Regular Expression</a></li>
-<li><a href="#org3ec935b">5.2.2. Converting DFAs to regular expressions by eliminating states</a></li>
-<li><a href="#org87b2a8d">5.2.3. Converting regular expressions to automata</a></li>
-<li><a href="#org9d1e4ce">5.2.4. Algebraic law for regular expressions</a></li>
-<li><a href="#org1c3ec47">5.2.5. Discovering laws for regular expressions</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgaac7d0a">6. Properties of Regular Languages</a>
-<ul>
-<li><a href="#org4621d7b">6.1. Pumping Lemma</a></li>
-<li><a href="#org2f47490">6.2. Closure of Regular Languages</a></li>
-</ul>
-</li>
-<li><a href="#org1ea112d">7. Context-free Grammars and Languages</a>
-<ul>
-<li><a href="#org0d167ec">7.1. Derivations using a Grammar</a></li>
-<li><a href="#orge959648">7.2. Leftmost and Rightmost Derivations</a></li>
-<li><a href="#org95a11fc">7.3. The language of a Grammar</a></li>
-<li><a href="#org4c8d380">7.4. Sentential Forms</a></li>
-<li><a href="#org520d6e0">7.5. Parse Trees</a>
-<ul>
-<li><a href="#org8a8b4d3">7.5.1. Construction</a></li>
-<li><a href="#org68cf077">7.5.2. The yield</a></li>
-<li><a href="#orgd7442a7">7.5.3. Inferences and derivations</a></li>
-</ul>
-</li>
-<li><a href="#org3bef6d0">7.6. Linear Grammars</a></li>
-<li><a href="#orge7d16f6">7.7. <span class="todo TODO">TODO</span> Ambiguous Grammars</a></li>
-<li><a href="#orge0a65b1">7.8. Chomsky Normal Form</a></li>
-</ul>
-</li>
-<li><a href="#org6c35cc6">8. Pushdown Automata</a>
-<ul>
-<li><a href="#org2a1a181">8.1. Definition</a></li>
-<li><a href="#orgbeadb60">8.2. Formal Definition</a></li>
-<li><a href="#org3a99a01">8.3. Instantaneous Descriptions</a></li>
-<li><a href="#orgfe6ec1c">8.4. The Languages of PDAs</a>
-<ul>
-<li><a href="#orga342db0">8.4.1. Acceptance by Final State</a></li>
-<li><a href="#orgfda8d4e">8.4.2. Acceptance by Empty Stack</a></li>
-<li><a href="#org8c6d491">8.4.3. From Empty Stack to Final State</a></li>
-<li><a href="#org99c9e5e">8.4.4. From Final State to Empty Stack</a></li>
-</ul>
-</li>
-<li><a href="#orga8ba3c3">8.5. Equivalence of CFG and PDA</a>
-<ul>
-<li><a href="#org87c73af">8.5.1. Deterministic Pushdown Automata</a></li>
+<li><a href="#org24537d7">5.2.1. From DFA to Regular Expression</a></li>
+<li><a href="#orgddb326a">5.2.2. Converting DFAs to regular expressions by eliminating states</a></li>
+<li><a href="#org3a25b88">5.2.3. Converting regular expressions to automata</a></li>
+<li><a href="#orgccdda3d">5.2.4. Algebraic law for regular expressions</a></li>
+<li><a href="#org9323c9b">5.2.5. Discovering laws for regular expressions</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org9f5348d">9. <span class="todo TODO">TODO</span> Properties of Context-Free Languages</a>
+<li><a href="#org35ca0e5">6. Properties of Regular Languages</a>
 <ul>
-<li><a href="#orgca36b54">9.1. Simplification of CFG</a></li>
-<li><a href="#orga71b527">9.2. Pumping Lemma for CFLs</a></li>
-<li><a href="#orgc375708">9.3. Closure Properties of CFLs</a></li>
-<li><a href="#org61c30a8">9.4. Decision Properties of CFLs</a>
+<li><a href="#orgcfc9708">6.1. Pumping Lemma</a></li>
+<li><a href="#org10bfad9">6.2. Closure of Regular Languages</a></li>
+</ul>
+</li>
+<li><a href="#orgd1f37f6">7. Context-free Grammars and Languages</a>
 <ul>
-<li><a href="#org5599a13">9.4.1. Running Time of Conversion to CNF</a></li>
-<li><a href="#org81b66cf">9.4.2. Testing for emptiness of CFL</a></li>
-<li><a href="#orgcd0ae19">9.4.3. Testing Membership in a CFL</a></li>
+<li><a href="#org227f9e8">7.1. Derivations using a Grammar</a></li>
+<li><a href="#org219e399">7.2. Leftmost and Rightmost Derivations</a></li>
+<li><a href="#orgc686097">7.3. The language of a Grammar</a></li>
+<li><a href="#org1d8a5f6">7.4. Sentential Forms</a></li>
+<li><a href="#orgdbf4e87">7.5. Parse Trees</a>
+<ul>
+<li><a href="#orgf3f764c">7.5.1. Construction</a></li>
+<li><a href="#org77900d6">7.5.2. The yield</a></li>
+<li><a href="#orgc09fe82">7.5.3. Inferences and derivations</a></li>
+</ul>
+</li>
+<li><a href="#org719ab75">7.6. Linear Grammars</a></li>
+<li><a href="#orgdc3cf37">7.7. <span class="todo TODO">TODO</span> Ambiguous Grammars</a></li>
+<li><a href="#org428380f">7.8. Chomsky Normal Form</a></li>
+</ul>
+</li>
+<li><a href="#org71d49b9">8. Pushdown Automata</a>
+<ul>
+<li><a href="#org41f4098">8.1. Definition</a></li>
+<li><a href="#orgaaabd13">8.2. Formal Definition</a></li>
+<li><a href="#orgbfe61f8">8.3. Instantaneous Descriptions</a></li>
+<li><a href="#org206cd49">8.4. The Languages of PDAs</a>
+<ul>
+<li><a href="#org2e41401">8.4.1. Acceptance by Final State</a></li>
+<li><a href="#orgf014098">8.4.2. Acceptance by Empty Stack</a></li>
+<li><a href="#org3db79a8">8.4.3. From Empty Stack to Final State</a></li>
+<li><a href="#orgb435c4b">8.4.4. From Final State to Empty Stack</a></li>
+</ul>
+</li>
+<li><a href="#orgd846c1d">8.5. Equivalence of CFG and PDA</a>
+<ul>
+<li><a href="#org50e5076">8.5.1. Deterministic Pushdown Automata</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org735d0aa">9. Properties of Context-Free Languages</a>
+<ul>
+<li><a href="#org5a50c9a">9.1. Simplification of CFG</a></li>
+<li><a href="#org7e0344a">9.2. Pumping Lemma for CFLs</a></li>
+<li><a href="#org8407119">9.3. Closure Properties of CFLs</a></li>
+<li><a href="#orgc1efbc3">9.4. Decision Properties of CFLs</a>
+<ul>
+<li><a href="#orge2836d0">9.4.1. Running Time of Conversion to CNF</a></li>
+<li><a href="#org38f5687">9.4.2. Testing for emptiness of CFL</a></li>
+<li><a href="#orgc98d13a">9.4.3. Testing Membership in a CFL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org6a0ba97">10. Turing Machines</a>
+<ul>
+<li><a href="#org56da6aa">10.1. Formal Notation</a></li>
+<li><a href="#org244dff1">10.2. Instantaneous Descriptions</a></li>
+<li><a href="#org230c31b">10.3. Transition Diagrams</a></li>
+<li><a href="#orge19f531">10.4. The Language of a TM</a></li>
+<li><a href="#orgfc8570b">10.5. Turing machines and halting</a></li>
+<li><a href="#org9a97042">10.6. Programming Techniques for Turing Machines</a>
+<ul>
+<li><a href="#org4ec9c47">10.6.1. Storage in the State</a></li>
+<li><a href="#org42af864">10.6.2. Multiple Tracks</a></li>
+<li><a href="#org9694e4e">10.6.3. Subroutines</a></li>
+<li><a href="#orgce30f3f">10.6.4. Extensions to basic Turing Machine</a>
+<ul>
+<li><a href="#org76b3e09">10.6.4.1. Multitape Turing Machines</a></li>
+<li><a href="#org651f832">10.6.4.2. Equivalence of one-tape and multitape TMs</a></li>
+<li><a href="#org37f2111">10.6.4.3. Non-deterministic Turing Machines</a></li>
+<li><a href="#org6f2fe00">10.6.4.4. <span class="todo TODO">TODO</span> Restricted Turing Machines</a></li>
+<li><a href="#org162b4a1">10.6.4.5. <span class="todo TODO">TODO</span> Multistack Machines</a></li>
+<li><a href="#org3d2f006">10.6.4.6. <span class="todo TODO">TODO</span> Turing Machines and Computers</a></li>
+<li><a href="#orgaeab3bb">10.6.4.7. <span class="todo TODO">TODO</span> Runtime of Computers vs Turing Machines</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -199,8 +226,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org2a4dfc2" class="outline-2">
-<h2 id="org2a4dfc2"><span class="section-number-2">1</span> Introduction</h2>
+<div id="outline-container-orgb07df2f" class="outline-2">
+<h2 id="orgb07df2f"><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Finite automata are a useful model for many kinds of important
@@ -230,8 +257,8 @@ the inductive and deductive type.
 </p>
 </div>
 
-<div id="outline-container-org67b4e2c" class="outline-3">
-<h3 id="org67b4e2c"><span class="section-number-3">1.1</span> Formal Proofs</h3>
+<div id="outline-container-orgb9615a8" class="outline-3">
+<h3 id="orgb9615a8"><span class="section-number-3">1.1</span> Formal Proofs</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Here the more common proof requirements are here:
@@ -248,8 +275,8 @@ an iff statement.
 </div>
 </div>
 
-<div id="outline-container-org92484ef" class="outline-3">
-<h3 id="org92484ef"><span class="section-number-3">1.2</span> Inductive Proofs</h3>
+<div id="outline-container-org268492c" class="outline-3">
+<h3 id="org268492c"><span class="section-number-3">1.2</span> Inductive Proofs</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Suppose we are given a statement \(S(n)\) to prove. The inductive
@@ -263,8 +290,8 @@ approach involves:
 </div>
 </div>
 
-<div id="outline-container-org58354f5" class="outline-3">
-<h3 id="org58354f5"><span class="section-number-3">1.3</span> Structural Inductions</h3>
+<div id="outline-container-orgc71988e" class="outline-3">
+<h3 id="orgc71988e"><span class="section-number-3">1.3</span> Structural Inductions</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 We can sometimes prove statements by construction. This is often the
@@ -277,12 +304,12 @@ construction, the construction \(X_i\) is valid.
 </div>
 </div>
 
-<div id="outline-container-org89729e9" class="outline-2">
-<h2 id="org89729e9"><span class="section-number-2">2</span> Automata Theory</h2>
+<div id="outline-container-org181b691" class="outline-2">
+<h2 id="org181b691"><span class="section-number-2">2</span> Automata Theory</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org6db36ec" class="outline-3">
-<h3 id="org6db36ec"><span class="section-number-3">2.1</span> Definitions</h3>
+<div id="outline-container-org21f1b90" class="outline-3">
+<h3 id="org21f1b90"><span class="section-number-3">2.1</span> Definitions</h3>
 <div class="outline-text-3" id="text-2-1">
 <dl class="org-dl">
 <dt>alphabet</dt><dd>An <i>alphabet</i> is a finite, nonempty set of symbols. E.g.
@@ -302,8 +329,8 @@ string is a member of some particular language.</dd>
 </div>
 </div>
 
-<div id="outline-container-org722e711" class="outline-2">
-<h2 id="org722e711"><span class="section-number-2">3</span> Finite Automata</h2>
+<div id="outline-container-orgd0cac2b" class="outline-2">
+<h2 id="orgd0cac2b"><span class="section-number-2">3</span> Finite Automata</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 An automata has:
@@ -326,8 +353,8 @@ state. Deterministic Finite Automata is often abbrieviated with <i>DFA</i>.
 </p>
 </div>
 
-<div id="outline-container-org85c2601" class="outline-3">
-<h3 id="org85c2601"><span class="section-number-3">3.1</span> Deterministic Finite Automata</h3>
+<div id="outline-container-orgd7682eb" class="outline-3">
+<h3 id="orgd7682eb"><span class="section-number-3">3.1</span> Deterministic Finite Automata</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 A <i>dfa</i> consists of:
@@ -354,8 +381,8 @@ In proofs, we often talk about a DFA in "five-tuple" notation:
 \end{equation}
 </div>
 
-<div id="outline-container-org2f9988e" class="outline-4">
-<h4 id="org2f9988e"><span class="section-number-4">3.1.1</span> Simpler Notations</h4>
+<div id="outline-container-org2dea2b7" class="outline-4">
+<h4 id="org2dea2b7"><span class="section-number-4">3.1.1</span> Simpler Notations</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 The two preferred notation for describing automata are:
@@ -384,8 +411,8 @@ implication tells us the states and the input alphabet.</dd>
 </div>
 </div>
 
-<div id="outline-container-org7538d73" class="outline-3">
-<h3 id="org7538d73"><span class="section-number-3">3.2</span> Language of a DFA</h3>
+<div id="outline-container-org4bc2c44" class="outline-3">
+<h3 id="org4bc2c44"><span class="section-number-3">3.2</span> Language of a DFA</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 We can define the <i>language</i> of a DFA \(A = \left(Q, \Sigma, q_0, F\right)\).
@@ -403,8 +430,8 @@ state \(q_0\) to one of the accepting states.
 </div>
 </div>
 
-<div id="outline-container-orga570119" class="outline-3">
-<h3 id="orga570119"><span class="section-number-3">3.3</span> Extending Transition Function to Strings</h3>
+<div id="outline-container-orgf3293e9" class="outline-3">
+<h3 id="orgf3293e9"><span class="section-number-3">3.3</span> Extending Transition Function to Strings</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Basis:
@@ -422,8 +449,8 @@ Induction:
 </div>
 </div>
 
-<div id="outline-container-org321d4ec" class="outline-2">
-<h2 id="org321d4ec"><span class="section-number-2">4</span> Nondeterministic Finite Automata</h2>
+<div id="outline-container-org96e2741" class="outline-2">
+<h2 id="org96e2741"><span class="section-number-2">4</span> Nondeterministic Finite Automata</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 A NFA has can be in several states at once, and this ability is
@@ -434,8 +461,8 @@ have exponentially more states than the NFA.
 </p>
 </div>
 
-<div id="outline-container-org62fab09" class="outline-3">
-<h3 id="org62fab09"><span class="section-number-3">4.1</span> Definition</h3>
+<div id="outline-container-orgd6cc4a7" class="outline-3">
+<h3 id="orgd6cc4a7"><span class="section-number-3">4.1</span> Definition</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 An NFA has:
@@ -452,8 +479,8 @@ in \(\Sigma\) as arguments and returns a <b>subset</b> of \(Q\).</li>
 </div>
 </div>
 
-<div id="outline-container-org44c81bc" class="outline-3">
-<h3 id="org44c81bc"><span class="section-number-3">4.2</span> The Language of an NFA</h3>
+<div id="outline-container-orge5bc650" class="outline-3">
+<h3 id="orge5bc650"><span class="section-number-3">4.2</span> The Language of an NFA</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 if \(A = (Q, \Sigma, \delta, q_0, F)\) is an NFA, then
@@ -470,8 +497,8 @@ That is, \(L(A)\) is the set of strings \(w\) in \(\Sigma^*\) such that
 </div>
 </div>
 
-<div id="outline-container-org23ae0bf" class="outline-3">
-<h3 id="org23ae0bf"><span class="section-number-3">4.3</span> The Equivalence of DFA and NFA</h3>
+<div id="outline-container-orgf076014" class="outline-3">
+<h3 id="orgf076014"><span class="section-number-3">4.3</span> The Equivalence of DFA and NFA</h3>
 <div class="outline-text-3" id="text-4-3">
 
 <div class="figure">
@@ -481,8 +508,8 @@ That is, \(L(A)\) is the set of strings \(w\) in \(\Sigma^*\) such that
 </div>
 </div>
 
-<div id="outline-container-org482e44b" class="outline-3">
-<h3 id="org482e44b"><span class="section-number-3">4.4</span> Finite Automata with Epsilon-Transitions</h3>
+<div id="outline-container-orge9012e8" class="outline-3">
+<h3 id="orge9012e8"><span class="section-number-3">4.4</span> Finite Automata with Epsilon-Transitions</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 Transitions on &epsilon;, the empty string, allow NFAs to make a transition
@@ -503,8 +530,8 @@ Of particular interest is the transition from \(q_0\) to \(q_1\), where the
 </div>
 </div>
 
-<div id="outline-container-orgb9296f7" class="outline-3">
-<h3 id="orgb9296f7"><span class="section-number-3">4.5</span> Epsilon-Closures</h3>
+<div id="outline-container-org4f614d0" class="outline-3">
+<h3 id="org4f614d0"><span class="section-number-3">4.5</span> Epsilon-Closures</h3>
 <div class="outline-text-3" id="text-4-5">
 <p>
 We &epsilon;-close a state \(q\) by following all transitions out of \(q\) that
@@ -539,8 +566,8 @@ Then:
 </div>
 </div>
 
-<div id="outline-container-org0228fda" class="outline-3">
-<h3 id="org0228fda"><span class="section-number-3">4.6</span> Eliminating &epsilon;-Transitions</h3>
+<div id="outline-container-orga0855e6" class="outline-3">
+<h3 id="orga0855e6"><span class="section-number-3">4.6</span> Eliminating &epsilon;-Transitions</h3>
 <div class="outline-text-3" id="text-4-6">
 <p>
 Given any &epsilon;-NFA \(E\), we can find a DFA \(D\) that accepts the same
@@ -574,8 +601,8 @@ state of \(E\). \(F_D = \{S | S \text{ is in } Q_D \text{ and } S \cap F_E
 </div>
 
 
-<div id="outline-container-org867ffc9" class="outline-2">
-<h2 id="org867ffc9"><span class="section-number-2">5</span> Regular Expressions</h2>
+<div id="outline-container-org0edb414" class="outline-2">
+<h2 id="org0edb414"><span class="section-number-2">5</span> Regular Expressions</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Regular expressions may be thought of as a "programming language", in
@@ -630,8 +657,8 @@ expression denotes the language \(\{a\}\).</li>
 </ol>
 </div>
 
-<div id="outline-container-org31a9016" class="outline-3">
-<h3 id="org31a9016"><span class="section-number-3">5.1</span> Precedence of regular expression operators</h3>
+<div id="outline-container-org60d2f6b" class="outline-3">
+<h3 id="org60d2f6b"><span class="section-number-3">5.1</span> Precedence of regular expression operators</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 The precedence in order of highest to lowest, is:
@@ -644,8 +671,8 @@ The precedence in order of highest to lowest, is:
 </div>
 </div>
 
-<div id="outline-container-orgdb22f4c" class="outline-3">
-<h3 id="orgdb22f4c"><span class="section-number-3">5.2</span> Equivalence of DFA and Regular Expressions</h3>
+<div id="outline-container-orgf0fb408" class="outline-3">
+<h3 id="orgf0fb408"><span class="section-number-3">5.2</span> Equivalence of DFA and Regular Expressions</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 We show this by showing that:
@@ -664,8 +691,8 @@ $\epilon$-NFA, which we have already shown is equivalent to a DFA.</li>
 </div>
 </div>
 
-<div id="outline-container-org364c7f0" class="outline-4">
-<h4 id="org364c7f0"><span class="section-number-4">5.2.1</span> From DFA to Regular Expression</h4>
+<div id="outline-container-org24537d7" class="outline-4">
+<h4 id="org24537d7"><span class="section-number-4">5.2.1</span> From DFA to Regular Expression</h4>
 <div class="outline-text-4" id="text-5-2-1">
 <p>
 We can number the finite states in a DFA \(A\) with \(1, 2, \dots, n\).
@@ -748,8 +775,8 @@ automaton is then the sum of all expressions \(R_{ij}^{(n)}\) such that state
 </div>
 </div>
 
-<div id="outline-container-org3ec935b" class="outline-4">
-<h4 id="org3ec935b"><span class="section-number-4">5.2.2</span> Converting DFAs to regular expressions by eliminating states</h4>
+<div id="outline-container-orgddb326a" class="outline-4">
+<h4 id="orgddb326a"><span class="section-number-4">5.2.2</span> Converting DFAs to regular expressions by eliminating states</h4>
 <div class="outline-text-4" id="text-5-2-2">
 <p>
 The above method of conversation always works, but is expensive. \(n^3\)
@@ -805,8 +832,8 @@ which accepts \(R^*\).</li>
 </div>
 </div>
 
-<div id="outline-container-org87b2a8d" class="outline-4">
-<h4 id="org87b2a8d"><span class="section-number-4">5.2.3</span> Converting regular expressions to automata</h4>
+<div id="outline-container-org3a25b88" class="outline-4">
+<h4 id="org3a25b88"><span class="section-number-4">5.2.3</span> Converting regular expressions to automata</h4>
 <div class="outline-text-4" id="text-5-2-3">
 <p>
 We can show every language defined by a regular expression is also
@@ -858,8 +885,8 @@ The automaton for \(R\) also serves as the automaton for \((R)\).
 </div>
 </div>
 
-<div id="outline-container-org9d1e4ce" class="outline-4">
-<h4 id="org9d1e4ce"><span class="section-number-4">5.2.4</span> Algebraic law for regular expressions</h4>
+<div id="outline-container-orgccdda3d" class="outline-4">
+<h4 id="orgccdda3d"><span class="section-number-4">5.2.4</span> Algebraic law for regular expressions</h4>
 <div class="outline-text-4" id="text-5-2-4">
 <dl class="org-dl">
 <dt>commutativity</dt><dd>\(x + y = y + x\).</dd>
@@ -886,8 +913,8 @@ The automaton for \(R\) also serves as the automaton for \((R)\).
 </div>
 </div>
 
-<div id="outline-container-org1c3ec47" class="outline-4">
-<h4 id="org1c3ec47"><span class="section-number-4">5.2.5</span> Discovering laws for regular expressions</h4>
+<div id="outline-container-org9323c9b" class="outline-4">
+<h4 id="org9323c9b"><span class="section-number-4">5.2.5</span> Discovering laws for regular expressions</h4>
 <div class="outline-text-4" id="text-5-2-5">
 <p>
 The truth of a law reduces to the question of the equality of two
@@ -899,8 +926,8 @@ in another, and vice-versa.
 </div>
 </div>
 
-<div id="outline-container-orgaac7d0a" class="outline-2">
-<h2 id="orgaac7d0a"><span class="section-number-2">6</span> Properties of Regular Languages</h2>
+<div id="outline-container-org35ca0e5" class="outline-2">
+<h2 id="org35ca0e5"><span class="section-number-2">6</span> Properties of Regular Languages</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Regular languages exhibit the "closure" property. These properties let
@@ -913,8 +940,8 @@ particular language.
 </p>
 </div>
 
-<div id="outline-container-org4621d7b" class="outline-3">
-<h3 id="org4621d7b"><span class="section-number-3">6.1</span> Pumping Lemma</h3>
+<div id="outline-container-orgcfc9708" class="outline-3">
+<h3 id="orgcfc9708"><span class="section-number-3">6.1</span> Pumping Lemma</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 We have established that the class of languages known as regular
@@ -933,7 +960,7 @@ The pumping lemma lets us show that certain languages are not regular.
 
 <div class="theorem">
 <p>
-<a id="org6e30dc9"></a>
+<a id="org792f7b8"></a>
 Let \(L\) be a regular language. Then there exists a constant \(n\) (which
 depends on \(L\)) such that for every string \(w\) in \(L\) such that
 \(| w |  \ge n\), we can break \(w\) into three strings \(w = xyz\)
@@ -957,8 +984,8 @@ language \(L\).
 </div>
 </div>
 
-<div id="outline-container-org2f47490" class="outline-3">
-<h3 id="org2f47490"><span class="section-number-3">6.2</span> Closure of Regular Languages</h3>
+<div id="outline-container-org10bfad9" class="outline-3">
+<h3 id="org10bfad9"><span class="section-number-3">6.2</span> Closure of Regular Languages</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 If certain languages are regular, then languages formed from them by
@@ -985,8 +1012,8 @@ The above are all regular.
 </div>
 </div>
 
-<div id="outline-container-org1ea112d" class="outline-2">
-<h2 id="org1ea112d"><span class="section-number-2">7</span> Context-free Grammars and Languages</h2>
+<div id="outline-container-orgd1f37f6" class="outline-2">
+<h2 id="orgd1f37f6"><span class="section-number-2">7</span> Context-free Grammars and Languages</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Context-free languages are a larger class of languages, that have
@@ -1036,8 +1063,8 @@ T, P, S)\).
 </p>
 </div>
 
-<div id="outline-container-org0d167ec" class="outline-3">
-<h3 id="org0d167ec"><span class="section-number-3">7.1</span> Derivations using a Grammar</h3>
+<div id="outline-container-org227f9e8" class="outline-3">
+<h3 id="org227f9e8"><span class="section-number-3">7.1</span> Derivations using a Grammar</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 We can apply the productions of a CFG to infer that certain strings
@@ -1061,8 +1088,8 @@ derivation steps, similar to the extended transition function.
 </div>
 </div>
 
-<div id="outline-container-orge959648" class="outline-3">
-<h3 id="orge959648"><span class="section-number-3">7.2</span> Leftmost and Rightmost Derivations</h3>
+<div id="outline-container-org219e399" class="outline-3">
+<h3 id="org219e399"><span class="section-number-3">7.2</span> Leftmost and Rightmost Derivations</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 In order to restrict the number of choices we have in deriving a
@@ -1080,8 +1107,8 @@ derivations</i>. These are similarly denoted \(\Rightarrow_{rm}\) and \(\Rightar
 </div>
 </div>
 
-<div id="outline-container-org95a11fc" class="outline-3">
-<h3 id="org95a11fc"><span class="section-number-3">7.3</span> The language of a Grammar</h3>
+<div id="outline-container-orgc686097" class="outline-3">
+<h3 id="orgc686097"><span class="section-number-3">7.3</span> The language of a Grammar</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
 If \(G = (V, T, P, S)\) is a CFG, then the language of \(G\), denoted
@@ -1095,8 +1122,8 @@ start symbol:
 </div>
 </div>
 
-<div id="outline-container-org4c8d380" class="outline-3">
-<h3 id="org4c8d380"><span class="section-number-3">7.4</span> Sentential Forms</h3>
+<div id="outline-container-org1d8a5f6" class="outline-3">
+<h3 id="org1d8a5f6"><span class="section-number-3">7.4</span> Sentential Forms</h3>
 <div class="outline-text-3" id="text-7-4">
 <p>
 Derivations from the start symbol produce strings that have a special
@@ -1107,8 +1134,8 @@ and rightmost derivations respectively.
 </div>
 </div>
 
-<div id="outline-container-org520d6e0" class="outline-3">
-<h3 id="org520d6e0"><span class="section-number-3">7.5</span> Parse Trees</h3>
+<div id="outline-container-orgdbf4e87" class="outline-3">
+<h3 id="orgdbf4e87"><span class="section-number-3">7.5</span> Parse Trees</h3>
 <div class="outline-text-3" id="text-7-5">
 <p>
 There is a tree representation of derivations, that clearly show how
@@ -1119,8 +1146,8 @@ of a program.
 </p>
 </div>
 
-<div id="outline-container-org8a8b4d3" class="outline-4">
-<h4 id="org8a8b4d3"><span class="section-number-4">7.5.1</span> Construction</h4>
+<div id="outline-container-orgf3f764c" class="outline-4">
+<h4 id="orgf3f764c"><span class="section-number-4">7.5.1</span> Construction</h4>
 <div class="outline-text-4" id="text-7-5-1">
 <p>
 The parse trees for a CFG \(G\) are trees with the following conditions:
@@ -1138,8 +1165,8 @@ of its parent.</li>
 </div>
 </div>
 
-<div id="outline-container-org68cf077" class="outline-4">
-<h4 id="org68cf077"><span class="section-number-4">7.5.2</span> The yield</h4>
+<div id="outline-container-org77900d6" class="outline-4">
+<h4 id="org77900d6"><span class="section-number-4">7.5.2</span> The yield</h4>
 <div class="outline-text-4" id="text-7-5-2">
 <p>
 The yield of the tree is the concatenation of the leaves of the parse
@@ -1150,8 +1177,8 @@ the start symbol.
 </div>
 </div>
 
-<div id="outline-container-orgd7442a7" class="outline-4">
-<h4 id="orgd7442a7"><span class="section-number-4">7.5.3</span> Inferences and derivations</h4>
+<div id="outline-container-orgc09fe82" class="outline-4">
+<h4 id="orgc09fe82"><span class="section-number-4">7.5.3</span> Inferences and derivations</h4>
 <div class="outline-text-4" id="text-7-5-3">
 <p>
 The following statements are equivalent:
@@ -1179,8 +1206,8 @@ We can prove these equivalences using the following arcs:
 </div>
 </div>
 
-<div id="outline-container-org3bef6d0" class="outline-3">
-<h3 id="org3bef6d0"><span class="section-number-3">7.6</span> Linear Grammars</h3>
+<div id="outline-container-org719ab75" class="outline-3">
+<h3 id="org719ab75"><span class="section-number-3">7.6</span> Linear Grammars</h3>
 <div class="outline-text-3" id="text-7-6">
 <p>
 Right linear grammars have all the productions of form:
@@ -1210,12 +1237,12 @@ We can prove by induction on \(|w|\) that \(\hat{\delta}(q_0, w) = p\)  iff \(q_
 </div>
 </div>
 
-<div id="outline-container-orge7d16f6" class="outline-3">
-<h3 id="orge7d16f6"><span class="section-number-3">7.7</span> <span class="todo TODO">TODO</span> Ambiguous Grammars</h3>
+<div id="outline-container-orgdc3cf37" class="outline-3">
+<h3 id="orgdc3cf37"><span class="section-number-3">7.7</span> <span class="todo TODO">TODO</span> Ambiguous Grammars</h3>
 </div>
 
-<div id="outline-container-orge0a65b1" class="outline-3">
-<h3 id="orge0a65b1"><span class="section-number-3">7.8</span> Chomsky Normal Form</h3>
+<div id="outline-container-org428380f" class="outline-3">
+<h3 id="org428380f"><span class="section-number-3">7.8</span> Chomsky Normal Form</h3>
 <div class="outline-text-3" id="text-7-8">
 <p>
 Chomsky normal form is useful in giving algorithms for working with
@@ -1242,8 +1269,8 @@ Chomsky normal form.
 </div>
 </div>
 
-<div id="outline-container-org6c35cc6" class="outline-2">
-<h2 id="org6c35cc6"><span class="section-number-2">8</span> Pushdown Automata</h2>
+<div id="outline-container-org71d49b9" class="outline-2">
+<h2 id="org71d49b9"><span class="section-number-2">8</span> Pushdown Automata</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 Pushdown automata are equivalent in power to context-free grammars
@@ -1254,8 +1281,8 @@ described in terms of generators.
 </p>
 </div>
 
-<div id="outline-container-org2a1a181" class="outline-3">
-<h3 id="org2a1a181"><span class="section-number-3">8.1</span> Definition</h3>
+<div id="outline-container-org41f4098" class="outline-3">
+<h3 id="org41f4098"><span class="section-number-3">8.1</span> Definition</h3>
 <div class="outline-text-3" id="text-8-1">
 <p>
 It is in essence a nondeterministic finite automaton with
@@ -1294,8 +1321,8 @@ new symbols onto the stack.</li>
 </div>
 </div>
 
-<div id="outline-container-orgbeadb60" class="outline-3">
-<h3 id="orgbeadb60"><span class="section-number-3">8.2</span> Formal Definition</h3>
+<div id="outline-container-orgaaabd13" class="outline-3">
+<h3 id="orgaaabd13"><span class="section-number-3">8.2</span> Formal Definition</h3>
 <div class="outline-text-3" id="text-8-2">
 <p>
 We can specify a PDA \(P\) as follows:
@@ -1341,8 +1368,8 @@ below.
 </div>
 </div>
 
-<div id="outline-container-org3a99a01" class="outline-3">
-<h3 id="org3a99a01"><span class="section-number-3">8.3</span> Instantaneous Descriptions</h3>
+<div id="outline-container-orgbfe61f8" class="outline-3">
+<h3 id="orgbfe61f8"><span class="section-number-3">8.3</span> Instantaneous Descriptions</h3>
 <div class="outline-text-3" id="text-8-3">
 <p>
 We represent the configuration of a PDA by a triple \((q, w, \gamma)\),
@@ -1380,8 +1407,8 @@ We use \(\vdash^*\) to represent zero or more moves of the PDA.
 </div>
 </div>
 
-<div id="outline-container-orgfe6ec1c" class="outline-3">
-<h3 id="orgfe6ec1c"><span class="section-number-3">8.4</span> The Languages of PDAs</h3>
+<div id="outline-container-org206cd49" class="outline-3">
+<h3 id="org206cd49"><span class="section-number-3">8.4</span> The Languages of PDAs</h3>
 <div class="outline-text-3" id="text-8-4">
 <p>
 The class of languages for PDAs that accept by final state and accept
@@ -1390,8 +1417,8 @@ two.
 </p>
 </div>
 
-<div id="outline-container-orga342db0" class="outline-4">
-<h4 id="orga342db0"><span class="section-number-4">8.4.1</span> Acceptance by Final State</h4>
+<div id="outline-container-org2e41401" class="outline-4">
+<h4 id="org2e41401"><span class="section-number-4">8.4.1</span> Acceptance by Final State</h4>
 <div class="outline-text-4" id="text-8-4-1">
 <p>
 Let \(P = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)\) be a PDA. Then \(L(P)\), the language
@@ -1408,8 +1435,8 @@ for some state \(q\) in \(F\) and any stack string \(\alpha\).
 </div>
 </div>
 
-<div id="outline-container-orgfda8d4e" class="outline-4">
-<h4 id="orgfda8d4e"><span class="section-number-4">8.4.2</span> Acceptance by Empty Stack</h4>
+<div id="outline-container-orgf014098" class="outline-4">
+<h4 id="orgf014098"><span class="section-number-4">8.4.2</span> Acceptance by Empty Stack</h4>
 <div class="outline-text-4" id="text-8-4-2">
 <p>
 Let \(P = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)\) be a PDA. We define \(N(P) = \{w |
@@ -1419,8 +1446,8 @@ Let \(P = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)\) be a PDA. We define \(N(P) 
 </div>
 </div>
 
-<div id="outline-container-org8c6d491" class="outline-4">
-<h4 id="org8c6d491"><span class="section-number-4">8.4.3</span> From Empty Stack to Final State</h4>
+<div id="outline-container-org3db79a8" class="outline-4">
+<h4 id="org3db79a8"><span class="section-number-4">8.4.3</span> From Empty Stack to Final State</h4>
 <div class="outline-text-4" id="text-8-4-3">
 <p>
 <b>Theorem:</b> 
@@ -1472,8 +1499,8 @@ stack symbols \(Y\) in \(\Gamma\), \(\delta_F(q,a,Y)\) contains all the pairs in
 </div>
 </div>
 
-<div id="outline-container-org99c9e5e" class="outline-4">
-<h4 id="org99c9e5e"><span class="section-number-4">8.4.4</span> From Final State to Empty Stack</h4>
+<div id="outline-container-orgb435c4b" class="outline-4">
+<h4 id="orgb435c4b"><span class="section-number-4">8.4.4</span> From Final State to Empty Stack</h4>
 <div class="outline-text-4" id="text-8-4-4">
 <p>
 Whenever \(P_F\) enters an accepting state after consuming input \(w\),
@@ -1512,8 +1539,8 @@ accepts, \(P_N\) can start emptying its stack without consuming any input.</li>
 </div>
 </div>
 
-<div id="outline-container-orga8ba3c3" class="outline-3">
-<h3 id="orga8ba3c3"><span class="section-number-3">8.5</span> Equivalence of CFG and PDA</h3>
+<div id="outline-container-orgd846c1d" class="outline-3">
+<h3 id="orgd846c1d"><span class="section-number-3">8.5</span> Equivalence of CFG and PDA</h3>
 <div class="outline-text-3" id="text-8-5">
 <p>
 Let \(A\) be a CFL. From the definition we know that \(A\) has a CFG, \(G\),
@@ -1598,8 +1625,8 @@ following three features.
 </p>
 </div>
 
-<div id="outline-container-org87c73af" class="outline-4">
-<h4 id="org87c73af"><span class="section-number-4">8.5.1</span> Deterministic Pushdown Automata</h4>
+<div id="outline-container-org50e5076" class="outline-4">
+<h4 id="org50e5076"><span class="section-number-4">8.5.1</span> Deterministic Pushdown Automata</h4>
 <div class="outline-text-4" id="text-8-5-1">
 <p>
 DPDAs accept a class of languages between the regular languages and
@@ -1620,12 +1647,12 @@ languages that have unambiguous grammars.
 </div>
 </div>
 
-<div id="outline-container-org9f5348d" class="outline-2">
-<h2 id="org9f5348d"><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> Properties of Context-Free Languages</h2>
+<div id="outline-container-org735d0aa" class="outline-2">
+<h2 id="org735d0aa"><span class="section-number-2">9</span> Properties of Context-Free Languages</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-orgca36b54" class="outline-3">
-<h3 id="orgca36b54"><span class="section-number-3">9.1</span> Simplification of CFG</h3>
+<div id="outline-container-org5a50c9a" class="outline-3">
+<h3 id="org5a50c9a"><span class="section-number-3">9.1</span> Simplification of CFG</h3>
 <div class="outline-text-3" id="text-9-1">
 <p>
 The goal is to reduce all CFLs to Chomsky Normal Form. To get there,
@@ -1682,8 +1709,8 @@ After performing the preliminary simplifications, we can then:
 </div>
 </div>
 
-<div id="outline-container-orga71b527" class="outline-3">
-<h3 id="orga71b527"><span class="section-number-3">9.2</span> Pumping Lemma for CFLs</h3>
+<div id="outline-container-org7e0344a" class="outline-3">
+<h3 id="org7e0344a"><span class="section-number-3">9.2</span> Pumping Lemma for CFLs</h3>
 <div class="outline-text-3" id="text-9-2">
 <p>
 In any sufficiently long string in a CFL, it is possible to find at
@@ -1699,7 +1726,7 @@ path is \(n\), then \(|w| \le 2^{n-1}\) for all terminal strings \(w\).</li>
 
 <div class="theorem">
 <p>
-<a id="orgda8d9f5"></a>
+<a id="orga03244c"></a>
 Let \(L\) be a CFL. Then there exists a constant \(n\) (which
 depends on \(L\)) such that for every string \(z\) in \(L\) such that
 \(| z |  \ge n\), we can break \(z\) into three strings \(z = uvwxy\)
@@ -1729,8 +1756,8 @@ tree path (upper picture). Repeating \(n\) times the derivation part \(N
 </div>
 </div>
 
-<div id="outline-container-orgc375708" class="outline-3">
-<h3 id="orgc375708"><span class="section-number-3">9.3</span> Closure Properties of CFLs</h3>
+<div id="outline-container-org8407119" class="outline-3">
+<h3 id="org8407119"><span class="section-number-3">9.3</span> Closure Properties of CFLs</h3>
 <div class="outline-text-3" id="text-9-3">
 <p>
 First, we introduce the notion of substitutions. Let \(\Sigma\) be an
@@ -1814,8 +1841,8 @@ because of the stack introduced in the PDA.
 </div>
 </div>
 
-<div id="outline-container-org61c30a8" class="outline-3">
-<h3 id="org61c30a8"><span class="section-number-3">9.4</span> Decision Properties of CFLs</h3>
+<div id="outline-container-orgc1efbc3" class="outline-3">
+<h3 id="orgc1efbc3"><span class="section-number-3">9.4</span> Decision Properties of CFLs</h3>
 <div class="outline-text-3" id="text-9-4">
 <p>
 First, we consider the complexity of converting from a CFG to a PDA,
@@ -1857,8 +1884,8 @@ cubic time.
 </p>
 </div>
 
-<div id="outline-container-org5599a13" class="outline-4">
-<h4 id="org5599a13"><span class="section-number-4">9.4.1</span> Running Time of Conversion to CNF</h4>
+<div id="outline-container-orge2836d0" class="outline-4">
+<h4 id="orge2836d0"><span class="section-number-4">9.4.1</span> Running Time of Conversion to CNF</h4>
 <div class="outline-text-4" id="text-9-4-1">
 <ol class="org-ol">
 <li>Detecting reachable and generating symbols can be done in \(O(n)\)
@@ -1888,8 +1915,8 @@ In all, converting to CNF form is a \(O(n^2)\) algorithm.
 </div>
 </div>
 
-<div id="outline-container-org81b66cf" class="outline-4">
-<h4 id="org81b66cf"><span class="section-number-4">9.4.2</span> Testing for emptiness of CFL</h4>
+<div id="outline-container-org38f5687" class="outline-4">
+<h4 id="org38f5687"><span class="section-number-4">9.4.2</span> Testing for emptiness of CFL</h4>
 <div class="outline-text-4" id="text-9-4-2">
 <p>
 This is equivalent to testing if \(S\) is generating. The algorithm goes
@@ -1939,8 +1966,8 @@ positions with \(A\). Hence, \(O(n)\).</li>
 </div>
 </div>
 
-<div id="outline-container-orgcd0ae19" class="outline-4">
-<h4 id="orgcd0ae19"><span class="section-number-4">9.4.3</span> Testing Membership in a CFL</h4>
+<div id="outline-container-orgc98d13a" class="outline-4">
+<h4 id="orgc98d13a"><span class="section-number-4">9.4.3</span> Testing Membership in a CFL</h4>
 <div class="outline-text-4" id="text-9-4-3">
 <p>
 First, we can easily see that algorithms exponential in \(n\) can
@@ -2015,10 +2042,398 @@ previously computed sets. Hence it can be done in \(O(n)\) time.
 </div>
 </div>
 </div>
+<div id="outline-container-org6a0ba97" class="outline-2">
+<h2 id="org6a0ba97"><span class="section-number-2">10</span> Turing Machines</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+We now look at what languages can be defined by any computational
+device. The Turing Machine is an accurate model for what any physical
+computing device is capable of doing. More technically, turing
+machines facilitate proving everyday questions to be undecidable or
+intractable.
+</p>
+
+<p>
+Turing machines are finite automata with a tape of infinite length on
+which it may read and write data. The machine consists of a <i>finite
+control</i>, which can be in any of a finite set of states. There is a
+tape divided into squares or <i>cells</i>; each cell can hold any one of a
+finite number of symbols.
+</p>
+
+
+
+<div class="figure">
+<p><img src="Turing Machines/screenshot_2018-10-16_12-52-06.png" alt="screenshot_2018-10-16_12-52-06.png" />
+</p>
+<p><span class="figure-number">Figure 19: </span>A Turing Machine</p>
+</div>
+
+<p>
+Initially, the input, which as a finite-length string of symbols
+chosen from the input alphabet, is placed on the tape. All other tape
+cells, extending infinitely to the left and right, initially hold a
+special symbol called the <i>blank</i>. The blank is a tape symbol, but not
+an input symbol, and there may be other tape symbols.
+</p>
+
+<p>
+There is a <i>tape head</i> that is always positioned at one of the tape
+cells. The Turing machine is said to be scanning that cell.
+</p>
+
+<p>
+A move of the Turing machine is a function of the state of the finite
+control and the tape symbol scanned.
+</p>
+
+<ol class="org-ol">
+<li><b>Change state</b>: The next state optionally may be the same as the
+current state.</li>
+<li><b>Write a tape symbol in the cell scanned</b>. This tape symbol replaces
+whatever symbol was in that cell.</li>
+<li><b>Move the tape head left or right.</b></li>
+</ol>
+</div>
+
+<div id="outline-container-org56da6aa" class="outline-3">
+<h3 id="org56da6aa"><span class="section-number-3">10.1</span> Formal Notation</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+The formal notation used for a Turing Machine (TM) is by a 7-tuple:
+</p>
+
+\begin{equation}
+  M = (Q, \Sigma, \Gamma, \delta, q_0, B, F)
+\end{equation}
+
+<p>
+where:
+</p>
+
+<dl class="org-dl">
+<dt>Q</dt><dd>The finite set of states of the finite control</dd>
+<dt>&Sigma;</dt><dd>The finite set of input symbols</dd>
+<dt>&Gamma;</dt><dd>The complete set of tape symbols. &Sigma; is a subset of &Gamma;.</dd>
+<dt>&delta;</dt><dd>The transition function. The arguments of \(\delta(q, X)\) are a state \(q\)
+and a tape symbol \(X\). The value of \(\delta(q, X)\) is a triple
+\((p, Y, D)\) where \(p\) is the next state, \(Y\) is the symbol
+in \(\Gamma\) written in the cell being scanned, \(D\) is a
+direction, either left or right.</dd>
+<dt>q<sub>0</sub></dt><dd>The start state, a member of Q</dd>
+<dt>B</dt><dd>the blank symbol, in &Gamma; but not &Sigma;</dd>
+<dt>F</dt><dd>the set of final or accepting states</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-org244dff1" class="outline-3">
+<h3 id="org244dff1"><span class="section-number-3">10.2</span> Instantaneous Descriptions</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+We use the string \(X_1 X_2 \dots X_{i-1} q X_i X_{i+1} \dots X_n\) to represent
+an ID in which:
+</p>
+
+<ol class="org-ol">
+<li>\(q\) is the state of the Turing machine.</li>
+<li>The tape head is scanning the $i$th symbol from the left.</li>
+<li>\(X_1 X_2 \dots X_n\) is the portion of the tape between the leftmost
+and the rightmost nonblank. As an exception, if the head is to the
+left of the leftmost nonblank, or to the right of the rightmost
+nonblank, then some prefix or suffix of \(X_1 X_2 \dots X_n\) will be
+blank, and \(i\) will be 1 or n, respectively.</li>
+</ol>
+
+<p>
+We describe moves of a Turing machine \(M = (Q, \Sigma, \Gamma, \delta, q_0, B, F)\) by
+the \(\vdash\) notation that was used for PDAs. Suppose \(\delta(q, X_i) = (p,
+Y, L)\). Then \(X_1 X_2 \dots X_{i-1} q X_{i+1} \dots X_n \vdash X_1 X_2 \dots X_{i-2}
+p X_{i-1} Y X_{i+1} \dots X_n\).
+</p>
+
+<p>
+There are 2 important exceptions, when \(i=1\) and M moves to the blank
+to the left of \(X_1\) and when \(i=n\) and \(Y=B\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org230c31b" class="outline-3">
+<h3 id="org230c31b"><span class="section-number-3">10.3</span> Transition Diagrams</h3>
+<div class="outline-text-3" id="text-10-3">
+<p>
+Turing machines can be denoted graphically, as with PDAs.
+</p>
+
+<p>
+An arc from state \(q\) to state \(p\) is labelled by one or more items of
+the form \(X/YD\), where \(X\) and \(Y\) are tape symbols, and \(D\) is a
+direction from either \(L (\leftarrow)\) or \(R (\rightarrow)\).
+</p>
+
+
+<div class="figure">
+<p><img src="Turing Machines/screenshot_2018-10-16_16-09-40.png" alt="screenshot_2018-10-16_16-09-40.png" />
+</p>
+<p><span class="figure-number">Figure 20: </span>Transition diagram for TM accepting \(0^n 1^n\)</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge19f531" class="outline-3">
+<h3 id="orge19f531"><span class="section-number-3">10.4</span> The Language of a TM</h3>
+<div class="outline-text-3" id="text-10-4">
+<p>
+\(L(M)\) is the set of strings \(w\) in \(\Sigma^*\) such that \(q_0 w \vdash \alpha p \beta\)
+for some state in \(p\) in \(F\) and any tape strings \(\alpha\) and \(\beta\). The set
+of languages we can accept using a TM is often called the <i>recursively
+enumerable languages</i> or RE languages.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgfc8570b" class="outline-3">
+<h3 id="orgfc8570b"><span class="section-number-3">10.5</span> Turing machines and halting</h3>
+<div class="outline-text-3" id="text-10-5">
+<p>
+A TM halts if it enters a state \(q\), scanning a tape symbol \(X\), and
+there is no move in this situation: \(\delta(q, X)\) is undefined. This is
+another notion of "acceptance". We can assume that a TM halts if it
+accepts. That is, without changing the language accepted, we can make
+\(\delta(q, X)\) undefined whenever \(q\) is an accepting state. However, it is
+not always possible to require that a TM halts even if it does not
+accept.
+</p>
+
+<p>
+Languages that halt eventually, regardless of whether they accept, are
+called <i>recursive</i>. If an algorithm to solve a given problem exists,
+then we say the problem is decidable, so TMs that always halt figure
+importantly into decidability theory.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9a97042" class="outline-3">
+<h3 id="org9a97042"><span class="section-number-3">10.6</span> Programming Techniques for Turing Machines</h3>
+<div class="outline-text-3" id="text-10-6">
+</div>
+<div id="outline-container-org4ec9c47" class="outline-4">
+<h4 id="org4ec9c47"><span class="section-number-4">10.6.1</span> Storage in the State</h4>
+<div class="outline-text-4" id="text-10-6-1">
+<p>
+We can use the finite control not only to represent a position in the
+"program" of a TM, but to hold a finite amount of data. We extend
+the state as a tuple \([q, A, B, C]\), and having multiple tracks.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org42af864" class="outline-4">
+<h4 id="org42af864"><span class="section-number-4">10.6.2</span> Multiple Tracks</h4>
+<div class="outline-text-4" id="text-10-6-2">
+<p>
+One can also think of the tape of a Turing machine as composed of
+several tracks. Each track can hold one symbol, and the tape alphabet
+of the TM consists of tuples, with each component for each "track". A
+common use of multiple tracks is to treat one track as holding the
+data, and another track as holding a mark. We can check off each
+symbol as we "use" it, or we can keep track of a small number of
+positions within the data by only marking these positions.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9694e4e" class="outline-4">
+<h4 id="org9694e4e"><span class="section-number-4">10.6.3</span> Subroutines</h4>
+<div class="outline-text-4" id="text-10-6-3">
+<p>
+A Turing machine subroutine is a set of states that perform some
+useful process. This set of states includes a start state and another
+state to pass control to whatever other set of states called the
+subroutine. Since the TM has no mechanism for remembering a "return
+address", that is, a state to go to after it finishes, should our
+design of a TM call for one subroutine to be called from several
+states, we can make copies of the subroutine, using a new set of
+states for each copy. The "calls" are made to the start states of
+different copies of the subroutine, and each copy "returns" to a
+different state.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgce30f3f" class="outline-4">
+<h4 id="orgce30f3f"><span class="section-number-4">10.6.4</span> Extensions to basic Turing Machine</h4>
+<div class="outline-text-4" id="text-10-6-4">
+</div>
+<div id="outline-container-org76b3e09" class="outline-5">
+<h5 id="org76b3e09"><span class="section-number-5">10.6.4.1</span> Multitape Turing Machines</h5>
+<div class="outline-text-5" id="text-10-6-4-1">
+<p>
+The device has a finite control (state), and some finite number of
+tapes. Each tape is divided into cells, and each cell can hold any
+symbol of the finite tape alphabet.
+</p>
+
+<p>
+Initially, the head of the first tape is at the left end of the input,
+but all other tape heads are at some arbitrary cell.
+</p>
+
+
+<div class="figure">
+<p><img src="Turing Machines/screenshot_2018-10-16_16-29-52.png" alt="screenshot_2018-10-16_16-29-52.png" />
+</p>
+<p><span class="figure-number">Figure 21: </span>A multitape Turing machine</p>
+</div>
+
+<p>
+A move on the multitape TM depends on the state and symbol scanned by
+each of the tape heads. On each move:
+</p>
+
+<ol class="org-ol">
+<li>the control enters a new state, which could be the same as a
+previous state.</li>
+<li>On each tape, a new tape symbol is written on the cell scanned.
+This symbol could be the same as the previous symbol.</li>
+<li>Each tape head makes a move, which can be either left, right or stationary.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org651f832" class="outline-5">
+<h5 id="org651f832"><span class="section-number-5">10.6.4.2</span> Equivalence of one-tape and multitape TMs</h5>
+<div class="outline-text-5" id="text-10-6-4-2">
+<p>
+Suppose language \(L\) is accepted by a k-tape TM \(M\). We simulate \(M\)
+with a one-tape TM \(N\) whose tape we think of as having 2k tracks.
+Half of these tracks hold the tapes of \(M\), and the other half of the
+tracks each hold only a single marker that indicates where the head
+for the corresponding tape of \(M\) is currently located.
+</p>
+
+
+
+<div class="figure">
+<p><img src="Turing Machines/screenshot_2018-10-16_16-33-42.png" alt="screenshot_2018-10-16_16-33-42.png" />
+</p>
+<p><span class="figure-number">Figure 22: </span>Simulation of two-tape Turing machine by a one-tape Turing machine</p>
+</div>
+
+<p>
+To simulate a move of \(M\), \(N\)'s head must visit the \(k\) head markers.
+So that \(N\) does not get lost, it must remember how many head markers
+are to its left at all times. That count is stored as a component of
+\(N\)'s finite control. After visiting each head marker and storing the
+scanned symbol in a component of the finite control, \(n\) knows what
+tape symbols have been scanned by each of \(M\)'s heads. \(N\) also knows
+the state of \(M\), which it stores in \(N\)'s own finite control. Thus,
+\(N\) knows what move \(M\) will make. 
+</p>
+
+<p>
+\(N\) can now revisit each of the head markers on its tape, changing the
+symbol in the track representing the corresponding tapes of \(M\), and
+move the head markers left or right, if necessary. \(N\)'s accepting
+states are all the states that record \(M\)'s states as one of the
+accepting states of \(M\). When the simulated \(M\) accepts, \(N\) also
+accepts, and \(N\) does not accept otherwise.
+</p>
+
+<p>
+The time taken by the one-tape TM \(N\) to simulate \(n\) moves of the
+k-tape TM \(M\) is \(O(n^2)\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org37f2111" class="outline-5">
+<h5 id="org37f2111"><span class="section-number-5">10.6.4.3</span> Non-deterministic Turing Machines</h5>
+<div class="outline-text-5" id="text-10-6-4-3">
+<p>
+A NTM differs from the deterministic variety by having a transition
+\(\delta\) such that for each state \(q\) and tape symbol \(X\), \(\delta(q,X)\) is a
+set of triples \(\{(q_1, Y_1, D_1), \dots, (q_k, Y_k, D_k)\}\).
+</p>
+
+<p>
+The NTM can choose at each step any of the triples to be the next
+move. We can show that NTM and TM are equivalent. The proof involves
+showing that for every NTM \(M_N\), we can construct a DTM \(M_D\) that
+explores the ID's that \(M_N\) can reach by any sequence of its choices.
+If \(M_D\) has an accepting state, then \(M_D\) enters an accepting state of
+its own. \(M_D\) must be systematic, putting new ID's on a queue, rather
+than a stack, so \(M_D\) would have simulated all sequences up to k moves
+of \(M_N\) after some finite time.
+</p>
+
+<p>
+\(M_D\) is designed as a multi-tape TM. The first tape of \(M_D\) holds a
+sequence of ID's of \(M_N\), including the state of \(M_N\). One ID of \(M_N\)
+is marked as the current ID, whose successor ID's are in the process
+of being discovered. All IDs to the left of the current one have been
+explored and can be ignored subsequently.
+</p>
+
+
+
+<div class="figure">
+<p><img src="Turing Machines/screenshot_2018-10-16_16-41-48.png" alt="screenshot_2018-10-16_16-41-48.png" />
+</p>
+<p><span class="figure-number">Figure 23: </span>Simulation of NTM by a DTM</p>
+</div>
+
+<p>
+To process the current ID, \(M_D\) does:
+</p>
+
+<ol class="org-ol">
+<li>\(M_D\) examines the state and scanned symbol of the current ID. Built
+into the finite control of \(M_D\) is the knowledge of what choices of
+move \(M_N\) has for each state and symbol. If the state in the
+current ID is accepting, then \(M_D\) accepts and simulates \(M_N\) no further.</li>
+<li>However, if the state is not accepting, and the state-symbol
+combination has \(k\) moves, then \(M_D\) uses its second tape to copy
+the ID and the make k copies of that ID at the end of the sequence
+of ID's on tape 1.</li>
+<li>\(M_D\) modifies each of those k ID's according to a different one of
+the k choices of move that \(M_N\) has from its current ID.</li>
+<li>\(M_D\) returns to the marked current ID, erases the mark and moves to
+the next ID to the right. The cycle the repeats with step (1).</li>
+</ol>
+
+<p>
+This can be viewed as a breadth-first search on all possible IDs
+reached.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6f2fe00" class="outline-5">
+<h5 id="org6f2fe00"><span class="section-number-5">10.6.4.4</span> <span class="todo TODO">TODO</span> Restricted Turing Machines</h5>
+</div>
+
+<div id="outline-container-org162b4a1" class="outline-5">
+<h5 id="org162b4a1"><span class="section-number-5">10.6.4.5</span> <span class="todo TODO">TODO</span> Multistack Machines</h5>
+</div>
+
+<div id="outline-container-org3d2f006" class="outline-5">
+<h5 id="org3d2f006"><span class="section-number-5">10.6.4.6</span> <span class="todo TODO">TODO</span> Turing Machines and Computers</h5>
+</div>
+
+<div id="outline-container-orgaeab3bb" class="outline-5">
+<h5 id="orgaeab3bb"><span class="section-number-5">10.6.4.7</span> <span class="todo TODO">TODO</span> Runtime of Computers vs Turing Machines</h5>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jethro Kuan</p>
-<p class="date">Created: 2018-10-12 Fri 17:42</p>
+<p class="date">Created: 2018-10-25 Thu 19:32</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

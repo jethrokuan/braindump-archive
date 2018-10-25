@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-12 Fri 17:42 -->
+<!-- 2018-10-25 Thu 19:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Artificial Intelligence</title>
@@ -91,146 +91,158 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org87ca8cd">1. What is Artificial Intelligence?</a>
+<li><a href="#orgb729600">1. What is Artificial Intelligence?</a>
 <ul>
-<li><a href="#orgfa00cfe">1.1. Acting Humanly: Turing Test</a></li>
-<li><a href="#org2f23a8a">1.2. Thinking Humanly</a></li>
-<li><a href="#org3496a64">1.3. Thinking rationally</a></li>
-<li><a href="#org98f3503">1.4. Acting Rationally</a></li>
+<li><a href="#org09cf127">1.1. Acting Humanly: Turing Test</a></li>
+<li><a href="#org66769c0">1.2. Thinking Humanly</a></li>
+<li><a href="#orgacade4c">1.3. Thinking rationally</a></li>
+<li><a href="#org2458aff">1.4. Acting Rationally</a></li>
 </ul>
 </li>
-<li><a href="#org06da644">2. Intelligent Agents</a>
+<li><a href="#org25569b5">2. Intelligent Agents</a>
 <ul>
-<li><a href="#org81845d7">2.1. Rational Agents</a></li>
-<li><a href="#orga05c343">2.2. Exploration vs Exploitation</a></li>
-<li><a href="#orgf909121">2.3. Specifying Task Environment (PEAS)</a></li>
-<li><a href="#orgb8945da">2.4. Properties of Task Environments</a></li>
-<li><a href="#org3330c0f">2.5. Table-Driven Agent</a></li>
-<li><a href="#org1f88520">2.6. Reflex agents</a></li>
-<li><a href="#orgf7b170d">2.7. Model-based Reflex Agents</a></li>
-<li><a href="#orgd80468d">2.8. Goal-based agents</a></li>
-<li><a href="#orgad8eb68">2.9. Utility-based agents</a></li>
-<li><a href="#org9254799">2.10. Learning agents</a></li>
-<li><a href="#org3a2fca8">2.11. State representations</a>
+<li><a href="#orgbace678">2.1. Rational Agents</a></li>
+<li><a href="#org1d4e91b">2.2. Exploration vs Exploitation</a></li>
+<li><a href="#org1a9102d">2.3. Specifying Task Environment (PEAS)</a></li>
+<li><a href="#org88b0ec8">2.4. Properties of Task Environments</a></li>
+<li><a href="#org3374065">2.5. Table-Driven Agent</a></li>
+<li><a href="#org1ba25a2">2.6. Reflex agents</a></li>
+<li><a href="#org8b4443c">2.7. Model-based Reflex Agents</a></li>
+<li><a href="#orgb3328ee">2.8. Goal-based agents</a></li>
+<li><a href="#org7b2d55d">2.9. Utility-based agents</a></li>
+<li><a href="#org3546d1f">2.10. Learning agents</a></li>
+<li><a href="#org18e7bca">2.11. State representations</a>
 <ul>
-<li><a href="#org736a32d">2.11.1. Atomic Representation</a></li>
-<li><a href="#org6c10403">2.11.2. Factored Representation</a></li>
-<li><a href="#org20177a7">2.11.3. Structured Representations</a></li>
-<li><a href="#orgf4ae0e6">2.11.4. Implications</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgf70ba21">3. Problem-Solving</a></li>
-<li><a href="#orgad8690b">4. Classical Search</a>
-<ul>
-<li><a href="#orgcb83968">4.1. How Search Algorithms Work</a></li>
-<li><a href="#orgeff090c">4.2. Measuring Performance</a></li>
-<li><a href="#org2d48766">4.3. Uninformed Search Strategies</a>
-<ul>
-<li><a href="#orgcc5b4ca">4.3.1. Breadth-first Search</a></li>
-<li><a href="#orgbb8d2d5">4.3.2. Uniform-cost Search</a></li>
-<li><a href="#org6845772">4.3.3. Depth-first Search</a></li>
-<li><a href="#orgf1cd2e0">4.3.4. Depth-limited Search</a></li>
-<li><a href="#orgc3dcaff">4.3.5. Iterative Deepening Depth-first Search</a></li>
-<li><a href="#orgc82e5f5">4.3.6. Bidirectional Search</a></li>
-</ul>
-</li>
-<li><a href="#org3063507">4.4. Informed Search Strategies</a>
-<ul>
-<li><a href="#orgabe53ba">4.4.1. Greedy best-first search</a></li>
-<li><a href="#orgc080177">4.4.2. A* search</a></li>
-</ul>
-</li>
-<li><a href="#orgb092cde">4.5. Learning to Search Better</a></li>
-</ul>
-</li>
-<li><a href="#orgf4e77ab">5. Heuristic Functions</a>
-<ul>
-<li><a href="#org198c695">5.1. Generating Admissible Heuristics</a>
-<ul>
-<li><a href="#org031f19e">5.1.1. From Relaxed Problems</a></li>
-<li><a href="#org16d6991">5.1.2. From Subproblems: Pattern Databases</a></li>
-<li><a href="#org4686ca3">5.1.3. From Experience</a></li>
+<li><a href="#org1405789">2.11.1. Atomic Representation</a></li>
+<li><a href="#org6a10e7c">2.11.2. Factored Representation</a></li>
+<li><a href="#orgd97f7a6">2.11.3. Structured Representations</a></li>
+<li><a href="#orgcab0e15">2.11.4. Implications</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org8c0c4cf">6. Beyond Classical Search</a>
+<li><a href="#orgccdfe89">3. Problem-Solving</a></li>
+<li><a href="#org1d56d03">4. Classical Search</a>
 <ul>
-<li><a href="#org9afe30f">6.1. Hill-climbing Search</a>
+<li><a href="#orgfc141dd">4.1. How Search Algorithms Work</a></li>
+<li><a href="#org3ef2508">4.2. Measuring Performance</a></li>
+<li><a href="#orgb9fae86">4.3. Uninformed Search Strategies</a>
 <ul>
-<li><a href="#org6de18f2">6.1.1. Variants</a></li>
+<li><a href="#org464730e">4.3.1. Breadth-first Search</a></li>
+<li><a href="#orgc7fedfd">4.3.2. Uniform-cost Search</a></li>
+<li><a href="#org1cc7963">4.3.3. Depth-first Search</a></li>
+<li><a href="#org344370f">4.3.4. Depth-limited Search</a></li>
+<li><a href="#org090f16b">4.3.5. Iterative Deepening Depth-first Search</a></li>
+<li><a href="#org1ffd1fa">4.3.6. Bidirectional Search</a></li>
 </ul>
 </li>
-<li><a href="#org3c3bd93">6.2. Simulated Annealing</a></li>
-<li><a href="#orgfff57d4">6.3. Local Beam Search</a></li>
-<li><a href="#org6a992d2">6.4. Genetic Algorithms</a></li>
-<li><a href="#org61ba504">6.5. Local Search in Continuous Spaces</a></li>
-<li><a href="#org08fe1c0">6.6. Searching with Non-deterministic Actions</a>
+<li><a href="#org5916326">4.4. Informed Search Strategies</a>
 <ul>
-<li><a href="#org243fa04">6.6.1. AND-OR search trees</a></li>
+<li><a href="#orgd4cd612">4.4.1. Greedy best-first search</a></li>
+<li><a href="#org006e118">4.4.2. A* search</a></li>
 </ul>
 </li>
+<li><a href="#org2e40a8f">4.5. Learning to Search Better</a></li>
 </ul>
 </li>
-<li><a href="#org1612c2c">7. Adversarial Search</a>
+<li><a href="#orgaffd399">5. Heuristic Functions</a>
 <ul>
-<li><a href="#orgbd244bb">7.1. Optimal Strategy</a></li>
-<li><a href="#orgadf8533">7.2. Alpha-Beta Pruning</a></li>
-</ul>
-</li>
-<li><a href="#org78712bf">8. Classical Planning</a>
+<li><a href="#orgc19bc8b">5.1. Generating Admissible Heuristics</a>
 <ul>
-<li><a href="#org8c52fe0">8.1. Complexities of classical planning</a></li>
-<li><a href="#orged55da8">8.2. State-space search for planning</a></li>
-<li><a href="#orgde2d36f">8.3. Heuristics for planning</a></li>
-<li><a href="#orged119a5">8.4. Other classical planning approaches</a></li>
-</ul>
-</li>
-<li><a href="#org71e5d4e">9. Decision Theory</a>
-<ul>
-<li><a href="#orgbe3edf1">9.1. Combining beliefs and desires under uncertainty</a></li>
-<li><a href="#org548b115">9.2. Axioms of Utility Theory</a></li>
-<li><a href="#orgb951895">9.3. Utility assessment and utility scales</a></li>
-<li><a href="#org8ee5ce6">9.4. Multi-attribute utility functions</a>
-<ul>
-<li><a href="#orgbcc0da3">9.4.1. Dominance</a></li>
-<li><a href="#org8823013">9.4.2. Preference structure and multi-attribute utility</a></li>
-<li><a href="#org44e12a4">9.4.3. Decision Networks</a></li>
-<li><a href="#org038073c">9.4.4. Information Value Theory</a>
-<ul>
-<li><a href="#orgfba4e74">9.4.4.1. Properties of the value of information</a></li>
-<li><a href="#orgb1fc547">9.4.4.2. Information Gathering Agents</a></li>
+<li><a href="#orga017bbd">5.1.1. From Relaxed Problems</a></li>
+<li><a href="#orge46b55f">5.1.2. From Subproblems: Pattern Databases</a></li>
+<li><a href="#org9f57aef">5.1.3. From Experience</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a href="#orgd1fc00e">6. Beyond Classical Search</a>
+<ul>
+<li><a href="#orgd17220c">6.1. Hill-climbing Search</a>
+<ul>
+<li><a href="#org2774388">6.1.1. Variants</a></li>
 </ul>
 </li>
-<li><a href="#org50d1f4a">10. Making Complex Decisions</a>
+<li><a href="#org0defdf3">6.2. Simulated Annealing</a></li>
+<li><a href="#org42b32b0">6.3. Local Beam Search</a></li>
+<li><a href="#orgb67a6a4">6.4. Genetic Algorithms</a></li>
+<li><a href="#org1d9086c">6.5. Local Search in Continuous Spaces</a></li>
+<li><a href="#orgefd92a2">6.6. Searching with Non-deterministic Actions</a>
 <ul>
-<li><a href="#org7378123">10.1. Markov Decision Process (MDP)</a></li>
-<li><a href="#orge3cb9fd">10.2. Utilities over time</a></li>
-<li><a href="#org2cb201a">10.3. Optimal policies and the utilities of states</a></li>
-<li><a href="#orgbdd5a5c">10.4. Value Iteration</a></li>
-<li><a href="#orgd9b79f5">10.5. Policy Iteration</a></li>
-<li><a href="#org7725d6d">10.6. Partially Observable MDPs (POMDPs)</a></li>
-<li><a href="#org2d3e129">10.7. Value iteration for POMDPs</a></li>
-<li><a href="#org309a2fe">10.8. <span class="todo TODO">TODO</span> Online agents for POMDPs</a></li>
+<li><a href="#org9eef900">6.6.1. AND-OR search trees</a></li>
 </ul>
 </li>
-<li><a href="#orgefa4557">11. RANDOM</a>
+</ul>
+</li>
+<li><a href="#orgf7b3cb0">7. Adversarial Search</a>
 <ul>
-<li><a href="#org13945ea">11.1. Simon's Ant</a></li>
+<li><a href="#org3c56b12">7.1. Optimal Strategy</a></li>
+<li><a href="#org971eb5b">7.2. Alpha-Beta Pruning</a></li>
+</ul>
+</li>
+<li><a href="#org226e3a6">8. Classical Planning</a>
+<ul>
+<li><a href="#org000f5b2">8.1. Complexities of classical planning</a></li>
+<li><a href="#org0882257">8.2. State-space search for planning</a></li>
+<li><a href="#orgf80bdeb">8.3. Heuristics for planning</a></li>
+<li><a href="#orgcbd5953">8.4. Other classical planning approaches</a></li>
+</ul>
+</li>
+<li><a href="#org71cf213">9. Decision Theory</a>
+<ul>
+<li><a href="#org9622df5">9.1. Combining beliefs and desires under uncertainty</a></li>
+<li><a href="#orgeed246f">9.2. Axioms of Utility Theory</a></li>
+<li><a href="#org216e92c">9.3. Utility assessment and utility scales</a></li>
+<li><a href="#org09bfbc7">9.4. Multi-attribute utility functions</a>
+<ul>
+<li><a href="#org8697d13">9.4.1. Dominance</a></li>
+<li><a href="#org86c519f">9.4.2. Preference structure and multi-attribute utility</a></li>
+<li><a href="#org10f1572">9.4.3. Decision Networks</a></li>
+<li><a href="#orgd7c4b89">9.4.4. Information Value Theory</a>
+<ul>
+<li><a href="#org93ada95">9.4.4.1. Properties of the value of information</a></li>
+<li><a href="#org1145a92">9.4.4.2. Information Gathering Agents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org122c18e">10. Making Complex Decisions</a>
+<ul>
+<li><a href="#orgcab9fe0">10.1. Markov Decision Process (MDP)</a></li>
+<li><a href="#org8fd6858">10.2. Utilities over time</a></li>
+<li><a href="#org9def1bb">10.3. Optimal policies and the utilities of states</a></li>
+<li><a href="#org69aaa4e">10.4. Value Iteration</a></li>
+<li><a href="#orge8b93ac">10.5. Policy Iteration</a></li>
+<li><a href="#org81e1afb">10.6. Partially Observable MDPs (POMDPs)</a></li>
+<li><a href="#org5b37df7">10.7. Value iteration for POMDPs</a></li>
+<li><a href="#org4619282">10.8. <span class="todo TODO">TODO</span> Online agents for POMDPs</a></li>
+<li><a href="#orgcfcb50c">10.9. Monte Carlo Tree Search</a></li>
+</ul>
+</li>
+<li><a href="#orgbee045c">11. Reinforcement Learning</a>
+<ul>
+<li><a href="#org445672a">11.1. Passive Reinforcement Learning</a>
+<ul>
+<li><a href="#org848f9b1">11.1.1. Direct Utility Estimation (MC Learning)</a></li>
+<li><a href="#org2e35e43">11.1.2. Adaptive Dynamic Programming</a></li>
+<li><a href="#org2da4a84">11.1.3. <span class="todo TODO">TODO</span> Temporal-difference Learning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgb713dd4">12. RANDOM</a>
+<ul>
+<li><a href="#org659484b">12.1. Simon's Ant</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org87ca8cd" class="outline-2">
-<h2 id="org87ca8cd"><span class="section-number-2">1</span> What is Artificial Intelligence?</h2>
+<div id="outline-container-orgb729600" class="outline-2">
+<h2 id="orgb729600"><span class="section-number-2">1</span> What is Artificial Intelligence?</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Designing agents that act rationally (e.g. through maximising a reward
@@ -242,8 +254,8 @@ Humans often act in ways that do not maximise their own benefit
 (irrational).
 </p>
 </div>
-<div id="outline-container-orgfa00cfe" class="outline-3">
-<h3 id="orgfa00cfe"><span class="section-number-3">1.1</span> Acting Humanly: Turing Test</h3>
+<div id="outline-container-org09cf127" class="outline-3">
+<h3 id="org09cf127"><span class="section-number-3">1.1</span> Acting Humanly: Turing Test</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 A computer would require:
@@ -257,8 +269,8 @@ A computer would require:
 </ul>
 </div>
 </div>
-<div id="outline-container-org2f23a8a" class="outline-3">
-<h3 id="org2f23a8a"><span class="section-number-3">1.2</span> Thinking Humanly</h3>
+<div id="outline-container-org66769c0" class="outline-3">
+<h3 id="org66769c0"><span class="section-number-3">1.2</span> Thinking Humanly</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Cognitive science brings together computer models and experimental
@@ -267,16 +279,16 @@ of the human mind.
 </p>
 </div>
 </div>
-<div id="outline-container-org3496a64" class="outline-3">
-<h3 id="org3496a64"><span class="section-number-3">1.3</span> Thinking rationally</h3>
+<div id="outline-container-orgacade4c" class="outline-3">
+<h3 id="orgacade4c"><span class="section-number-3">1.3</span> Thinking rationally</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 Taking informal knowledge and expressing it in logical terms.
 </p>
 </div>
 </div>
-<div id="outline-container-org98f3503" class="outline-3">
-<h3 id="org98f3503"><span class="section-number-3">1.4</span> Acting Rationally</h3>
+<div id="outline-container-org2458aff" class="outline-3">
+<h3 id="org2458aff"><span class="section-number-3">1.4</span> Acting Rationally</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 A rational agent is one that acts so as to achieve the best outcome
@@ -291,16 +303,16 @@ must consider computation limits.
 </div>
 </div>
 </div>
-<div id="outline-container-org06da644" class="outline-2">
-<h2 id="org06da644"><span class="section-number-2">2</span> Intelligent Agents</h2>
+<div id="outline-container-org25569b5" class="outline-2">
+<h2 id="org25569b5"><span class="section-number-2">2</span> Intelligent Agents</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>Agents perceive the environment through sensors</li>
 <li>Agents act upon the environment through actuators</li>
 </ul>
 </div>
-<div id="outline-container-org81845d7" class="outline-3">
-<h3 id="org81845d7"><span class="section-number-3">2.1</span> Rational Agents</h3>
+<div id="outline-container-orgbace678" class="outline-3">
+<h3 id="orgbace678"><span class="section-number-3">2.1</span> Rational Agents</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>For each possible percept sequence, select an action that is
@@ -315,8 +327,8 @@ experience (with ability to learn and adapt)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga05c343" class="outline-3">
-<h3 id="orga05c343"><span class="section-number-3">2.2</span> Exploration vs Exploitation</h3>
+<div id="outline-container-org1d4e91b" class="outline-3">
+<h3 id="org1d4e91b"><span class="section-number-3">2.2</span> Exploration vs Exploitation</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Doing actions that modify future percepts (information gathering) is
@@ -325,8 +337,8 @@ the entire environment <i>a priori</i>.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf909121" class="outline-3">
-<h3 id="orgf909121"><span class="section-number-3">2.3</span> Specifying Task Environment (PEAS)</h3>
+<div id="outline-container-org1a9102d" class="outline-3">
+<h3 id="org1a9102d"><span class="section-number-3">2.3</span> Specifying Task Environment (PEAS)</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>Performance measure</li>
@@ -336,8 +348,8 @@ the entire environment <i>a priori</i>.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb8945da" class="outline-3">
-<h3 id="orgb8945da"><span class="section-number-3">2.4</span> Properties of Task Environments</h3>
+<div id="outline-container-org88b0ec8" class="outline-3">
+<h3 id="org88b0ec8"><span class="section-number-3">2.4</span> Properties of Task Environments</h3>
 <div class="outline-text-3" id="text-2-4">
 <dl class="org-dl">
 <dt>Fully observable</dt><dd>whether an agent's sensors gives it access to
@@ -365,8 +377,8 @@ multiple agents acting in the same environment.
 </dl>
 </div>
 </div>
-<div id="outline-container-org3330c0f" class="outline-3">
-<h3 id="org3330c0f"><span class="section-number-3">2.5</span> Table-Driven Agent</h3>
+<div id="outline-container-org3374065" class="outline-3">
+<h3 id="org3374065"><span class="section-number-3">2.5</span> Table-Driven Agent</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 Simple to implement, and works. However, the number of table entries
@@ -376,8 +388,8 @@ behaviour from a small program rather than a vast table.
 </p>
 </div>
 </div>
-<div id="outline-container-org1f88520" class="outline-3">
-<h3 id="org1f88520"><span class="section-number-3">2.6</span> Reflex agents</h3>
+<div id="outline-container-org1ba25a2" class="outline-3">
+<h3 id="org1ba25a2"><span class="section-number-3">2.6</span> Reflex agents</h3>
 <div class="outline-text-3" id="text-2-6">
 <p>
 A simple reflex agent is one that selects actions on the basis of the
@@ -393,8 +405,8 @@ can help escape these infinite loops.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf7b170d" class="outline-3">
-<h3 id="orgf7b170d"><span class="section-number-3">2.7</span> Model-based Reflex Agents</h3>
+<div id="outline-container-org8b4443c" class="outline-3">
+<h3 id="org8b4443c"><span class="section-number-3">2.7</span> Model-based Reflex Agents</h3>
 <div class="outline-text-3" id="text-2-7">
 <p>
 The agent maintains some <b>internal state</b> that depends on percept
@@ -405,8 +417,8 @@ from the agent is encoded into the agent. This knowledge is called a
 </p>
 </div>
 </div>
-<div id="outline-container-orgd80468d" class="outline-3">
-<h3 id="orgd80468d"><span class="section-number-3">2.8</span> Goal-based agents</h3>
+<div id="outline-container-orgb3328ee" class="outline-3">
+<h3 id="orgb3328ee"><span class="section-number-3">2.8</span> Goal-based agents</h3>
 <div class="outline-text-3" id="text-2-8">
 <p>
 Knowing about the current state of the environment may not be enough
@@ -419,8 +431,8 @@ explicitly and can be modified, although it is less efficient.
 </p>
 </div>
 </div>
-<div id="outline-container-orgad8eb68" class="outline-3">
-<h3 id="orgad8eb68"><span class="section-number-3">2.9</span> Utility-based agents</h3>
+<div id="outline-container-org7b2d55d" class="outline-3">
+<h3 id="org7b2d55d"><span class="section-number-3">2.9</span> Utility-based agents</h3>
 <div class="outline-text-3" id="text-2-9">
 <p>
 Goals provide a binary distinction between good and bad states. A more
@@ -432,8 +444,8 @@ utility-based agents has to model and keep track of its environment.
 </p>
 </div>
 </div>
-<div id="outline-container-org9254799" class="outline-3">
-<h3 id="org9254799"><span class="section-number-3">2.10</span> Learning agents</h3>
+<div id="outline-container-org3546d1f" class="outline-3">
+<h3 id="org3546d1f"><span class="section-number-3">2.10</span> Learning agents</h3>
 <div class="outline-text-3" id="text-2-10">
 <p>
 A learning agent can be divided into four conceptual components.
@@ -452,12 +464,12 @@ modified to do better in the future.
 </p>
 </div>
 </div>
-<div id="outline-container-org3a2fca8" class="outline-3">
-<h3 id="org3a2fca8"><span class="section-number-3">2.11</span> State representations</h3>
+<div id="outline-container-org18e7bca" class="outline-3">
+<h3 id="org18e7bca"><span class="section-number-3">2.11</span> State representations</h3>
 <div class="outline-text-3" id="text-2-11">
 </div>
-<div id="outline-container-org736a32d" class="outline-4">
-<h4 id="org736a32d"><span class="section-number-4">2.11.1</span> Atomic Representation</h4>
+<div id="outline-container-org1405789" class="outline-4">
+<h4 id="org1405789"><span class="section-number-4">2.11.1</span> Atomic Representation</h4>
 <div class="outline-text-4" id="text-2-11-1">
 <p>
 In an atomic representation each state of the world is indivisible,
@@ -467,8 +479,8 @@ representations.
 </p>
 </div>
 </div>
-<div id="outline-container-org6c10403" class="outline-4">
-<h4 id="org6c10403"><span class="section-number-4">2.11.2</span> Factored Representation</h4>
+<div id="outline-container-org6a10e7c" class="outline-4">
+<h4 id="org6a10e7c"><span class="section-number-4">2.11.2</span> Factored Representation</h4>
 <div class="outline-text-4" id="text-2-11-2">
 <p>
 A factored representation splits up each state into a fixed set of
@@ -483,8 +495,8 @@ representations.
 </div>
 </div>
 
-<div id="outline-container-org20177a7" class="outline-4">
-<h4 id="org20177a7"><span class="section-number-4">2.11.3</span> Structured Representations</h4>
+<div id="outline-container-orgd97f7a6" class="outline-4">
+<h4 id="orgd97f7a6"><span class="section-number-4">2.11.3</span> Structured Representations</h4>
 <div class="outline-text-4" id="text-2-11-3">
 <p>
 Structured representations underlie relational databases and
@@ -493,8 +505,9 @@ learning and much of natural language understanding.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf4ae0e6" class="outline-4">
-<h4 id="orgf4ae0e6"><span class="section-number-4">2.11.4</span> Implications</h4>
+
+<div id="outline-container-orgcab0e15" class="outline-4">
+<h4 id="orgcab0e15"><span class="section-number-4">2.11.4</span> Implications</h4>
 <div class="outline-text-4" id="text-2-11-4">
 <p>
 A more expressive representation can capture, at least as concisely, a
@@ -506,8 +519,9 @@ power of the representation increases.
 </div>
 </div>
 </div>
-<div id="outline-container-orgf70ba21" class="outline-2">
-<h2 id="orgf70ba21"><span class="section-number-2">3</span> Problem-Solving</h2>
+
+<div id="outline-container-orgccdfe89" class="outline-2">
+<h2 id="orgccdfe89"><span class="section-number-2">3</span> Problem-Solving</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Problem-solving agents use <i>atomic</i> representations, as compared to
@@ -522,16 +536,18 @@ returns a <i>solution</i> in the form of an action sequence.
 </p>
 </div>
 </div>
-<div id="outline-container-orgad8690b" class="outline-2">
-<h2 id="orgad8690b"><span class="section-number-2">4</span> Classical Search</h2>
+
+<div id="outline-container-org1d56d03" class="outline-2">
+<h2 id="org1d56d03"><span class="section-number-2">4</span> Classical Search</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 This addresses observable, deterministic, and known environments where
 the solution is a sequence of actions.
 </p>
 </div>
-<div id="outline-container-orgcb83968" class="outline-3">
-<h3 id="orgcb83968"><span class="section-number-3">4.1</span> How Search Algorithms Work</h3>
+
+<div id="outline-container-orgfc141dd" class="outline-3">
+<h3 id="orgfc141dd"><span class="section-number-3">4.1</span> How Search Algorithms Work</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Search algorithms consider various possible action sequences. The
@@ -554,8 +570,9 @@ parent pointers</dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-orgeff090c" class="outline-3">
-<h3 id="orgeff090c"><span class="section-number-3">4.2</span> Measuring Performance</h3>
+
+<div id="outline-container-org3ef2508" class="outline-3">
+<h3 id="org3ef2508"><span class="section-number-3">4.2</span> Measuring Performance</h3>
 <div class="outline-text-3" id="text-4-2">
 <dl class="org-dl">
 <dt>completeness</dt><dd>is the algorithm guaranteed to find a solution if
@@ -566,12 +583,13 @@ it exists?</dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-org2d48766" class="outline-3">
-<h3 id="org2d48766"><span class="section-number-3">4.3</span> Uninformed Search Strategies</h3>
+
+<div id="outline-container-orgb9fae86" class="outline-3">
+<h3 id="orgb9fae86"><span class="section-number-3">4.3</span> Uninformed Search Strategies</h3>
 <div class="outline-text-3" id="text-4-3">
 </div>
-<div id="outline-container-orgcc5b4ca" class="outline-4">
-<h4 id="orgcc5b4ca"><span class="section-number-4">4.3.1</span> Breadth-first Search</h4>
+<div id="outline-container-org464730e" class="outline-4">
+<h4 id="org464730e"><span class="section-number-4">4.3.1</span> Breadth-first Search</h4>
 <div class="outline-text-4" id="text-4-3-1">
 <p>
 The root node is expanded first, then all the successors of the root
@@ -630,8 +648,8 @@ uninformed methods for any but the smallest instances.
 </p>
 </div>
 </div>
-<div id="outline-container-orgbb8d2d5" class="outline-4">
-<h4 id="orgbb8d2d5"><span class="section-number-4">4.3.2</span> Uniform-cost Search</h4>
+<div id="outline-container-orgc7fedfd" class="outline-4">
+<h4 id="orgc7fedfd"><span class="section-number-4">4.3.2</span> Uniform-cost Search</h4>
 <div class="outline-text-4" id="text-4-3-2">
 <p>
 Uniform-cost search expands the node \(n\) with the lowest path
@@ -687,8 +705,8 @@ there is a path with an infinite sequence of zero-cost actions.
 </p>
 </div>
 </div>
-<div id="outline-container-org6845772" class="outline-4">
-<h4 id="org6845772"><span class="section-number-4">4.3.3</span> Depth-first Search</h4>
+<div id="outline-container-org1cc7963" class="outline-4">
+<h4 id="org1cc7963"><span class="section-number-4">4.3.3</span> Depth-first Search</h4>
 <div class="outline-text-4" id="text-4-3-3">
 <p>
 Always expands the <i>deepest</i> node in the current frontier of the
@@ -746,8 +764,8 @@ actions.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf1cd2e0" class="outline-4">
-<h4 id="orgf1cd2e0"><span class="section-number-4">4.3.4</span> Depth-limited Search</h4>
+<div id="outline-container-org344370f" class="outline-4">
+<h4 id="org344370f"><span class="section-number-4">4.3.4</span> Depth-limited Search</h4>
 <div class="outline-text-4" id="text-4-3-4">
 <p>
 In depth-limited search, nodes at depth of pre-determined limit \(l\)
@@ -793,8 +811,8 @@ infinite-path problem.
 </table>
 </div>
 </div>
-<div id="outline-container-orgc3dcaff" class="outline-4">
-<h4 id="orgc3dcaff"><span class="section-number-4">4.3.5</span> Iterative Deepening Depth-first Search</h4>
+<div id="outline-container-org090f16b" class="outline-4">
+<h4 id="org090f16b"><span class="section-number-4">4.3.5</span> Iterative Deepening Depth-first Search</h4>
 <div class="outline-text-4" id="text-4-3-5">
 <p>
 Key idea is to gradually increase the depth limit: first 0, then
@@ -857,8 +875,8 @@ complexity of \(O(b^d)\)
 </ol>
 </div>
 </div>
-<div id="outline-container-orgc82e5f5" class="outline-4">
-<h4 id="orgc82e5f5"><span class="section-number-4">4.3.6</span> Bidirectional Search</h4>
+<div id="outline-container-org1ffd1fa" class="outline-4">
+<h4 id="org1ffd1fa"><span class="section-number-4">4.3.6</span> Bidirectional Search</h4>
 <div class="outline-text-4" id="text-4-3-6">
 <p>
 Conduct two simultaneous searches &#x2013; one forward from the initial
@@ -869,12 +887,12 @@ two searches intersect. This reduces the time ad space complexity to \(O(b^{d/2}
 </div>
 </div>
 </div>
-<div id="outline-container-org3063507" class="outline-3">
-<h3 id="org3063507"><span class="section-number-3">4.4</span> Informed Search Strategies</h3>
+<div id="outline-container-org5916326" class="outline-3">
+<h3 id="org5916326"><span class="section-number-3">4.4</span> Informed Search Strategies</h3>
 <div class="outline-text-3" id="text-4-4">
 </div>
-<div id="outline-container-orgabe53ba" class="outline-4">
-<h4 id="orgabe53ba"><span class="section-number-4">4.4.1</span> Greedy best-first search</h4>
+<div id="outline-container-orgd4cd612" class="outline-4">
+<h4 id="orgd4cd612"><span class="section-number-4">4.4.1</span> Greedy best-first search</h4>
 <div class="outline-text-4" id="text-4-4-1">
 <p>
 <i>Greedy best-first search</i> tries to expand the node that is closest to
@@ -892,8 +910,8 @@ be reduced substantially.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc080177" class="outline-4">
-<h4 id="orgc080177"><span class="section-number-4">4.4.2</span> A* search</h4>
+<div id="outline-container-org006e118" class="outline-4">
+<h4 id="org006e118"><span class="section-number-4">4.4.2</span> A* search</h4>
 <div class="outline-text-4" id="text-4-4-2">
 <p>
 It evaluates nodes by combining \(g(n)\) the cost to reach the node, and
@@ -962,8 +980,8 @@ Other memory-bounded heuristic searches include:
 </div>
 </div>
 </div>
-<div id="outline-container-orgb092cde" class="outline-3">
-<h3 id="orgb092cde"><span class="section-number-3">4.5</span> Learning to Search Better</h3>
+<div id="outline-container-org2e40a8f" class="outline-3">
+<h3 id="org2e40a8f"><span class="section-number-3">4.5</span> Learning to Search Better</h3>
 <div class="outline-text-3" id="text-4-5">
 <p>
 Each state in a <i>metalevel state space</i> captures the internal
@@ -977,8 +995,8 @@ computational expense and path cost.
 </div>
 </div>
 
-<div id="outline-container-orgf4e77ab" class="outline-2">
-<h2 id="orgf4e77ab"><span class="section-number-2">5</span> Heuristic Functions</h2>
+<div id="outline-container-orgaffd399" class="outline-2">
+<h2 id="orgaffd399"><span class="section-number-2">5</span> Heuristic Functions</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 If for any node n \(h_2(n) \ge h_1(n)\), we say that \(h_2\) <i>dominates</i>
@@ -990,12 +1008,12 @@ feasible.
 </p>
 </div>
 
-<div id="outline-container-org198c695" class="outline-3">
-<h3 id="org198c695"><span class="section-number-3">5.1</span> Generating Admissible Heuristics</h3>
+<div id="outline-container-orgc19bc8b" class="outline-3">
+<h3 id="orgc19bc8b"><span class="section-number-3">5.1</span> Generating Admissible Heuristics</h3>
 <div class="outline-text-3" id="text-5-1">
 </div>
-<div id="outline-container-org031f19e" class="outline-4">
-<h4 id="org031f19e"><span class="section-number-4">5.1.1</span> From Relaxed Problems</h4>
+<div id="outline-container-orga017bbd" class="outline-4">
+<h4 id="orga017bbd"><span class="section-number-4">5.1.1</span> From Relaxed Problems</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <p>
 Because the relaxed problem adds edges to the state space, any optimal
@@ -1009,8 +1027,8 @@ consistent.
 </div>
 </div>
 
-<div id="outline-container-org16d6991" class="outline-4">
-<h4 id="org16d6991"><span class="section-number-4">5.1.2</span> From Subproblems: Pattern Databases</h4>
+<div id="outline-container-orge46b55f" class="outline-4">
+<h4 id="orge46b55f"><span class="section-number-4">5.1.2</span> From Subproblems: Pattern Databases</h4>
 <div class="outline-text-4" id="text-5-1-2">
 <p>
 <i>Pattern Databases</i> store exact solution costs for every possible
@@ -1024,8 +1042,8 @@ the problem in a way that each move affects only one subproblem.
 </div>
 </div>
 
-<div id="outline-container-org4686ca3" class="outline-4">
-<h4 id="org4686ca3"><span class="section-number-4">5.1.3</span> From Experience</h4>
+<div id="outline-container-org9f57aef" class="outline-4">
+<h4 id="org9f57aef"><span class="section-number-4">5.1.3</span> From Experience</h4>
 <div class="outline-text-4" id="text-5-1-3">
 <p>
 Inductive learning methods work best when supplied with <i>features</i> of
@@ -1043,8 +1061,8 @@ states, but are not necessarily admissible or consistent.
 </div>
 </div>
 
-<div id="outline-container-org8c0c4cf" class="outline-2">
-<h2 id="org8c0c4cf"><span class="section-number-2">6</span> Beyond Classical Search</h2>
+<div id="outline-container-orgd1fc00e" class="outline-2">
+<h2 id="orgd1fc00e"><span class="section-number-2">6</span> Beyond Classical Search</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Here, we cover algorithms that perform purely <i>local search</i> in the
@@ -1075,8 +1093,8 @@ state spaces</span> where systematic algorithms are not suitable.</li>
 </ol>
 </div>
 
-<div id="outline-container-org9afe30f" class="outline-3">
-<h3 id="org9afe30f"><span class="section-number-3">6.1</span> Hill-climbing Search</h3>
+<div id="outline-container-orgd17220c" class="outline-3">
+<h3 id="orgd17220c"><span class="section-number-3">6.1</span> Hill-climbing Search</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 The hill-climbing search is a loop that continually moves in the
@@ -1117,8 +1135,8 @@ is possible.</li>
 </div>
 
 
-<div id="outline-container-org6de18f2" class="outline-4">
-<h4 id="org6de18f2"><span class="section-number-4">6.1.1</span> Variants</h4>
+<div id="outline-container-org2774388" class="outline-4">
+<h4 id="org2774388"><span class="section-number-4">6.1.1</span> Variants</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <dl class="org-dl">
 <dt>stochastic hill-climbing</dt><dd>chooses at random from among the uphill
@@ -1136,8 +1154,8 @@ Trivially complete with probability approaching 1.</dd>
 </div>
 </div>
 
-<div id="outline-container-org3c3bd93" class="outline-3">
-<h3 id="org3c3bd93"><span class="section-number-3">6.2</span> Simulated Annealing</h3>
+<div id="outline-container-org0defdf3" class="outline-3">
+<h3 id="org0defdf3"><span class="section-number-3">6.2</span> Simulated Annealing</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 A hill-climbing algorithm that never makes 'downhill' moves towards
@@ -1163,8 +1181,8 @@ be stuck on a local maximum.
 </div>
 </div>
 
-<div id="outline-container-orgfff57d4" class="outline-3">
-<h3 id="orgfff57d4"><span class="section-number-3">6.3</span> Local Beam Search</h3>
+<div id="outline-container-org42b32b0" class="outline-3">
+<h3 id="org42b32b0"><span class="section-number-3">6.3</span> Local Beam Search</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 Local beam search keeps track of \(n\) states rather than just one. It
@@ -1189,8 +1207,8 @@ function of its value/.
 </div>
 
 
-<div id="outline-container-org6a992d2" class="outline-3">
-<h3 id="org6a992d2"><span class="section-number-3">6.4</span> Genetic Algorithms</h3>
+<div id="outline-container-orgb67a6a4" class="outline-3">
+<h3 id="orgb67a6a4"><span class="section-number-3">6.4</span> Genetic Algorithms</h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
 A <i>genetic algorithm</i> is a variant of stochastic beam search in which
@@ -1244,8 +1262,8 @@ function REPRODUCE(x,y) returns an individual
 </div>
 </div>
 
-<div id="outline-container-org61ba504" class="outline-3">
-<h3 id="org61ba504"><span class="section-number-3">6.5</span> Local Search in Continuous Spaces</h3>
+<div id="outline-container-org1d9086c" class="outline-3">
+<h3 id="org1d9086c"><span class="section-number-3">6.5</span> Local Search in Continuous Spaces</h3>
 <div class="outline-text-3" id="text-6-5">
 <p>
 One way to avoid continuous problems is simply to <i>discretize</i> the
@@ -1279,8 +1297,8 @@ in continuous spaces just as much as in discrete spaces.
 </div>
 </div>
 
-<div id="outline-container-org08fe1c0" class="outline-3">
-<h3 id="org08fe1c0"><span class="section-number-3">6.6</span> Searching with Non-deterministic Actions</h3>
+<div id="outline-container-orgefd92a2" class="outline-3">
+<h3 id="orgefd92a2"><span class="section-number-3">6.6</span> Searching with Non-deterministic Actions</h3>
 <div class="outline-text-3" id="text-6-6">
 <p>
 When the environment is either partially observable or
@@ -1300,8 +1318,8 @@ if-then-else statements, meaning they are trees and not sequences.
 </p>
 </div>
 
-<div id="outline-container-org243fa04" class="outline-4">
-<h4 id="org243fa04"><span class="section-number-4">6.6.1</span> AND-OR search trees</h4>
+<div id="outline-container-org9eef900" class="outline-4">
+<h4 id="org9eef900"><span class="section-number-4">6.6.1</span> AND-OR search trees</h4>
 <div class="outline-text-4" id="text-6-6-1">
 <p>
 A solution for an AND-OR search problem is a subtree that:
@@ -1341,8 +1359,8 @@ function AND-SEARCH(states,problem,path) returns a conditional plan, or failure
 </div>
 </div>
 
-<div id="outline-container-org1612c2c" class="outline-2">
-<h2 id="org1612c2c"><span class="section-number-2">7</span> Adversarial Search</h2>
+<div id="outline-container-orgf7b3cb0" class="outline-2">
+<h2 id="orgf7b3cb0"><span class="section-number-2">7</span> Adversarial Search</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Competitive environments, in which the agent's goals are in conflict,
@@ -1392,8 +1410,8 @@ game tree for the game.
 </div>
 
 
-<div id="outline-container-orgbd244bb" class="outline-3">
-<h3 id="orgbd244bb"><span class="section-number-3">7.1</span> Optimal Strategy</h3>
+<div id="outline-container-org3c56b12" class="outline-3">
+<h3 id="org3c56b12"><span class="section-number-3">7.1</span> Optimal Strategy</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 The optimal strategy can be determined from the <i>minimax value</i> of
@@ -1420,9 +1438,8 @@ tree, setting the node value to be the minimum of the children.
 </div>
 </div>
 
-
-<div id="outline-container-orgadf8533" class="outline-3">
-<h3 id="orgadf8533"><span class="section-number-3">7.2</span> Alpha-Beta Pruning</h3>
+<div id="outline-container-org971eb5b" class="outline-3">
+<h3 id="org971eb5b"><span class="section-number-3">7.2</span> Alpha-Beta Pruning</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 Eliminate parts of the search tree that do not affect decision. 
@@ -1431,9 +1448,8 @@ Eliminate parts of the search tree that do not affect decision.
 </div>
 </div>
 
-
-<div id="outline-container-org78712bf" class="outline-2">
-<h2 id="org78712bf"><span class="section-number-2">8</span> Classical Planning</h2>
+<div id="outline-container-org226e3a6" class="outline-2">
+<h2 id="org226e3a6"><span class="section-number-2">8</span> Classical Planning</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 Problem-solving agents that deal with atomic representations of states
@@ -1472,8 +1488,8 @@ literals.
 </p>
 </div>
 
-<div id="outline-container-org8c52fe0" class="outline-3">
-<h3 id="org8c52fe0"><span class="section-number-3">8.1</span> Complexities of classical planning</h3>
+<div id="outline-container-org000f5b2" class="outline-3">
+<h3 id="org000f5b2"><span class="section-number-3">8.1</span> Complexities of classical planning</h3>
 <div class="outline-text-3" id="text-8-1">
 <p>
 <b>PlanSAT</b> is the question of whether there exists any plan that solves a
@@ -1495,8 +1511,8 @@ NP-complete, while PlanSAT is in P.
 </div>
 </div>
 
-<div id="outline-container-orged55da8" class="outline-3">
-<h3 id="orged55da8"><span class="section-number-3">8.2</span> State-space search for planning</h3>
+<div id="outline-container-org0882257" class="outline-3">
+<h3 id="org0882257"><span class="section-number-3">8.2</span> State-space search for planning</h3>
 <div class="outline-text-3" id="text-8-2">
 <p>
 The first approach is forward (propogation) state-space search, which
@@ -1525,8 +1541,8 @@ are make it harder to derive good domain-independent heuristics.
 </div>
 </div>
 
-<div id="outline-container-orgde2d36f" class="outline-3">
-<h3 id="orgde2d36f"><span class="section-number-3">8.3</span> Heuristics for planning</h3>
+<div id="outline-container-orgf80bdeb" class="outline-3">
+<h3 id="orgf80bdeb"><span class="section-number-3">8.3</span> Heuristics for planning</h3>
 <div class="outline-text-3" id="text-8-3">
 <p>
 Framing the search problem as a graph where the nodes are states and
@@ -1574,8 +1590,8 @@ costs of solving a subgoal independently.
 </div>
 </div>
 
-<div id="outline-container-orged119a5" class="outline-3">
-<h3 id="orged119a5"><span class="section-number-3">8.4</span> Other classical planning approaches</h3>
+<div id="outline-container-orgcbd5953" class="outline-3">
+<h3 id="orgcbd5953"><span class="section-number-3">8.4</span> Other classical planning approaches</h3>
 <div class="outline-text-3" id="text-8-4">
 <p>
 We can translate a problem description in PDDL to  a form that can be
@@ -1631,8 +1647,8 @@ occur at each step.</li>
 </div>
 </div>
 
-<div id="outline-container-org71e5d4e" class="outline-2">
-<h2 id="org71e5d4e"><span class="section-number-2">9</span> Decision Theory</h2>
+<div id="outline-container-org71cf213" class="outline-2">
+<h2 id="org71cf213"><span class="section-number-2">9</span> Decision Theory</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 Reference: AIMA Chapter 16
@@ -1646,8 +1662,8 @@ that make binary decisions between good and bad states.
 </p>
 </div>
 
-<div id="outline-container-orgbe3edf1" class="outline-3">
-<h3 id="orgbe3edf1"><span class="section-number-3">9.1</span> Combining beliefs and desires under uncertainty</h3>
+<div id="outline-container-org9622df5" class="outline-3">
+<h3 id="org9622df5"><span class="section-number-3">9.1</span> Combining beliefs and desires under uncertainty</h3>
 <div class="outline-text-3" id="text-9-1">
 <p>
 Under nondeterministic, partially observable environments, the result
@@ -1678,8 +1694,8 @@ performance score (averaged across all environments).
 </div>
 </div>
 
-<div id="outline-container-org548b115" class="outline-3">
-<h3 id="org548b115"><span class="section-number-3">9.2</span> Axioms of Utility Theory</h3>
+<div id="outline-container-orgeed246f" class="outline-3">
+<h3 id="orgeed246f"><span class="section-number-3">9.2</span> Axioms of Utility Theory</h3>
 <div class="outline-text-3" id="text-9-2">
 <p>
 To show why MEU is a rational choice, we turn to utility theory.
@@ -1729,8 +1745,8 @@ and the actual value of the utility does not matter.
 </div>
 </div>
 
-<div id="outline-container-orgb951895" class="outline-3">
-<h3 id="orgb951895"><span class="section-number-3">9.3</span> Utility assessment and utility scales</h3>
+<div id="outline-container-org216e92c" class="outline-3">
+<h3 id="org216e92c"><span class="section-number-3">9.3</span> Utility assessment and utility scales</h3>
 <div class="outline-text-3" id="text-9-3">
 <p>
 To build a decision-theoretic system, we must first work out what the
@@ -1755,8 +1771,8 @@ between \(S\) and the lottery. This is done for each prize \(S\).
 </div>
 </div>
 
-<div id="outline-container-org8ee5ce6" class="outline-3">
-<h3 id="org8ee5ce6"><span class="section-number-3">9.4</span> Multi-attribute utility functions</h3>
+<div id="outline-container-org09bfbc7" class="outline-3">
+<h3 id="org09bfbc7"><span class="section-number-3">9.4</span> Multi-attribute utility functions</h3>
 <div class="outline-text-3" id="text-9-4">
 <p>
 When outcomes are characterized by two or more attributes, we need a
@@ -1764,8 +1780,8 @@ multi-attribute utility function.
 </p>
 </div>
 
-<div id="outline-container-orgbcc0da3" class="outline-4">
-<h4 id="orgbcc0da3"><span class="section-number-4">9.4.1</span> Dominance</h4>
+<div id="outline-container-org8697d13" class="outline-4">
+<h4 id="org8697d13"><span class="section-number-4">9.4.1</span> Dominance</h4>
 <div class="outline-text-4" id="text-9-4-1">
 <p>
 We say that there is strict dominance of \(S_1\) over \(S_2\) if \(S_2\) is
@@ -1789,8 +1805,8 @@ variable \(X\):
 </div>
 
 
-<div id="outline-container-org8823013" class="outline-4">
-<h4 id="org8823013"><span class="section-number-4">9.4.2</span> Preference structure and multi-attribute utility</h4>
+<div id="outline-container-org86c519f" class="outline-4">
+<h4 id="org86c519f"><span class="section-number-4">9.4.2</span> Preference structure and multi-attribute utility</h4>
 <div class="outline-text-4" id="text-9-4-2">
 <p>
 Multi-attribute utility theory is based on the supposition that
@@ -1847,8 +1863,8 @@ as:
 </div>
 </div>
 
-<div id="outline-container-org44e12a4" class="outline-4">
-<h4 id="org44e12a4"><span class="section-number-4">9.4.3</span> Decision Networks</h4>
+<div id="outline-container-org10f1572" class="outline-4">
+<h4 id="org10f1572"><span class="section-number-4">9.4.3</span> Decision Networks</h4>
 <div class="outline-text-4" id="text-9-4-3">
 <p>
 Decision networks extend Bayesian networks with nodes for actions and
@@ -1883,8 +1899,8 @@ known as Q-function).
 </div>
 </div>
 
-<div id="outline-container-org038073c" class="outline-4">
-<h4 id="org038073c"><span class="section-number-4">9.4.4</span> Information Value Theory</h4>
+<div id="outline-container-orgd7c4b89" class="outline-4">
+<h4 id="orgd7c4b89"><span class="section-number-4">9.4.4</span> Information Value Theory</h4>
 <div class="outline-text-4" id="text-9-4-4">
 <p>
 The value of a given piece of information is defined to be the
@@ -1914,8 +1930,8 @@ beliefs of its value.
 </p>
 </div>
 
-<div id="outline-container-orgfba4e74" class="outline-5">
-<h5 id="orgfba4e74"><span class="section-number-5">9.4.4.1</span> Properties of the value of information</h5>
+<div id="outline-container-org93ada95" class="outline-5">
+<h5 id="org93ada95"><span class="section-number-5">9.4.4.1</span> Properties of the value of information</h5>
 <div class="outline-text-5" id="text-9-4-4-1">
 <p>
 First, the expected value of information is non-negative. 
@@ -1951,8 +1967,8 @@ VPI is order independent. That is:
 </div>
 </div>
 
-<div id="outline-container-orgb1fc547" class="outline-5">
-<h5 id="orgb1fc547"><span class="section-number-5">9.4.4.2</span> Information Gathering Agents</h5>
+<div id="outline-container-org1145a92" class="outline-5">
+<h5 id="org1145a92"><span class="section-number-5">9.4.4.2</span> Information Gathering Agents</h5>
 <div class="outline-text-5" id="text-9-4-4-2">
 <p>
 we can implement a myopic information-gathering agent, by using the
@@ -1982,9 +1998,8 @@ value it provides.
 </div>
 </div>
 
-
-<div id="outline-container-org50d1f4a" class="outline-2">
-<h2 id="org50d1f4a"><span class="section-number-2">10</span> Making Complex Decisions</h2>
+<div id="outline-container-org122c18e" class="outline-2">
+<h2 id="org122c18e"><span class="section-number-2">10</span> Making Complex Decisions</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 Earlier, we were concerned with environments with one-shot, episodic
@@ -1994,8 +2009,8 @@ as special cases.
 </p>
 </div>
 
-<div id="outline-container-org7378123" class="outline-3">
-<h3 id="org7378123"><span class="section-number-3">10.1</span> Markov Decision Process (MDP)</h3>
+<div id="outline-container-orgcab9fe0" class="outline-3">
+<h3 id="orgcab9fe0"><span class="section-number-3">10.1</span> Markov Decision Process (MDP)</h3>
 <div class="outline-text-3" id="text-10-1">
 <p>
 A sequential decision problem for a fully observable, stochastic
@@ -2018,8 +2033,8 @@ that does not arise in deterministic search problems.
 </div>
 </div>
 
-<div id="outline-container-orge3cb9fd" class="outline-3">
-<h3 id="orge3cb9fd"><span class="section-number-3">10.2</span> Utilities over time</h3>
+<div id="outline-container-org8fd6858" class="outline-3">
+<h3 id="org8fd6858"><span class="section-number-3">10.2</span> Utilities over time</h3>
 <div class="outline-text-3" id="text-10-2">
 <p>
 A finite horizon for decision making means that there is a fixed time
@@ -2058,8 +2073,8 @@ time step.
 </div>
 </div>
 
-<div id="outline-container-org2cb201a" class="outline-3">
-<h3 id="org2cb201a"><span class="section-number-3">10.3</span> Optimal policies and the utilities of states</h3>
+<div id="outline-container-org9def1bb" class="outline-3">
+<h3 id="org9def1bb"><span class="section-number-3">10.3</span> Optimal policies and the utilities of states</h3>
 <div class="outline-text-3" id="text-10-3">
 <p>
 First, we can derive the expected utility of executing a policy \(\pi\) in
@@ -2067,7 +2082,7 @@ First, we can derive the expected utility of executing a policy \(\pi\) in
 </p>
 
 \begin{equation}
-U^\pi (s) = E\left[ \sum_{t=0}^\inf \gamma^t R(S_t) \right]
+U^\pi (s) = \mathbb{E} \left[ \sum_{t=0}^\infty \gamma^t R(S_t) \right]
 \end{equation}
 
 <p>
@@ -2082,13 +2097,13 @@ that the optimal policy is independent of the starting state. This
 allows us to compute the true utility of the state as \(U^{\pi^*} (s)\).
 The utility function allows the agent to select actions by using the
 principle of maximum expected utility from the earlier chapter: \(\pi^*(s)
-= argmax_{a \in A(s) } \sum_{s^'} P(s' |s, a)U(s')\).
+= argmax_{a \in A(s) } \sum_{s^{i}} P(s' |s, a)U(s')\).
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgbdd5a5c" class="outline-3">
-<h3 id="orgbdd5a5c"><span class="section-number-3">10.4</span> Value Iteration</h3>
+<div id="outline-container-org69aaa4e" class="outline-3">
+<h3 id="org69aaa4e"><span class="section-number-3">10.4</span> Value Iteration</h3>
 <div class="outline-text-3" id="text-10-4">
 <p>
 The bellman equation illustrates that the utility of a state is the
@@ -2131,8 +2146,8 @@ update the utility on the left hand side of the equation.
 </div>
 </div>
 
-<div id="outline-container-orgd9b79f5" class="outline-3">
-<h3 id="orgd9b79f5"><span class="section-number-3">10.5</span> Policy Iteration</h3>
+<div id="outline-container-orge8b93ac" class="outline-3">
+<h3 id="orge8b93ac"><span class="section-number-3">10.5</span> Policy Iteration</h3>
 <div class="outline-text-3" id="text-10-5">
 <p>
 We have already observed that it is possible to get an optimal policy,
@@ -2211,8 +2226,8 @@ gives us a means to design efficient heuristic algorithms.
 </div>
 </div>
 
-<div id="outline-container-org7725d6d" class="outline-3">
-<h3 id="org7725d6d"><span class="section-number-3">10.6</span> Partially Observable MDPs (POMDPs)</h3>
+<div id="outline-container-org81e1afb" class="outline-3">
+<h3 id="org81e1afb"><span class="section-number-3">10.6</span> Partially Observable MDPs (POMDPs)</h3>
 <div class="outline-text-3" id="text-10-6">
 <p>
 The assumption of full observability, accompanied with the Markov
@@ -2305,8 +2320,8 @@ computing or approximating the optimal policies for MDPs do not apply here.
 </div>
 </div>
 
-<div id="outline-container-org2d3e129" class="outline-3">
-<h3 id="org2d3e129"><span class="section-number-3">10.7</span> Value iteration for POMDPs</h3>
+<div id="outline-container-org5b37df7" class="outline-3">
+<h3 id="org5b37df7"><span class="section-number-3">10.7</span> Value iteration for POMDPs</h3>
 <div class="outline-text-3" id="text-10-7">
 <p>
 The value iteration algorithm for the MDP computed one utility value
@@ -2384,17 +2399,319 @@ making the algorithm hopelessly inefficient for larger problems.
 </div>
 </div>
 
-<div id="outline-container-org309a2fe" class="outline-3">
-<h3 id="org309a2fe"><span class="section-number-3">10.8</span> <span class="todo TODO">TODO</span> Online agents for POMDPs</h3>
+<div id="outline-container-org4619282" class="outline-3">
+<h3 id="org4619282"><span class="section-number-3">10.8</span> <span class="todo TODO">TODO</span> Online agents for POMDPs</h3>
+</div>
+
+<div id="outline-container-orgcfcb50c" class="outline-3">
+<h3 id="orgcfcb50c"><span class="section-number-3">10.9</span> Monte Carlo Tree Search</h3>
+<div class="outline-text-3" id="text-10-9">
+<p>
+We are still far from making anything that even resembles a strong AI.
+What makes MCTS different from <a href="https://en.wikipedia.org/wiki/Minimax">Minimax</a>?
+</p>
+
+<p>
+Minimax can take an impractical amount of time to do a full search of
+the game tree, especially games with high branching factor. Some games
+are highly open-ended, with game trees that are highly complex. This
+makes it difficult to write an evaluation function for each state.
+MCTS is a technique that will give good results for games, and is
+domain-independent.
+</p>
+
+<p>
+UCB1 constructs statistical confidence intervals:
+</p>
+
+\begin{equation}
+  \bar{x_i} \pm \sqrt{\frac{2 \ln n}{n_i}}
+\end{equation}
+
+<p>
+where:
+</p>
+
+<ul class="org-ul">
+<li>\(\bar{x_i}\) is the mean payout for action \(i\)</li>
+<li>\(n_i\) is the number of simulations of action \(i\)</li>
+<li>\(n\) is the total number of plays</li>
+</ul>
+
+<p>
+The strategy is to pick the action with the highest upper bound each time.
+</p>
+
+<p>
+How could an AI possibly "plan" ahead when there are so many potential
+moves and counter moves in Go?
+</p>
+
+<p>
+MCTS builds a <i>statistics tree</i> (detailing value of nodes) that
+partially maps onto the entire tree. Statistics tree guides the AI.
+</p>
+
+<p>
+MCTS constructs the statistics tree at the starting point.
+</p>
+
+<dl class="org-dl">
+<dt>Selection</dt><dd>All child nodes have now been visited at least once.
+Now AI can select the best child node.
+<ul class="org-ul">
+<li>based on how good the statistics are</li>
+<li>how much the child node has been "ignored"</li>
+</ul></dd>
+<dt>Expansion</dt><dd>Add a new node that the AI will investigate</dd>
+<dt>Simulation</dt><dd>starting from position represented by left child node,
+make random moves repeatedly until the game is won or lost</dd>
+<dt>Update</dt><dd>Depending on win or loss, update left child node in stats
+tree with relevant stats</dd>
+</dl>
+
+<p>
+The parent nodes inherit statistics from child nodes.
+</p>
+
+<p>
+The node with the highest number of simulations will be chosen as the
+next move.
+</p>
+
+<p>
+The first phase, selection, lasts until the statistics necessary to
+treat each position reached as a multi-armed bandit problem is
+collected. 
+</p>
+
+<p>
+The second phase, expansion, occurs when the algorithm can longer be
+applied. An unvisited child is randomly chosen, and a new record node
+is added to the tree of statistics.
+</p>
+
+<p>
+After expansion, the remainder of the playout is in phase 3,
+simulation. This is done as a typical monte carlo simulation.
+</p>
+
+<p>
+When the playout reaches the end, the update phase takes place. All of
+the positions visited during this playout have their play count and
+their win count incremented.
+</p>
+
+<p>
+Some great references for productionized implementations of MCTS
+include:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/tensorflow/minigo/blob/master/strategies.py">minigo/strategies.py</a></li>
+<li><a href="https://github.com/tensorflow/minigo/blob/master/mcts.py">minigo/mcts.py</a></li>
+</ul>
 </div>
 </div>
-<div id="outline-container-orgefa4557" class="outline-2">
-<h2 id="orgefa4557"><span class="section-number-2">11</span> RANDOM</h2>
+</div>
+
+<div id="outline-container-orgbee045c" class="outline-2">
+<h2 id="orgbee045c"><span class="section-number-2">11</span> Reinforcement Learning</h2>
 <div class="outline-text-2" id="text-11">
 </div>
-<div id="outline-container-org13945ea" class="outline-3">
-<h3 id="org13945ea"><span class="section-number-3">11.1</span> Simon's Ant</h3>
+<div id="outline-container-org445672a" class="outline-3">
+<h3 id="org445672a"><span class="section-number-3">11.1</span> Passive Reinforcement Learning</h3>
 <div class="outline-text-3" id="text-11-1">
+<p>
+We start with a passive learning agent using a state-based
+representation in a fully observable environment.
+</p>
+
+<p>
+In passive learning, the agent's policy \(\pi\) is fixed: in state \(s\), it
+always executes the action \(\pi(s)\). Its goal is simply to learn how
+good the policy is &#x2013; the utility function \(U^\pi (s)\).
+</p>
+
+<p>
+The passive learning task is similar to policy evaluation, but the
+agent does not know the transition model \(P(s'|s, a)\) and the reward
+function \(R(s)\).
+</p>
+
+<p>
+The agent executes a number of trials using the policy \(\pi\), and
+experiences a sequence of state transitions. At each state its
+percepts receives the current state and the reward of the state.
+</p>
+
+<p>
+We write the utility as:
+</p>
+
+\begin{equation}
+  U^\pi (s) = E\left[\sum_{t=0}^\infty \gamma^t R(S_t) \right]
+\end{equation}
+</div>
+
+<div id="outline-container-org848f9b1" class="outline-4">
+<h4 id="org848f9b1"><span class="section-number-4">11.1.1</span> Direct Utility Estimation (MC Learning)</h4>
+<div class="outline-text-4" id="text-11-1-1">
+<p>
+The main idea of direct utility estimation is that the utility of a
+state is the expected total reward from that state onward, and each
+trial provides a sample of this quantity for each state visited.
+</p>
+
+<p>
+Direct utility estimation reduces the reinforcement learning problem
+to a supervised inductive learning problem, where each example has the
+state as input, and the observed reward-to-go as output.
+</p>
+
+<p>
+However, it misses an important source of information: that the
+<i>utility of states are not independent</i>. This means it misses many
+opportunities for learning. For example, if a state has high expected
+utility, then neighbouring states should also have high expected
+utility.
+</p>
+
+<p>
+The utility of each state equals its own reward plus the expected
+utility of its successor states: i.e. it obeys the <a href="#org1f91108">Bellman Equation</a>
+for a fixed policy.
+</p>
+
+<p>
+We can view directed utility estimation as searching for \(U\) in a
+hypothesis space that is much larger than it needs to be, since it
+includes many functions that violate the Bellman equations.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2e35e43" class="outline-4">
+<h4 id="org2e35e43"><span class="section-number-4">11.1.2</span> Adaptive Dynamic Programming</h4>
+<div class="outline-text-4" id="text-11-1-2">
+<p>
+An ADP agent takes advantage of the constraints among the utilities of
+states by learning the transition model that connects them and solving
+the corresponding MDP using a dynamic programming method.
+</p>
+
+<p>
+For a passive learning agent, the task is as simply as plugging in the
+learnt transition model and the rewards into the Bellman equations to
+calculate the utility of each state.
+</p>
+
+<p>
+The task of learning the model is easy, because the environment is
+fully observable. This means we have a supervised learning task where
+the input is a state-action pair, and the output is the resulting
+state. We keep track of how often each action outcome occurs and
+estimate the transition probability \(P(s' | s, a)\) from the frequency
+with which \(s'\) is reached when executing \(a\) in \(s\).
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 1: </span>A passive RL agent based on ADP.</label><pre class="src src-text">function PASSIVE-ADP_AGENT(percept) returns an action
+  inputs: percept, indicating state s' and reward signal r'
+  persistent: \pi, a fixed policy
+    mdp: MDP with model P, rewards R, and discount \gamma
+    U: a table of utilities, initially empty
+    N_{sa}: a table of frequencies for each state-action pair
+    N_{s'|s,a}: a table of outcome frequencies
+    s, a: the previous state and action
+  if s' is new then $U[s'] &lt;- r'; R[s'] &lt;- r'
+  if s is not null then
+    increment N_{sa}[s, a] and N_{s'|s,a}[s', s, a]
+    for each t such that N_{s'|s, a}[t,s,a] is nonzero do
+      P(t|s, a) &lt;- N_{s'|s, a}[t,s,a] / N_{sa}[s, a]
+    U &lt;- POLICY-EVALUATION(\pi, U, mdp)
+  if s'.TERMINAL? then s,a &lt;- null else s,a &lt;- s', \pi[s']
+  return a
+</pre>
+</div>
+
+<p>
+This approach is computationally intractable for large state spaces.
+In addition, it uses the maximum-likelihood estimation for learning
+the transition model.
+</p>
+
+<p>
+A more nuanced approach would be Bayesian reinforcement learning,
+which assumes a prior probability \(P(h)\) for each hypothesis \(h\) about
+what the true model is. The posterior probability \(P(h|e)\) is obtained
+via Bayes' rule. Then \(\pi^* = argmax_\pi \sum_h P(h|e) u_h^\pi\).
+</p>
+
+<p>
+Another approach, derived from robust control theory, allows for a set
+of possible models \(H\) and defines an optimal robust policy as one
+that gives the best outcome in the worst case over \(H\): \(\pi^* =
+argmax_\pi min_h u_h^\pi\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2da4a84" class="outline-4">
+<h4 id="org2da4a84"><span class="section-number-4">11.1.3</span> <span class="todo TODO">TODO</span> Temporal-difference Learning</h4>
+<div class="outline-text-4" id="text-11-1-3">
+<p>
+TD learning involves using the observed transitions to adjust the
+utilities such that the constraint equations are met.
+</p>
+
+<p>
+When a transition occurs from state \(s\) to state \(s'\), we apply the
+update rule:
+</p>
+
+\begin{equation}
+  U^\pi(s') \leftarrow U^\pi(s) + \alpha (R(s) + \gamma U^\pi(s') -U^\pi(s))
+\end{equation}
+
+<p>
+Where \(\alpha\) is the learning rate. The difference in utilities gives rise
+to the name temporal-difference.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">function PASSIVE-TD-AGENT(percept) returns an action
+  inputs: percept, with current state s' and reward r'
+  persistent: \pi, a fixed policy
+    U, a table of utilities, initially empty
+    N_s, a table of frequencies
+    s, a, r, the previous state, action and reward
+
+  if s' is new then U[s'] &lt;- r'
+  if s is not null then
+    increment N_s[s]
+    U[s] &lt;- U[s] + \alpha N_s[s] (r + \gamma U[s'] - U[s])
+  if s'.TERMINAL? then s, a r &lt;- null else s,a,r &lt;- s', \pi[s'], r'
+  return a
+</pre>
+</div>
+
+<p>
+TD learning learns slower than ADP and shows much higher variability,
+but is simpler and requires less computation. TD learning does not
+need a transition model to perform updates.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb713dd4" class="outline-2">
+<h2 id="orgb713dd4"><span class="section-number-2">12</span> RANDOM</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org659484b" class="outline-3">
+<h3 id="org659484b"><span class="section-number-3">12.1</span> Simon's Ant</h3>
+<div class="outline-text-3" id="text-12-1">
 <p>
 Simon, noble prize in economics
 </p>
@@ -2411,7 +2728,7 @@ of the environment and not the complexity of the program.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jethro Kuan</p>
-<p class="date">Created: 2018-10-12 Fri 17:42</p>
+<p class="date">Created: 2018-10-25 Thu 19:32</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
