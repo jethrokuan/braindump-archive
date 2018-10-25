@@ -32,6 +32,8 @@ $Pr(X = k) = \frac{\lambda^{k} e^{-\lambda}}{k!}, k = 0,1,...$
 
 $E(X) = Var(X) = \lambda$
 ** Normal $X \sim \mathcal{N}(\mu, \sigma^2)$
+https://kfrankc.com/posts/2018/10/19/normal-dist-derivation
+
 $f(x) = \frac{1}{\sqrt{2\pi}\sigma} exp
 \left(-\frac{(x-\mu)^2}{2\sigma^2}\right), -\infty<x<\infty$
 1. When $\mu = 0$, $f(x)$ is an even function, and $E(X^k) = 0$ where
