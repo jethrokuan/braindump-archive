@@ -1,3 +1,4 @@
+#+SETUPFILE: ./export_template.org
 #+TITLE: Talks
 
 * Renn Vara - The Reality of Startup Life
