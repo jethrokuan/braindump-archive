@@ -250,6 +250,11 @@ of $\mathbf{R}v$ with respect to $\omega$,
 \end{equation}
 
 *** Unit Quarternions
+:REFERENCES:
+https://eater.net/quaternions
+https://www.youtube.com/watch?v=d4EgbgTm0Bg
+:END:
+
 A unit quarternion is a unit length 4-vector whose components can be
 written as $\mathbf{q} = (x, y, z, w)$. Unit quarternions live on the
 unit sphere $\lVert q \rVert = 1$ and antipodal quartenions, $q$ and
@@ -716,7 +721,8 @@ Homographies are used in:
 
 https://cseweb.ucsd.edu/classes/wi07/cse252a/homography_estimation/homography_estimation.pdf
 
-* Understanding Quarternions
-- https://www.3dgep.com/understanding-quaternions/
-- https://www.youtube.com/watch?v=d4EgbgTm0Bg
-
+* Structure For Motion
+In general, a single image cannot provide 3D information. From a set
+of images taken with varying camera positions, we can extract 3D
+information of the scene. This requires us to match (associate)
+features in one image with the same feature in another image.
