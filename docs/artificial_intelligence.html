@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-25 Thu 19:32 -->
+<!-- 2018-10-27 Sat 19:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Artificial Intelligence</title>
@@ -227,7 +227,14 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#org848f9b1">11.1.1. Direct Utility Estimation (MC Learning)</a></li>
 <li><a href="#org2e35e43">11.1.2. Adaptive Dynamic Programming</a></li>
-<li><a href="#org2da4a84">11.1.3. <span class="todo TODO">TODO</span> Temporal-difference Learning</a></li>
+<li><a href="#org2da4a84">11.1.3. Temporal-difference Learning</a></li>
+</ul>
+</li>
+<li><a href="#org0db7fae">11.2. Active Reinforcement Learning</a>
+<ul>
+<li><a href="#org20acbdb">11.2.1. Potential Pitfalls</a></li>
+<li><a href="#org4610b0c">11.2.2. Learning an action-utility function</a></li>
+<li><a href="#org8affe5e">11.2.3. Q-learning</a></li>
 </ul>
 </li>
 </ul>
@@ -1185,6 +1192,10 @@ be stuck on a local maximum.
 <h3 id="org42b32b0"><span class="section-number-3">6.3</span> Local Beam Search</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
+<a href="https://www.youtube.com/watch?v=RLWuzLLSIgw">https://www.youtube.com/watch?v=RLWuzLLSIgw</a>
+</p>
+
+<p>
 Local beam search keeps track of \(n\) states rather than just one. It
 begins with \(n\) randomly generated states, at each step all the
 successors of all states are generated. If any one is a goal, the
@@ -1199,13 +1210,12 @@ most progress is being made.
 </p>
 
 <p>
-/Stochastic local beam search chooses \(n\) successors at random, with
+Stochastic local beam search chooses \(n\) successors at random, with
 the probability of choosing a given successor being an increasing
-function of its value/.
+function of its value.
 </p>
 </div>
 </div>
-
 
 <div id="outline-container-orgb67a6a4" class="outline-3">
 <h3 id="orgb67a6a4"><span class="section-number-3">6.4</span> Genetic Algorithms</h3>
@@ -2658,7 +2668,7 @@ argmax_\pi min_h u_h^\pi\).
 </div>
 
 <div id="outline-container-org2da4a84" class="outline-4">
-<h4 id="org2da4a84"><span class="section-number-4">11.1.3</span> <span class="todo TODO">TODO</span> Temporal-difference Learning</h4>
+<h4 id="org2da4a84"><span class="section-number-4">11.1.3</span> Temporal-difference Learning</h4>
 <div class="outline-text-4" id="text-11-1-3">
 <p>
 TD learning involves using the observed transitions to adjust the
@@ -2701,10 +2711,209 @@ TD learning learns slower than ADP and shows much higher variability,
 but is simpler and requires less computation. TD learning does not
 need a transition model to perform updates.
 </p>
+
+<p>
+ADP and TD are closely related. Both try to make local adjustments to
+the utility estimates in order to make each state "agree" with its
+successors. However, TD adjusts a state to agree with its observed
+successor, while ADP adjusts the state to agree with all of the
+successors that might occur, weighted by their probabilities.
+</p>
+
+<p>
+ADP can be made more efficient by approximating the algorithms for
+value or policy iteration. For example, the prioritized sweeping
+heuristic prefers adjustments to states that have undergone a large
+adjustment in their own utility schemes. This enables them to handle
+state spaces that are far too large for a full ADP. An approximation
+algorithm can use a minimum adjustment size that decreases as the
+environment model becomes more accurate, eliminating very long value
+iterations that occur early in learning due to large changes in the
+model.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0db7fae" class="outline-3">
+<h3 id="org0db7fae"><span class="section-number-3">11.2</span> Active Reinforcement Learning</h3>
+<div class="outline-text-3" id="text-11-2">
+<p>
+A passive learning agent has a fixed policy that determines its
+behaviour. An active agent must learn what actions to take.
+</p>
+
+<p>
+First, the agent will need to learn a complete model with outcome
+probabilities for all actions, rather than the model for the fixed
+policy. The learning mechanism for the passive ADP agent will work for
+this
+</p>
+
+<p>
+Next, the agent has a choice of actions. The utilities it learns are
+defined by the optimal policy, governed by the <a href="#org1f91108">Bellman equations</a>.
+Having obtained a utility function for the given  model, the agent can
+extract an optimal action by one-step look-ahead to maximise the
+expected utility.
+</p>
+</div>
+
+<div id="outline-container-org20acbdb" class="outline-4">
+<h4 id="org20acbdb"><span class="section-number-4">11.2.1</span> Potential Pitfalls</h4>
+<div class="outline-text-4" id="text-11-2-1">
+<p>
+A greedy agent, that picks the best action given the learned model,
+very seldom converges to the optimal policy for the environment and
+sometimes converges to horrible policies.
+</p>
+
+<p>
+This is because the learned model is not the same as the true
+environment. What is optimal in the learned model might not be optimal
+in the true environment.
+</p>
+
+<p>
+An agent therefore has to make a tradeoff between exploitation to
+maximise its reward, and exploration to maximise its long-term
+well-being. The question on whether there is an optimal exploration
+policy is a subfield of statistical decision theory called the bandit
+problem.
+</p>
+
+
+<p>
+An agent has to be greedy in the limit of infinite exploration, or
+GLIE. This is the scenario where the learned model is the true model.
+There are several GLIE schemes, one of the simplest is to have the
+agent choose a random action a fraction \(\frac{1}{t}\) of the time and
+to follow the greedy policy otherwise. This can be extremely slow to
+converge.
+</p>
+
+<p>
+A more sensible approach is to assign some eight to actions that the
+agent has not tried very often,while tending to avoid actions that are
+believed to be of low utility. This can be achieved by altering the
+constraint equation to assign higher utility estimates to unexplored
+state-action pairs.
+</p>
+
+\begin{equation}
+  U^+(s) \leftarrow R(s) + \gamma max_{a} f\left( \sum_{s'} P(s' |
+    s, a) U^+(s), N(s, a) \right)
+\end{equation}
+
+<p>
+\(f(u, n)\) is called the exploration function. It determines how greed
+is traded off against curiosity. The function should be increasing in
+\(u\) and decreasing in \(n\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4610b0c" class="outline-4">
+<h4 id="org4610b0c"><span class="section-number-4">11.2.2</span> Learning an action-utility function</h4>
+<div class="outline-text-4" id="text-11-2-2">
+<p>
+An active TD agent is no longer equipped with a fixed policy, so if it
+learns a utility function \(U\), it will need to learn a model in order
+to be able choose an action based on \(U\) via one-step look-ahead. The
+<a href="#org56314ee">update rule for TD</a> remains unchanged. IT can be shown that the TD
+algorithm will converge to the same values as ADP as the number of
+training sequences tends to infinity.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8affe5e" class="outline-4">
+<h4 id="org8affe5e"><span class="section-number-4">11.2.3</span> Q-learning</h4>
+<div class="outline-text-4" id="text-11-2-3">
+<p>
+Q-learning learns an action-utility representation instead of learning
+utilities. We will use the notation \(Q(s,a)\) to denote the value of
+doing action \(a\) in state \(s\).
+</p>
+
+\begin{equation}
+  U = max_a Q(s, a)
+\end{equation}
+
+<p>
+<b>A TD agent that learns a Q-function does not need a model of the form
+\(P(s' | s, a)\), either for learning or for action selection.</b>
+Q-learning is hence called a model-free method. We can write a
+constraint equation as follows:
+</p>
+
+\begin{equation}
+  Q(s,a) = R(s) + \gamma \sum_{s'} P(s' | s, a) max_{a'} Q(s', a')
+\end{equation}
+
+<p>
+However, this equation requires a model to be learnt, since it depends
+on \(P(s' | s, a)\). The TD approach requires no model of state
+transitions.
+</p>
+
+<p>
+The updated equation for TD Q-learning is:
+</p>
+
+\begin{equation}
+  Q(s, a) \leftarrow Q(s, a) + \alpha (R(s) + \gamma max_{a'} Q(s',
+  a') - Q(s,a))
+\end{equation}
+
+<p>
+which is calculated whenever action \(a\) is executed in state \(s\)
+leading to state \(s'\).
+</p>
+
+<p>
+Q-learning has a close relative called SARSA
+(State-Action-Reward-State-Action). The update rule for SARSA is as
+follows:
+</p>
+
+\begin{equation}
+  Q(s, a) \leftarrow Q(s, a) + \alpha (R(s) + \gamma Q(s', a') - Q(s, a))
+\end{equation}
+
+<p>
+where \(a'\) is the action actually taken in state \(s'\). The rule is
+applied at the end of each \(s, a, r, s', a'\) quintuplet, hence the
+name.
+</p>
+
+<p>
+Whereas Q-learning backs up the best Q-value from the state reached in
+the observed transition, SARSA waits until an action is actually taken
+and backs up the Q-value for that action. For a greedy agent that
+always takes the action with best Q-value, the two algorithms are
+identical. When exploration is happening, they differ significanty.
+</p>
+
+<p>
+Because Q-learning uses the best Q-value, it pays no attention to the
+actual policy being followed - it is an off-policy learning algorithm.
+However, SARSA is an on-policy algorithm.
+</p>
+
+<p>
+Q-learning is more flexible in the sense that a Q-learning agent can
+learn how to behave well even when guided by a random or adversarial
+exploration policy. On the other hand, SARSA is more realistic: for
+example if the overall policy is even partly controlled by other
+agents, it is better to learn a Q-function for what will actually
+happen rather than what the agent would like to happen.
+</p>
 </div>
 </div>
 </div>
 </div>
+
 <div id="outline-container-orgb713dd4" class="outline-2">
 <h2 id="orgb713dd4"><span class="section-number-2">12</span> RANDOM</h2>
 <div class="outline-text-2" id="text-12">
@@ -2728,7 +2937,7 @@ of the environment and not the complexity of the program.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jethro Kuan</p>
-<p class="date">Created: 2018-10-25 Thu 19:32</p>
+<p class="date">Created: 2018-10-27 Sat 19:14</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

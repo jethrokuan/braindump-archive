@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-25 Thu 19:32 -->
+<!-- 2018-10-27 Sat 19:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Computer Vision</title>
@@ -150,7 +150,7 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#orgf0baa5b">6. Homography</a></li>
-<li><a href="#orgd1ccd96">7. Understanding Quarternions</a></li>
+<li><a href="#org97c3615">7. Structure For Motion</a></li>
 </ul>
 </div>
 </div>
@@ -510,6 +510,11 @@ of \(\mathbf{R}v\) with respect to \(\omega\),
 <div id="outline-container-org56c7059" class="outline-4">
 <h4 id="org56c7059"><span class="section-number-4">2.3.3</span> Unit Quarternions</h4>
 <div class="outline-text-4" id="text-2-3-3">
+<p>
+<a href="https://eater.net/quaternions">https://eater.net/quaternions</a>
+<a href="https://www.youtube.com/watch?v=d4EgbgTm0Bg">https://www.youtube.com/watch?v=d4EgbgTm0Bg</a>
+</p>
+
 <p>
 A unit quarternion is a unit length 4-vector whose components can be
 written as \(\mathbf{q} = (x, y, z, w)\). Unit quarternions live on the
@@ -1208,19 +1213,21 @@ Homographies are used in:
 </div>
 </div>
 
-<div id="outline-container-orgd1ccd96" class="outline-2">
-<h2 id="orgd1ccd96"><span class="section-number-2">7</span> Understanding Quarternions</h2>
+<div id="outline-container-org97c3615" class="outline-2">
+<h2 id="org97c3615"><span class="section-number-2">7</span> Structure For Motion</h2>
 <div class="outline-text-2" id="text-7">
-<ul class="org-ul">
-<li><a href="https://www.3dgep.com/understanding-quaternions/">https://www.3dgep.com/understanding-quaternions/</a></li>
-<li><a href="https://www.youtube.com/watch?v=d4EgbgTm0Bg">https://www.youtube.com/watch?v=d4EgbgTm0Bg</a></li>
-</ul>
+<p>
+In general, a single image cannot provide 3D information. From a set
+of images taken with varying camera positions, we can extract 3D
+information of the scene. This requires us to match (associate)
+features in one image with the same feature in another image.
+</p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jethro Kuan</p>
-<p class="date">Created: 2018-10-25 Thu 19:32</p>
+<p class="date">Created: 2018-10-27 Sat 19:14</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
