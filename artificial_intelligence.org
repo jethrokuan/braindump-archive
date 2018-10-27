@@ -455,6 +455,10 @@ be stuck on a local maximum.
 #+END_SRC
 
 ** Local Beam Search
+:REFERENCES:
+https://www.youtube.com/watch?v=RLWuzLLSIgw
+:END:
+
 Local beam search keeps track of $n$ states rather than just one. It
 begins with $n$ randomly generated states, at each step all the
 successors of all states are generated. If any one is a goal, the
@@ -465,10 +469,9 @@ search threads (compared to running random-restart $n$ times), quickly
 abandoning unfruitful searches and moves its resources to where the
 most progress is being made.
 
-/Stochastic local beam search chooses $n$ successors at random, with
+Stochastic local beam search chooses $n$ successors at random, with
 the probability of choosing a given successor being an increasing
-function of its value/.
-
+function of its value.
 
 ** Genetic Algorithms
 A /genetic algorithm/ is a variant of stochastic beam search in which
@@ -1459,7 +1462,7 @@ of possible models $H$ and defines an optimal robust policy as one
 that gives the best outcome in the worst case over $H$: $\pi^* =
 argmax_\pi min_h u_h^\pi$.
 
-*** TODO Temporal-difference Learning
+*** Temporal-difference Learning
 
 TD learning involves using the observed transitions to adjust the
 utilities such that the constraint equations are met.
@@ -1467,6 +1470,7 @@ utilities such that the constraint equations are met.
 When a transition occurs from state $s$ to state $s'$, we apply the
 update rule:
 
+#+NAME: eqn:td-update
 \begin{equation}
   U^\pi(s') \leftarrow U^\pi(s) + \alpha (R(s) + \gamma U^\pi(s') -U^\pi(s))
 \end{equation}
@@ -1493,6 +1497,145 @@ to the name temporal-difference.
 TD learning learns slower than ADP and shows much higher variability,
 but is simpler and requires less computation. TD learning does not
 need a transition model to perform updates.
+
+ADP and TD are closely related. Both try to make local adjustments to
+the utility estimates in order to make each state "agree" with its
+successors. However, TD adjusts a state to agree with its observed
+successor, while ADP adjusts the state to agree with all of the
+successors that might occur, weighted by their probabilities.
+
+ADP can be made more efficient by approximating the algorithms for
+value or policy iteration. For example, the prioritized sweeping
+heuristic prefers adjustments to states that have undergone a large
+adjustment in their own utility schemes. This enables them to handle
+state spaces that are far too large for a full ADP. An approximation
+algorithm can use a minimum adjustment size that decreases as the
+environment model becomes more accurate, eliminating very long value
+iterations that occur early in learning due to large changes in the
+model.
+
+** Active Reinforcement Learning
+A passive learning agent has a fixed policy that determines its
+behaviour. An active agent must learn what actions to take.
+
+First, the agent will need to learn a complete model with outcome
+probabilities for all actions, rather than the model for the fixed
+policy. The learning mechanism for the passive ADP agent will work for
+this
+
+Next, the agent has a choice of actions. The utilities it learns are
+defined by the optimal policy, governed by the [[eqn:bellman-eqn][Bellman equations]].
+Having obtained a utility function for the given  model, the agent can
+extract an optimal action by one-step look-ahead to maximise the
+expected utility.
+
+*** Potential Pitfalls 
+A greedy agent, that picks the best action given the learned model,
+very seldom converges to the optimal policy for the environment and
+sometimes converges to horrible policies.
+
+This is because the learned model is not the same as the true
+environment. What is optimal in the learned model might not be optimal
+in the true environment.
+
+An agent therefore has to make a tradeoff between exploitation to
+maximise its reward, and exploration to maximise its long-term
+well-being. The question on whether there is an optimal exploration
+policy is a subfield of statistical decision theory called the bandit
+problem.
+
+
+An agent has to be greedy in the limit of infinite exploration, or
+GLIE. This is the scenario where the learned model is the true model.
+There are several GLIE schemes, one of the simplest is to have the
+agent choose a random action a fraction $\frac{1}{t}$ of the time and
+to follow the greedy policy otherwise. This can be extremely slow to
+converge.
+
+A more sensible approach is to assign some eight to actions that the
+agent has not tried very often,while tending to avoid actions that are
+believed to be of low utility. This can be achieved by altering the
+constraint equation to assign higher utility estimates to unexplored
+state-action pairs.
+
+\begin{equation}
+  U^+(s) \leftarrow R(s) + \gamma max_{a} f\left( \sum_{s'} P(s' |
+    s, a) U^+(s), N(s, a) \right)
+\end{equation}
+
+$f(u, n)$ is called the exploration function. It determines how greed
+is traded off against curiosity. The function should be increasing in
+$u$ and decreasing in $n$.
+
+*** Learning an action-utility function 
+An active TD agent is no longer equipped with a fixed policy, so if it
+learns a utility function $U$, it will need to learn a model in order
+to be able choose an action based on $U$ via one-step look-ahead. The
+[[eqn:td-update][update rule for TD]] remains unchanged. IT can be shown that the TD
+algorithm will converge to the same values as ADP as the number of
+training sequences tends to infinity.
+
+*** Q-learning
+Q-learning learns an action-utility representation instead of learning
+utilities. We will use the notation $Q(s,a)$ to denote the value of
+doing action $a$ in state $s$.
+
+\begin{equation}
+  U = max_a Q(s, a)
+\end{equation}
+
+*A TD agent that learns a Q-function does not need a model of the form
+$P(s' | s, a)$, either for learning or for action selection.*
+Q-learning is hence called a model-free method. We can write a
+constraint equation as follows:
+
+\begin{equation}
+  Q(s,a) = R(s) + \gamma \sum_{s'} P(s' | s, a) max_{a'} Q(s', a')
+\end{equation}
+
+However, this equation requires a model to be learnt, since it depends
+on $P(s' | s, a)$. The TD approach requires no model of state
+transitions.
+
+The updated equation for TD Q-learning is:
+
+\begin{equation}
+  Q(s, a) \leftarrow Q(s, a) + \alpha (R(s) + \gamma max_{a'} Q(s',
+  a') - Q(s,a))
+\end{equation}
+
+which is calculated whenever action $a$ is executed in state $s$
+leading to state $s'$.
+
+Q-learning has a close relative called SARSA
+(State-Action-Reward-State-Action). The update rule for SARSA is as
+follows:
+
+\begin{equation}
+  Q(s, a) \leftarrow Q(s, a) + \alpha (R(s) + \gamma Q(s', a') - Q(s, a))
+\end{equation}
+
+where $a'$ is the action actually taken in state $s'$. The rule is
+applied at the end of each $s, a, r, s', a'$ quintuplet, hence the
+name.
+
+Whereas Q-learning backs up the best Q-value from the state reached in
+the observed transition, SARSA waits until an action is actually taken
+and backs up the Q-value for that action. For a greedy agent that
+always takes the action with best Q-value, the two algorithms are
+identical. When exploration is happening, they differ significanty.
+
+Because Q-learning uses the best Q-value, it pays no attention to the
+actual policy being followed - it is an off-policy learning algorithm.
+However, SARSA is an on-policy algorithm.
+
+Q-learning is more flexible in the sense that a Q-learning agent can
+learn how to behave well even when guided by a random or adversarial
+exploration policy. On the other hand, SARSA is more realistic: for
+example if the overall policy is even partly controlled by other
+agents, it is better to learn a Q-function for what will actually
+happen rather than what the agent would like to happen.
+
 * RANDOM
 
 ** Simon's Ant
@@ -1502,4 +1645,3 @@ Simon, noble prize in economics
 The complexity of the behaviour is the manifestation of the complexity
 of the environment and not the complexity of the program.
 #+END_QUOTE
-
