@@ -1129,12 +1129,11 @@ control/, which can be in any of a finite set of states. There is a
 tape divided into squares or /cells/; each cell can hold any one of a
 finite number of symbols.
 
-
 #+DOWNLOADED: /tmp/screenshot.png @ 2018-10-16 12:52:06
 #+CAPTION: A Turing Machine
 [[file:Turing Machines/screenshot_2018-10-16_12-52-06.png]]
 
-Initially, the input, which as a finite-length string of symbols
+Initially, the input, which is a finite-length string of symbols
 chosen from the input alphabet, is placed on the tape. All other tape
 cells, extending infinitely to the left and right, initially hold a
 special symbol called the /blank/. The blank is a tape symbol, but not
@@ -1211,7 +1210,6 @@ for some state in $p$ in $F$ and any tape strings $\alpha$ and $\beta$. The set
 of languages we can accept using a TM is often called the /recursively
 enumerable languages/ or RE languages.
 
-
 ** Turing machines and halting
 A TM halts if it enters a state $q$, scanning a tape symbol $X$, and
 there is no move in this situation: $\delta(q, X)$ is undefined. This is
@@ -1230,7 +1228,7 @@ importantly into decidability theory.
 
 *** Storage in the State
 We can use the finite control not only to represent a position in the
-"program" of a TM, but to hold a finite amount of data. We extend
+"program" of a TM, but to hold a *finite amount of data*. We extend
 the state as a tuple $[q, A, B, C]$, and having multiple tracks.
 
 *** Multiple Tracks
@@ -1255,9 +1253,7 @@ states for each copy. The "calls" are made to the start states of
 different copies of the subroutine, and each copy "returns" to a
 different state.
 
-*** Extensions to basic Turing Machine
-
-**** Multitape Turing Machines
+*** Multitape Turing Machines
 The device has a finite control (state), and some finite number of
 tapes. Each tape is divided into cells, and each cell can hold any
 symbol of the finite tape alphabet.
@@ -1278,7 +1274,7 @@ each of the tape heads. On each move:
    This symbol could be the same as the previous symbol.
 3. Each tape head makes a move, which can be either left, right or stationary.
 
-**** Equivalence of one-tape and multitape TMs
+*** Equivalence of one-tape and multitape TMs
 Suppose language $L$ is accepted by a k-tape TM $M$. We simulate $M$
 with a one-tape TM $N$ whose tape we think of as having 2k tracks.
 Half of these tracks hold the tapes of $M$, and the other half of the
@@ -1309,7 +1305,7 @@ accepts, and $N$ does not accept otherwise.
 The time taken by the one-tape TM $N$ to simulate $n$ moves of the
 k-tape TM $M$ is $O(n^2)$.
 
-**** Non-deterministic Turing Machines
+*** Non-deterministic Turing Machines
 A NTM differs from the deterministic variety by having a transition
 $\delta$ such that for each state $q$ and tape symbol $X$, $\delta(q,X)$ is a
 set of triples $\{(q_1, Y_1, D_1), \dots, (q_k, Y_k, D_k)\}$.
@@ -1352,10 +1348,156 @@ To process the current ID, $M_D$ does:
 This can be viewed as a breadth-first search on all possible IDs
 reached.
 
-**** TODO Restricted Turing Machines
+** Restricted Turing Machines
+*** Turing Machines with Semi-infinite Tapes
 
-**** TODO Multistack Machines
+We can assume the tape to be semi-infinite, having no cells to the
+left of the initial head position, an still retain the full power of
+TMs.
 
-**** TODO Turing Machines and Computers
+The trick behind the construction is to use two tracks on the
+semi-infinite tape. The upper track represents the cells of the
+original TM that are at or to the right of the initial head position,
+but in reverse order. The upper track represents $X_0 , X_1 \dots$ where
+$X_0$ is the initial position of the head; $X_1, X_2$ so on are the cells
+to its right. The $*$ on the leftmost cell bottom track serves as an
+end marker and prevents the head of the semi-infinite TM from falling
+off the end of the tape.
 
-**** TODO Runtime of Computers vs Turing Machines
+
+#+CAPTION: A semi-infinite tape can simulate a two-way infinite tape.
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-10-30 09:22:16
+[[file:Turing%20Machines/screenshot_2018-10-30_09-22-16.png]]
+
+Another restriction we make is to never write a blank. This combined
+with the semi-infinite tape restriction means that the tape is at all
+times a prefix of non-blank symbols followed by an infinity of blanks.
+
+We can construct an equivalent TM $M_2$ from a TM $M_1$ by restricting
+that $M_1$ never writes a blank, by creating a new tape symbol $B'$
+that functions as a blank, but is not the blank $B$.
+
+** Multistack Machines
+
+A $k$-stack machine is a deterministic PDA with $k$ stacks. The
+multistack machine has a finite control, which is in one of a finite
+state set of states. A move of the multistack machine is based on:
+
+1. The state of the finite control
+2. The input symbol read, which is chosen from the finite input
+   alphabet.
+
+Each move allows the multistack machine to:
+
+1. Change to a new state
+2. Replace the top symbol of each stack with a string of zero or more
+   stack symbols.
+
+If a language is accepted by a TM, it is also accepted by a two-stack
+machine.
+
+** Counter Machines
+Counter machines have the same structure as the multistack machine,
+but in place of each stack is a counter. Counters holdd any
+non-negative integer, but we can only distinguish between zero and
+non-zero counters. That is, the move of the counter machine depends on
+its state, input symbol, and which, if any, of the counters are zero.
+
+Each move can:
+
+1. Change state
+2. Add or subtract 1 from any of its counters independently
+
+A counter machine can be thought of as a restricted multistack
+machine, where:
+
+1. There are only 2 stack symbols, which is the bottom-of-stack marker
+   $Z_0$, and $X$.
+2. $Z_0$ is initially on each stack.
+3. We may replace $Z_0$ only with $X^i Z_0$, $i \ge 0$.
+4. We may replace $X$ only with $X^i$, $i \ge 0$.
+
+We observe the following properties:
+
+1. Every language accepted by a counter machine is recursively
+   enumerable.
+2. Every language accepted by a one-counter machine is a CFL. This is
+   made immediately obvious by considering that it is a one-stack
+   machine (a PDA).
+3. Every language accepted by a two-counter machine is RE.
+
+The proof is done by showing that three counters is enough to simulate
+a TM, and that two counters can simulate three counters.
+
+Proof outline: Suppose there are $r-1$ symbols used by the stack
+machine. We can identify the symbols with the digits $1$ through
+$r-1$, and think of the stack as an integer in base $r$. We use two
+counters to hold the integers that represent each of the two stacks in
+a two-stack machine. The third counter is used to adjust the other two
+counter, by either dividing or multiplying a count by $r$., where
+$r-1$ tape symbols are used by the stack machine.
+
+** Turing Machines and Computers
+
+1. A computer can simulate a Turing machine, and
+2. A Turing machine can simulate a computer, and can do so in an
+   amount of time that is at most some polynomial in the number of
+   steps taken by the computer
+
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-10-30 10:13:41
+[[file:Turing%20Machines/screenshot_2018-10-30_10-13-41.png]]
+
+We can prove the latter by using a TM to simulate the instruction
+cycle of the computer, as follows:
+
+1. Search the first tape for an address matching the instruction
+   number on tape 2.
+2. Examine the instruction address value, if it requires the value of
+   some address, that address is part of the instruction. Mark the
+   position of the instruction using a second tape, not shown in the
+   picture. Search for the memory address on the first tape, an dcopy
+   its value onto tape 3, the tape holding the memory address
+3. Execute the instruction. Examples of instructions are:
+   1. Copying values to some other address
+   2. Adding value to some other address
+   3. The jump instruction
+
+** Runtime of Computers vs Turing Machines
+
+Running time is an important consideration, because we want to know
+what can be computed with enough efficiency. We divide between
+tractable and intractable problems, where tractable problems can be
+solved efficiently.
+
+Hence, we need to assure ourselves that a problem can be solved in
+polynomial time on a typical computer, can be solved in polynomial
+time on a TM, and conversely.
+
+A TM can simulate $n$ steps of a computer in $O(n^3)$ time. Consider
+the multiplication instruction: if a computer were to start with a
+word holding the integer 2, and multiply the word by itself $n$ times,
+it would hold the number $2^{2^n}$, and would take $2^n + 1$ bits to
+represent, exponential in $n$.
+
+To resolve this issue, one can assert that words retain a maximum
+length. We take another approach, imposing the restriction that instructions
+may use words of any length, but can only produce words one bit longer
+than its arguments.
+
+The prove the polynomial time relationship, we note that after $n$
+instructions have been executed, the number of words mentioned on the
+memory tape of the TM is $O(n)$, and hence requires $O(n)$ TM cells to
+represent. The tape is hence $O(n^2)$ cells long, and the TM can locate
+the finite number of words required by one computer instruction in
+$O(n^2)$ time.
+
+Hence, if a computer:
+
+1. Has only instructions that increase the maximum word length by at
+   most 1, and
+2. Has only instructions that a multitape TM can perform on wordsd of
+   length $k$ in $O(k^2)$ steps or less, then
+
+the Turing machine can simulate $n$ steps of the computer in $O(n^3)$
+of its own steps.
