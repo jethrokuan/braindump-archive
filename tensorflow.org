@@ -416,3 +416,28 @@ fetches.
 To use partial execution, a user first calls =partial_run_setup()= and then a sequence of =partial_run()=. =partial_run_setup= specifies the list of feeds and fetches that will be used in the subsequent =partial_run= calls.
 
 The optional =feed_dict= argument allows the caller to override the value of tensors in the graph.
+* Debugging Memory Leaks
+:REFERENCE:
+https://dantkz.github.io/How-To-Debug-A-Memory-Leak-In-TensorFlow/
+:END:
+** Finalize the session graph
+
+Finalizing the graph ensures that no new nodes are being added to the
+graph on each session run, by marking the graph as read-only. Anything
+that tries to modify the graph will raise an Exception.
+
+** Use [[goog-perftools.sourceforge.net/][tcmalloc]]
+
+tcmalloc suffers less from fragmentation when allocating and
+deallocating large objects (such as tensors). Some memory-intensive
+Tensorflow programs have been known to leak heap address space (while
+freeing individual objects they use) with the default malloc.
+
+tcmalloc also has a heap profiler, which can be analyzed with the
+google-pprof tool.
+* TODO What happens when a session is created?
+Context: created a dataflow job that created one session each run,
+which was really slow: 200 workers 1 prediction/s.
+
+Figure out what a tf.Session contains, and how they are initialized
+with/without graphs.
