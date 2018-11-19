@@ -441,3 +441,10 @@ which was really slow: 200 workers 1 prediction/s.
 
 Figure out what a tf.Session contains, and how they are initialized
 with/without graphs.
+* Optimizing the Input Pipeline
+:REFERENCE:
+https://www.tensorflow.org/performance/datasets_performance
+:END:
+
+1. Use ~prefetch~ to overlap the work of a producer and consumer
+2. Cache the dataset into memory if it can fit
