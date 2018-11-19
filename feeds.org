@@ -2,8 +2,9 @@
 #+TITLE: RSS Feeds
 * Feeds                                                              :elfeed:
 ** Computer Science                                                      :cs:
-** News                                                               :news:
+** Tech                                                               :tech:
 *** https://hnrss.org/newest?points=100
+** News                                                               :news:
 *** https://news.google.com/news/rss/headlines/section/topic/WORLD
 ** Emacs                                                              :emacs:
 *** http://planet.emacsen.org/atom.xml
