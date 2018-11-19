@@ -1,5 +1,32 @@
 #+SETUPFILE: ./export_template.org
 #+TITLE: Linear Algebra
+* Definitions
+A matrix of dimensions M-by-N looks like:
+
+\begin{equation}
+  A = \begin{bmatrix}
+    a_{11} & a_{12} & \dots & a_{1N} \\
+    a_{21} & a_{22} & \dots & a_{2N} \\
+    \vdots & \vdots & \vdots & \vdots \\
+    a_{M1} & a_{M2} & \dots & a_{MN}
+    \end{bmatrix}
+\end{equation}
+
+Its transpose flips the dimensions. In the below example transposing a
+N-by-1 matrix makes it a 1-by-N matrix.
+
+\begin{equation}
+  a^T= \left[ a_1, a_2, \dots, a_N \right]
+\end{equation}
+
+The magnitude of a vector is given by $\left| a \right| = \sqrt{a_1^2 +
+a_2^2 + \dots + a_n^2}$.
+* Linear Independence
+A set of vectors $\mathbf{x}$ is linearly dependent if there exist a set of
+scalars $\mathbf{\alpha}$, not all zero, such that $\sum_{i=1}^m \alpha_i x_i = 0$.
+If the only way to satisfy the equation is to have $\alpha_i = 0 \forall i$, then
+the set of vectors $\mathbf{x}$ is linearly independent.
+
 * Span
 The "span" of $\hat{v}$ and $\hat{w}$ is the set of all their linear
 combinations:
@@ -11,6 +38,34 @@ combinations:
 * Basis
 The basis of a vector space is a set of linearly independent vectors
 that span the full space.
+
+If $\mathbf{v}$ is the basis set, then any N-by-1 vector $x$ can be
+written as $x = \sum^n_{i=1}c_i v_i$ for some scalar $c_i$.
+
+* Special Matrices
+- diagonal matrix :: a matrix with all off-diagonal entries equal to 0.
+- identity matrix :: A diagonal matrix with diagonal entries equal to 1.
+- symmetric matrix :: $A = A^T$
+- skew symmetric matrix :: $A = -A^T$
+
+* Matrix properties
+- $(AB)^-1 = B^-1 A^{-1}$
+- $(AB)^T = B^T A^T$
+- $(A^{-1})^T = (A^T)^{-1}$
+- $A^{-1}^{}A = I$
+- $(AB)C = A(BC)$
+- $A(B+C) = AB + AC$
+- $(B+C)D = BD + CD$
+
+* Solutions to linear systems
+Given the matrix $A$ and vector $b$, the problem $Ax=b$ has a solution
+iff the vector $b$ can be expressed as a linear combination of the
+columns of $A$. If $A$ is a square matrix and is invertible, then the
+solution is $x = A^{-1}b$.
+
+If $A$ is a rectangular matrix of size M-by-N, and if $A^T A$ is
+invertible (square and full rank), then the linear least squares
+solution to $x$ is given by $x = (A^T A)^{-1} A^T b$.
 
 * Matrices as Linear Transformations
 
@@ -98,6 +153,10 @@ transformation. It is easy to see that the maximum rank of the
 transformation is the original dimensions of the matrix. Rank
 corresponds to the maximal number of linearly independent columns of
 $A$.
+
+- $r(AB) \le r(A)$
+- $r(AB) \le r(B)$
+- $r(AB) \le \text{min}(r(A), r(B))$
 
 * Column Space
 The column space of the matrix $A$ is the set of all possible outputs of
@@ -239,6 +298,24 @@ as:
 Consider a 3D rotation. If we can find an eigenvector for this 3D
 transformation, then we have found the axis of rotation.
 
+\begin{equation}
+  \sum_{i=1}^{n} \lambda_i = trace(A)
+\end{equation}
+
+\begin{equation}
+  \prod_{i=1}^{n}\lambda_i = \lvert A \rvert
+\end{equation}
+
+Eigenvectors corresponding to different eigenvalues are linearly
+independent.
+
+Eigenvectors of a real symmetric matrix are orthogonal and real.
+
+* Null Space
+The null space of a matrix $A$ consists of all vectors $x$ such that
+$Ax = 0$. if $A$ is rank-deficient, then there is a non-zero solution
+for $x$.
+
 * Singular Value Decomposition
 
 Given an input data matrix $A$ consisting of $m$ documents and $n$
@@ -267,6 +344,25 @@ V^T$, where:
 3. $\Sigma$ is diagonal, and entries are positive, sorted in decreasing
    order.
 
+The entries on the diagonal of $\Sigma$ are known as the singular values,
+and they are the squareroots of the eigenvalues of both $AA^T$ and $A^T
+A$. The number of non-zero singular values equals to the rank of $A$.
+
+SVD can be used to solve linear equations of the form $Ax = b$, where
+$A$ is known, and $b$ is the zero-vector. We can do a SVD of $A$ and
+write the solution for $x$:
+
+\begin{equation}
+  U \Sigma V^T x = 0
+\end{equation}
+
+If A is full-rank, then $x$ must be the zero-vector. Else, $x$ has a
+non-zero solution equal to the linear combination of the last few rows
+of $V^T$ corresponding to zero singular values.
+
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-18 17:32:26
+[[file:images/linear_algebra/Singular%20Value%20Decomposition/screenshot_2018-11-18_17-32-26.png]]
 
 * References
 1. [[https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab][Essence of Linear Algebra]]
