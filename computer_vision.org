@@ -1,8 +1,50 @@
 #+SETUPFILE: ./export_template.org
 #+TITLE: Computer Vision
 
-* COMMENT References
-[[file:~/Dropbox/NUS/CS4243/SzeliskiBook_20100903_draft.pdf][Computer Vision]]
+* Mathematics Fundamentals
+** Taylor Approximation
+The Taylor series of a function $f(x)$ at $x=a$ is given by:
+
+\begin{equation}
+  f(x) = \sum_{n=0}^{\infty} \frac{f^n(a)}{n!} (x-a)^n
+\end{equation}
+
+** [[file:linear_algebra.org][Linear Algebra]]
+
+* Camera Basics
+
+** Single Lens Reflex (SLR)
+A camera that typically uses a mirror and prism system that permits
+the photographer to view through the lens and see exactly what will be
+captured.
+
+#+DOWNLOADED: http://hyperphysics.phy-astr.gsu.edu/hbase/geoopt/imggo/slr2.gif @ 2018-11-18 23:35:22
+[[file:images/computer_vision/Camera%20Basics/slr2_2018-11-18_23-35-22.gif]]
+
+
+** DSLR (Digital SLR)
+
+#+DOWNLOADED: https://sites.google.com/site/photointro/_/rsrc/1336899552607/dslrstructure/DSLR_stru.jpg?height=317&width=400 @ 2018-11-18 23:37:03
+[[file:images/computer_vision/Camera%20Basics/DSLR_stru_2018-11-18_23-37-03.jpeg]]
+
+1. Matte focusing screen: screen on which the light passing through
+   the lens will project
+2. Condensing lens: A lens that is used to concentrate the incoming light
+3. Pentaprism: To produce a correctly oriented, right side up image
+   and project it into the viewfinder eyepiece
+4. AF sensor: accomplishes autofocus
+5. Viewfinder eyepiece: Allows us to see what will be recorded by the
+   image sensor
+6. LCD Screen: display stored photos or what will be recorded by image sensor
+7. Image sensor: contains a large number of pixels for converting an
+   optical image into electrical signals. Charge-coupled device (CCD)
+   and Complementary Metal-oxide-semiconductor (CMOS) are the more
+   common ones.
+8. AE sensor: accomplishes auto exposure
+9. Sub mirror: To reflect light passing through semi transparent main
+   mirror onto AF sensor
+10. Main mirror: reflect light into viewfinder compartment. Small
+    semi-transparent area to facilitate AF.
 
 * Introduction
 
@@ -726,3 +768,6 @@ In general, a single image cannot provide 3D information. From a set
 of images taken with varying camera positions, we can extract 3D
 information of the scene. This requires us to match (associate)
 features in one image with the same feature in another image.
+
+* COMMENT References
+[[file:~/Dropbox/NUS/CS4243/SzeliskiBook_20100903_draft.pdf][Computer Vision]]
