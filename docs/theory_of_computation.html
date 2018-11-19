@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-25 Thu 19:32 -->
+<!-- 2018-11-19 Mon 16:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Theory Of Computation</title>
@@ -116,7 +116,7 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#org96e2741">4. Nondeterministic Finite Automata</a>
 <ul>
-<li><a href="#orgd6cc4a7">4.1. Definition</a></li>
+<li><a href="#org41f4098">4.1. Definition</a></li>
 <li><a href="#orge5bc650">4.2. The Language of an NFA</a></li>
 <li><a href="#orgf076014">4.3. The Equivalence of DFA and NFA</a></li>
 <li><a href="#orge9012e8">4.4. Finite Automata with Epsilon-Transitions</a></li>
@@ -164,9 +164,9 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#org71d49b9">8. Pushdown Automata</a>
 <ul>
-<li><a href="#org41f4098">8.1. Definition</a></li>
+<li><a href="#org35d4db3">8.1. Definition</a></li>
 <li><a href="#orgaaabd13">8.2. Formal Definition</a></li>
-<li><a href="#orgbfe61f8">8.3. Instantaneous Descriptions</a></li>
+<li><a href="#org244dff1">8.3. Instantaneous Descriptions</a></li>
 <li><a href="#org206cd49">8.4. The Languages of PDAs</a>
 <ul>
 <li><a href="#org2e41401">8.4.1. Acceptance by Final State</a></li>
@@ -199,7 +199,7 @@ for the JavaScript code in this tag.
 <li><a href="#org6a0ba97">10. Turing Machines</a>
 <ul>
 <li><a href="#org56da6aa">10.1. Formal Notation</a></li>
-<li><a href="#org244dff1">10.2. Instantaneous Descriptions</a></li>
+<li><a href="#orgf997bee">10.2. Instantaneous Descriptions</a></li>
 <li><a href="#org230c31b">10.3. Transition Diagrams</a></li>
 <li><a href="#orge19f531">10.4. The Language of a TM</a></li>
 <li><a href="#orgfc8570b">10.5. Turing machines and halting</a></li>
@@ -208,19 +208,20 @@ for the JavaScript code in this tag.
 <li><a href="#org4ec9c47">10.6.1. Storage in the State</a></li>
 <li><a href="#org42af864">10.6.2. Multiple Tracks</a></li>
 <li><a href="#org9694e4e">10.6.3. Subroutines</a></li>
-<li><a href="#orgce30f3f">10.6.4. Extensions to basic Turing Machine</a>
+<li><a href="#org76b3e09">10.6.4. Multitape Turing Machines</a></li>
+<li><a href="#org651f832">10.6.5. Equivalence of one-tape and multitape TMs</a></li>
+<li><a href="#org37f2111">10.6.6. Non-deterministic Turing Machines</a></li>
+</ul>
+</li>
+<li><a href="#org6f2fe00">10.7. Restricted Turing Machines</a>
 <ul>
-<li><a href="#org76b3e09">10.6.4.1. Multitape Turing Machines</a></li>
-<li><a href="#org651f832">10.6.4.2. Equivalence of one-tape and multitape TMs</a></li>
-<li><a href="#org37f2111">10.6.4.3. Non-deterministic Turing Machines</a></li>
-<li><a href="#org6f2fe00">10.6.4.4. <span class="todo TODO">TODO</span> Restricted Turing Machines</a></li>
-<li><a href="#org162b4a1">10.6.4.5. <span class="todo TODO">TODO</span> Multistack Machines</a></li>
-<li><a href="#org3d2f006">10.6.4.6. <span class="todo TODO">TODO</span> Turing Machines and Computers</a></li>
-<li><a href="#orgaeab3bb">10.6.4.7. <span class="todo TODO">TODO</span> Runtime of Computers vs Turing Machines</a></li>
+<li><a href="#orga7834d3">10.7.1. Turing Machines with Semi-infinite Tapes</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li><a href="#org162b4a1">10.8. Multistack Machines</a></li>
+<li><a href="#org3367bdd">10.9. Counter Machines</a></li>
+<li><a href="#org3d2f006">10.10. Turing Machines and Computers</a></li>
+<li><a href="#orgaeab3bb">10.11. Runtime of Computers vs Turing Machines</a></li>
 </ul>
 </li>
 </ul>
@@ -461,8 +462,8 @@ have exponentially more states than the NFA.
 </p>
 </div>
 
-<div id="outline-container-orgd6cc4a7" class="outline-3">
-<h3 id="orgd6cc4a7"><span class="section-number-3">4.1</span> Definition</h3>
+<div id="outline-container-org41f4098" class="outline-3">
+<h3 id="org41f4098"><span class="section-number-3">4.1</span> Definition</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 An NFA has:
@@ -1281,8 +1282,8 @@ described in terms of generators.
 </p>
 </div>
 
-<div id="outline-container-org41f4098" class="outline-3">
-<h3 id="org41f4098"><span class="section-number-3">8.1</span> Definition</h3>
+<div id="outline-container-org35d4db3" class="outline-3">
+<h3 id="org35d4db3"><span class="section-number-3">8.1</span> Definition</h3>
 <div class="outline-text-3" id="text-8-1">
 <p>
 It is in essence a nondeterministic finite automaton with
@@ -1368,8 +1369,8 @@ below.
 </div>
 </div>
 
-<div id="outline-container-orgbfe61f8" class="outline-3">
-<h3 id="orgbfe61f8"><span class="section-number-3">8.3</span> Instantaneous Descriptions</h3>
+<div id="outline-container-org244dff1" class="outline-3">
+<h3 id="org244dff1"><span class="section-number-3">8.3</span> Instantaneous Descriptions</h3>
 <div class="outline-text-3" id="text-8-3">
 <p>
 We represent the configuration of a PDA by a triple \((q, w, \gamma)\),
@@ -2062,7 +2063,6 @@ finite number of symbols.
 </p>
 
 
-
 <div class="figure">
 <p><img src="Turing Machines/screenshot_2018-10-16_12-52-06.png" alt="screenshot_2018-10-16_12-52-06.png" />
 </p>
@@ -2070,7 +2070,7 @@ finite number of symbols.
 </div>
 
 <p>
-Initially, the input, which as a finite-length string of symbols
+Initially, the input, which is a finite-length string of symbols
 chosen from the input alphabet, is placed on the tape. All other tape
 cells, extending infinitely to the left and right, initially hold a
 special symbol called the <i>blank</i>. The blank is a tape symbol, but not
@@ -2127,8 +2127,8 @@ direction, either left or right.</dd>
 </div>
 </div>
 
-<div id="outline-container-org244dff1" class="outline-3">
-<h3 id="org244dff1"><span class="section-number-3">10.2</span> Instantaneous Descriptions</h3>
+<div id="outline-container-orgf997bee" class="outline-3">
+<h3 id="orgf997bee"><span class="section-number-3">10.2</span> Instantaneous Descriptions</h3>
 <div class="outline-text-3" id="text-10-2">
 <p>
 We use the string \(X_1 X_2 \dots X_{i-1} q X_i X_{i+1} \dots X_n\) to represent
@@ -2193,7 +2193,6 @@ enumerable languages</i> or RE languages.
 </div>
 </div>
 
-
 <div id="outline-container-orgfc8570b" class="outline-3">
 <h3 id="orgfc8570b"><span class="section-number-3">10.5</span> Turing machines and halting</h3>
 <div class="outline-text-3" id="text-10-5">
@@ -2225,7 +2224,7 @@ importantly into decidability theory.
 <div class="outline-text-4" id="text-10-6-1">
 <p>
 We can use the finite control not only to represent a position in the
-"program" of a TM, but to hold a finite amount of data. We extend
+"program" of a TM, but to hold a <b>finite amount of data</b>. We extend
 the state as a tuple \([q, A, B, C]\), and having multiple tracks.
 </p>
 </div>
@@ -2264,13 +2263,9 @@ different state.
 </div>
 </div>
 
-<div id="outline-container-orgce30f3f" class="outline-4">
-<h4 id="orgce30f3f"><span class="section-number-4">10.6.4</span> Extensions to basic Turing Machine</h4>
+<div id="outline-container-org76b3e09" class="outline-4">
+<h4 id="org76b3e09"><span class="section-number-4">10.6.4</span> Multitape Turing Machines</h4>
 <div class="outline-text-4" id="text-10-6-4">
-</div>
-<div id="outline-container-org76b3e09" class="outline-5">
-<h5 id="org76b3e09"><span class="section-number-5">10.6.4.1</span> Multitape Turing Machines</h5>
-<div class="outline-text-5" id="text-10-6-4-1">
 <p>
 The device has a finite control (state), and some finite number of
 tapes. Each tape is divided into cells, and each cell can hold any
@@ -2304,9 +2299,9 @@ This symbol could be the same as the previous symbol.</li>
 </div>
 </div>
 
-<div id="outline-container-org651f832" class="outline-5">
-<h5 id="org651f832"><span class="section-number-5">10.6.4.2</span> Equivalence of one-tape and multitape TMs</h5>
-<div class="outline-text-5" id="text-10-6-4-2">
+<div id="outline-container-org651f832" class="outline-4">
+<h4 id="org651f832"><span class="section-number-4">10.6.5</span> Equivalence of one-tape and multitape TMs</h4>
+<div class="outline-text-4" id="text-10-6-5">
 <p>
 Suppose language \(L\) is accepted by a k-tape TM \(M\). We simulate \(M\)
 with a one-tape TM \(N\) whose tape we think of as having 2k tracks.
@@ -2350,9 +2345,9 @@ k-tape TM \(M\) is \(O(n^2)\).
 </div>
 </div>
 
-<div id="outline-container-org37f2111" class="outline-5">
-<h5 id="org37f2111"><span class="section-number-5">10.6.4.3</span> Non-deterministic Turing Machines</h5>
-<div class="outline-text-5" id="text-10-6-4-3">
+<div id="outline-container-org37f2111" class="outline-4">
+<h4 id="org37f2111"><span class="section-number-4">10.6.6</span> Non-deterministic Turing Machines</h4>
+<div class="outline-text-4" id="text-10-6-6">
 <p>
 A NTM differs from the deterministic variety by having a transition
 \(\delta\) such that for each state \(q\) and tape symbol \(X\), \(\delta(q,X)\) is a
@@ -2411,29 +2406,250 @@ reached.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org6f2fe00" class="outline-5">
-<h5 id="org6f2fe00"><span class="section-number-5">10.6.4.4</span> <span class="todo TODO">TODO</span> Restricted Turing Machines</h5>
 </div>
 
-<div id="outline-container-org162b4a1" class="outline-5">
-<h5 id="org162b4a1"><span class="section-number-5">10.6.4.5</span> <span class="todo TODO">TODO</span> Multistack Machines</h5>
+<div id="outline-container-org6f2fe00" class="outline-3">
+<h3 id="org6f2fe00"><span class="section-number-3">10.7</span> Restricted Turing Machines</h3>
+<div class="outline-text-3" id="text-10-7">
+</div>
+<div id="outline-container-orga7834d3" class="outline-4">
+<h4 id="orga7834d3"><span class="section-number-4">10.7.1</span> Turing Machines with Semi-infinite Tapes</h4>
+<div class="outline-text-4" id="text-10-7-1">
+<p>
+We can assume the tape to be semi-infinite, having no cells to the
+left of the initial head position, an still retain the full power of
+TMs.
+</p>
+
+<p>
+The trick behind the construction is to use two tracks on the
+semi-infinite tape. The upper track represents the cells of the
+original TM that are at or to the right of the initial head position,
+but in reverse order. The upper track represents \(X_0 , X_1 \dots\) where
+\(X_0\) is the initial position of the head; \(X_1, X_2\) so on are the cells
+to its right. The \(*\) on the leftmost cell bottom track serves as an
+end marker and prevents the head of the semi-infinite TM from falling
+off the end of the tape.
+</p>
+
+
+
+<div class="figure">
+<p><img src="Turing%20Machines/screenshot_2018-10-30_09-22-16.png" alt="screenshot_2018-10-30_09-22-16.png" />
+</p>
 </div>
 
-<div id="outline-container-org3d2f006" class="outline-5">
-<h5 id="org3d2f006"><span class="section-number-5">10.6.4.6</span> <span class="todo TODO">TODO</span> Turing Machines and Computers</h5>
+<p>
+Another restriction we make is to never write a blank. This combined
+with the semi-infinite tape restriction means that the tape is at all
+times a prefix of non-blank symbols followed by an infinity of blanks.
+</p>
+
+<p>
+We can construct an equivalent TM \(M_2\) from a TM \(M_1\) by restricting
+that \(M_1\) never writes a blank, by creating a new tape symbol \(B'\)
+that functions as a blank, but is not the blank \(B\).
+</p>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgaeab3bb" class="outline-5">
-<h5 id="orgaeab3bb"><span class="section-number-5">10.6.4.7</span> <span class="todo TODO">TODO</span> Runtime of Computers vs Turing Machines</h5>
+<div id="outline-container-org162b4a1" class="outline-3">
+<h3 id="org162b4a1"><span class="section-number-3">10.8</span> Multistack Machines</h3>
+<div class="outline-text-3" id="text-10-8">
+<p>
+A $k$-stack machine is a deterministic PDA with \(k\) stacks. The
+multistack machine has a finite control, which is in one of a finite
+state set of states. A move of the multistack machine is based on:
+</p>
+
+<ol class="org-ol">
+<li>The state of the finite control</li>
+<li>The input symbol read, which is chosen from the finite input
+alphabet.</li>
+</ol>
+
+<p>
+Each move allows the multistack machine to:
+</p>
+
+<ol class="org-ol">
+<li>Change to a new state</li>
+<li>Replace the top symbol of each stack with a string of zero or more
+stack symbols.</li>
+</ol>
+
+<p>
+If a language is accepted by a TM, it is also accepted by a two-stack
+machine.
+</p>
 </div>
+</div>
+
+<div id="outline-container-org3367bdd" class="outline-3">
+<h3 id="org3367bdd"><span class="section-number-3">10.9</span> Counter Machines</h3>
+<div class="outline-text-3" id="text-10-9">
+<p>
+Counter machines have the same structure as the multistack machine,
+but in place of each stack is a counter. Counters holdd any
+non-negative integer, but we can only distinguish between zero and
+non-zero counters. That is, the move of the counter machine depends on
+its state, input symbol, and which, if any, of the counters are zero.
+</p>
+
+<p>
+Each move can:
+</p>
+
+<ol class="org-ol">
+<li>Change state</li>
+<li>Add or subtract 1 from any of its counters independently</li>
+</ol>
+
+<p>
+A counter machine can be thought of as a restricted multistack
+machine, where:
+</p>
+
+<ol class="org-ol">
+<li>There are only 2 stack symbols, which is the bottom-of-stack marker
+\(Z_0\), and \(X\).</li>
+<li>\(Z_0\) is initially on each stack.</li>
+<li>We may replace \(Z_0\) only with \(X^i Z_0\), \(i \ge 0\).</li>
+<li>We may replace \(X\) only with \(X^i\), \(i \ge 0\).</li>
+</ol>
+
+<p>
+We observe the following properties:
+</p>
+
+<ol class="org-ol">
+<li>Every language accepted by a counter machine is recursively
+enumerable.</li>
+<li>Every language accepted by a one-counter machine is a CFL. This is
+made immediately obvious by considering that it is a one-stack
+machine (a PDA).</li>
+<li>Every language accepted by a two-counter machine is RE.</li>
+</ol>
+
+<p>
+The proof is done by showing that three counters is enough to simulate
+a TM, and that two counters can simulate three counters.
+</p>
+
+<p>
+Proof outline: Suppose there are \(r-1\) symbols used by the stack
+machine. We can identify the symbols with the digits \(1\) through
+\(r-1\), and think of the stack as an integer in base \(r\). We use two
+counters to hold the integers that represent each of the two stacks in
+a two-stack machine. The third counter is used to adjust the other two
+counter, by either dividing or multiplying a count by \(r\), where
+\(r-1\) tape symbols are used by the stack machine.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3d2f006" class="outline-3">
+<h3 id="org3d2f006"><span class="section-number-3">10.10</span> Turing Machines and Computers</h3>
+<div class="outline-text-3" id="text-10-10">
+<ol class="org-ol">
+<li>A computer can simulate a Turing machine, and</li>
+<li>A Turing machine can simulate a computer, and can do so in an
+amount of time that is at most some polynomial in the number of
+steps taken by the computer</li>
+</ol>
+
+
+<div class="figure">
+<p><img src="Turing%20Machines/screenshot_2018-10-30_10-13-41.png" alt="screenshot_2018-10-30_10-13-41.png" />
+</p>
+</div>
+
+<p>
+We can prove the latter by using a TM to simulate the instruction
+cycle of the computer, as follows:
+</p>
+
+<ol class="org-ol">
+<li>Search the first tape for an address matching the instruction
+number on tape 2.</li>
+<li>Examine the instruction address value, if it requires the value of
+some address, that address is part of the instruction. Mark the
+position of the instruction using a second tape, not shown in the
+picture. Search for the memory address on the first tape, an dcopy
+its value onto tape 3, the tape holding the memory address</li>
+<li>Execute the instruction. Examples of instructions are:
+<ol class="org-ol">
+<li>Copying values to some other address</li>
+<li>Adding value to some other address</li>
+<li>The jump instruction</li>
+</ol></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgaeab3bb" class="outline-3">
+<h3 id="orgaeab3bb"><span class="section-number-3">10.11</span> Runtime of Computers vs Turing Machines</h3>
+<div class="outline-text-3" id="text-10-11">
+<p>
+Running time is an important consideration, because we want to know
+what can be computed with enough efficiency. We divide between
+tractable and intractable problems, where tractable problems can be
+solved efficiently.
+</p>
+
+<p>
+Hence, we need to assure ourselves that a problem can be solved in
+polynomial time on a typical computer, can be solved in polynomial
+time on a TM, and conversely.
+</p>
+
+<p>
+A TM can simulate \(n\) steps of a computer in \(O(n^3)\) time. Consider
+the multiplication instruction: if a computer were to start with a
+word holding the integer 2, and multiply the word by itself \(n\) times,
+it would hold the number \(2^{2^n}\), and would take \(2^n + 1\) bits to
+represent, exponential in \(n\).
+</p>
+
+<p>
+To resolve this issue, one can assert that words retain a maximum
+length. We take another approach, imposing the restriction that instructions
+may use words of any length, but can only produce words one bit longer
+than its arguments.
+</p>
+
+<p>
+The prove the polynomial time relationship, we note that after \(n\)
+instructions have been executed, the number of words mentioned on the
+memory tape of the TM is \(O(n)\), and hence requires \(O(n)\) TM cells to
+represent. The tape is hence \(O(n^2)\) cells long, and the TM can locate
+the finite number of words required by one computer instruction in
+\(O(n^2)\) time.
+</p>
+
+<p>
+Hence, if a computer:
+</p>
+
+<ol class="org-ol">
+<li>Has only instructions that increase the maximum word length by at
+most 1, and</li>
+<li>Has only instructions that a multitape TM can perform on wordsd of
+length \(k\) in \(O(k^2)\) steps or less, then</li>
+</ol>
+
+<p>
+the Turing machine can simulate \(n\) steps of the computer in \(O(n^3)\)
+of its own steps.
+</p>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jethro Kuan</p>
-<p class="date">Created: 2018-10-25 Thu 19:32</p>
+<p class="date">Created: 2018-11-19 Mon 16:53</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
