@@ -1434,7 +1434,7 @@ machine. We can identify the symbols with the digits $1$ through
 $r-1$, and think of the stack as an integer in base $r$. We use two
 counters to hold the integers that represent each of the two stacks in
 a two-stack machine. The third counter is used to adjust the other two
-counter, by either dividing or multiplying a count by $r$., where
+counter, by either dividing or multiplying a count by $r$, where
 $r-1$ tape symbols are used by the stack machine.
 
 ** Turing Machines and Computers
@@ -1443,7 +1443,6 @@ $r-1$ tape symbols are used by the stack machine.
 2. A Turing machine can simulate a computer, and can do so in an
    amount of time that is at most some polynomial in the number of
    steps taken by the computer
-
 
 #+DOWNLOADED: /tmp/screenshot.png @ 2018-10-30 10:13:41
 [[file:Turing%20Machines/screenshot_2018-10-30_10-13-41.png]]
