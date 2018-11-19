@@ -1164,6 +1164,12 @@ value iteration) on that subset. Given certain conditions, this is
 guaranteed to converge, and the freedom to choose any subset of states
 gives us a means to design efficient heuristic algorithms.
 
+** Summary
+| Problem    | Bellman Equation                                         | Algorithm                   |
+|------------+----------------------------------------------------------+-----------------------------|
+| Prediction | Bellman Expectation Equation                             | Iterative Policy Evaluation |
+| Control    | Bellman Expectation Equation + Greedy Policy Improvement | Policy Iteration            |
+| Control    | Bellman Optimality Equation                              | Value Iteration             |
 ** Partially Observable MDPs (POMDPs)
 The assumption of full observability, accompanied with the Markov
 assumption for the transition model means that the optimal policy
@@ -1645,3 +1651,59 @@ Simon, noble prize in economics
 The complexity of the behaviour is the manifestation of the complexity
 of the environment and not the complexity of the program.
 #+END_QUOTE
+
+* REFILE
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-09 13:55:33
+[[file:REFILE/screenshot_2018-11-09_13-55-33.png]]
+
+* Papers
+
+** Improving Policy Gradient by Exploring Under-Appreciated Rewards
+
+The REINFORCE algorithm minimizes the KL divergence between $\pi_\theta$
+and $\pi^*$, the optimal policy. However, learning an optimal policy by
+optimizing this direction of the KL is known to be /mode-seeking/.
+Hence, it the agent is prone to falling into a local optimum, and miss
+out some modes of $\pi^*$.
+
+Hence, a entropy regularization loss is added to encourage
+exploration.
+
+However, this exploration is undirected, and requires a small
+regularization coefficient to prevent too much random exploration. 
+
+Optimizing in the mean-seeking direction of the KL divergence is to
+learn a policy by following:
+
+\begin{equation}
+  O_{RAML}(\theta; \tau) = \mathcal{E}_{h \sim p(h)}\left\{ \tau
+    \sum_{a \in A} \pi_\tau^* (a | h) \log \pi_\theta (a | h) \right\}
+\end{equation}
+
+In RL, the reward landscape is unknown, hence sampling from
+$\pi_\tau^*$ is not straightforward. We can approximate the
+expectation with respect to $\pi_\tau^*$ by using self-normalized
+importance sampling. For importance sampling, one draws $K$ i.i.d
+samples $\{ a^{(k)}\}^{K}_{k=1}$ from $\pi_\theta$ and computes a set
+of normalized weights to approximate $O_{RAML}(\theta; \tau | h)$.
+
+\begin{equation}
+O_{RAML} (\theta; \tau | h) \approx \tau
+\sum_{k=1}^{K}\frac{w_\tau(a^{(k)} | h)}{\sum_{m=1}^{K}w_\tau(a^{(m)}
+  | h)} \log \pi_\theta(a^{(k)} | h)
+\end{equation}
+
+where $w_\tau(a^{(k)} | h) \propto \pi_\tau^* / \pi_\theta$ denotes an
+importance weight defined by:
+
+\begin{equation}
+  w_\tau (a^{(k)} | h) = exp \left\{ \frac{1}{\tau}r (a^{(k)} | h) -
+    \log \pi_\theta (a^{(k)} | h) \right\}
+\end{equation}
+
+One can view the weights as the discrepancy between scaled rewards $r /
+\tau$ and the policy's log-probabilities $\log \pi_\theta$.
+
+In UREX, both the RAML objective and the expected reward objective is
+combined and jointly maximized.
