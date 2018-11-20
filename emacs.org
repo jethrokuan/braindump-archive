@@ -45,3 +45,13 @@ To enter thing-at-point into the mini-buffer, use ~M-n~. This calls
 * Org-mode
 ** Speed keys
 https://emacs.stackexchange.com/questions/33310/how-to-use-org-mode-speed-commands-speed-keys
+* Themes
+List of great low-contrast themes I've used:
+
+- [[https://github.com/bbatsov/zenburn-emacs][zenburn]]
+- [[https://github.com/11111000000/tao-theme-emacs][tao]]
+- [[https://github.com/caffo/monotropic-theme][monotropic]]
+- [[https://github.com/waymondo/apropospriate-theme][apropospriate]]
+- [[https://github.com/purcell/color-theme-sanityinc-tomorrow][sanity-inc-tomorrow]]
+- [[https://github.com/manuel-uberti/doneburn-theme][doneburn]]
+- [[https://github.com/mswift42/soft-stone-theme][softstone]]
