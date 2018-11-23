@@ -25,7 +25,7 @@
  returns a small integer called the *file descriptor* to use in
  subsequent operations.
 
- *Special files* are provided in order tomake I/O devices look like
+ *Special files* are provided in order to make I/O devices look like
  files. That way, they can be read and written using the same system
  calls as are used for reading and writing files. *block special files*
  are used to model devices that consist of a collection of randomly
@@ -382,6 +382,7 @@ switching from a running one (T1) to running the other (T2) requires a
 /context switch/. /Thread Control Blocks/ (TCBs) store the state of
 each thread of a process. Unlike the context switch for processes, the
 address space for threads remain the same.
+
 [[file:images/operating_systems/thread_add_space.png]]
 
 ** Example Thread creation
@@ -602,6 +603,10 @@ for a while, hoping that it can acquire a lock. However, if the lock
 is not acquired during the first phase, the second phase is entered,
 where the caller is put to sleep, and only woken up when the lock
 becomes free later.
+** Semaphores vs Spinlocks
+Spinlocks are more efficient if locking only for a short period of
+time: the CPU cycles used during busy waiting could take a much
+shorter time than making context switches.
 * Classical Synchronization Problems
 ** Producer/Consumer
 Producers and Consumers share a bounded buffer K
