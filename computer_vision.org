@@ -215,6 +215,10 @@ The *affine transformation* is written as $\mathbf{x}' =
 
 Parallel lines remain parallel under affine transformations.
 
+Affine transformations with 6 unknowns can be solved via SVD by
+forming a matrix equation of the form $Mx = b$. Local transformations
+apply different transformations to different regions, and give finer control.
+
 The *projective transformation*, also known as the perspective transform
 or homography, operates on homogeneous coordinates:
 
@@ -363,7 +367,7 @@ used:
 \mathbf{x} = \left[s\mathbf{I}_{2 \times 2}\right | \mathbf{0}]\mathbf{p}
 \end{equation}
 
-This model is equivalent to first projecting the world poitns onto a
+This model is equivalent to first projecting the world points onto a
 local fronto-parallel image plane, and then scaling this image using
 regular perspective projection.
 
@@ -556,7 +560,6 @@ Once the light from a scene reaches a camera, it must still pass
 through the lens before reaching the sensor.
 
 * Image Processing
-
 ** Point Operators
 Point operators are image processing transforms where each output
 pixel's value depends only on the corresponding input pixel value.
@@ -564,9 +567,8 @@ Examples of such operators include:
 
 - brightness and contrast adjustments
 - color correction and transformations
-
-
-** Histogram Equalization
+** Image Enhancement
+*** Histogram Equalization
 https://www.math.uci.edu/icamp/courses/math77c/demos/hist_eq.pdf
 
 The underlying math behind histogram equalization involves mapping one
@@ -587,6 +589,117 @@ go in the equalized distribution.
   p_n  \right\rfloor
 \end{equation}
 
+*** Convolutions
+
+Convolution is the process of adding each element of the image to its
+local neighbors, weighted by the kernel.
+
+Convolutions can be used to denoise, descratch, blur, unblur and even
+feature extraction. 
+
+Median filtering is good for removing salt-and-pepper noise, or
+scratches in image
+
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-23 10:05:43
+[[file:images/computer_vision/Image%20Processing/screenshot_2018-11-23_10-05-43.png]]
+** Colour
+A human retina has 2 kinds of light receptors: rods are sensitive to
+amount of light, while cones are sensitive to wavelengths of light
+
+There are 3 kinds of cones:
+
+- short :: most sensitive to blue
+- medium :: most sensitive to green
+- long :: most sensitive to red
+
+Cones send signals to the brain, and the brain interprets this mixture
+of signals as colours. This gives rise to the RGB colour coding
+scheme. Different coding schemes have different colour spaces.
+
+Cones are sensitive to vaious colours, ranging from wavelengths of
+400nm (violet) to 700nm (red).
+
+TODO: insert picture of visible spectrum
+
+There are some regions that extend beyond the visible region, but are
+still relevant to image processing:
+
+- 0.7-1.0$\mu m$: Near infrared (NIR)
+- 1.0-3.0$\mu m$: Short-wave infrared (SWIR)
+- 3.0-5.0$\mu m$: Mid-wave infrared (MWIR)
+- 8.0-12.0$\mu m$: Long-wave infrared (LWIR)
+- 12.0-1000.0$\mu m$: Far infrared or very long-wave infraerd (VLWIR)
+
+The range 5-8$\mu m$ corresponds to a wavelength spectrum that is
+largely absorbed by the water in the atmosphere.
+
+*Color constancy* is the ability of the human visual system to be immune
+to changing illumination in perception of colour. The human colour
+receptors perceive the overall effect of the mixture of colours, and
+cannot tell its composition.
+
+*Gamut* is the range of colours that can be reproduced with a given
+colour reproduction system.
+
+TODO: image of colour systems
+
+In the RGB colour space, each value is an unsigned 8-bit value from
+0-255.
+
+In the HSV (Hue Saturation Value) colour space, hue corresponds to
+colour type from 0 (red) to 360. Saturation corresponds to the
+colourfulness (0 - 1 full colour), while value refers to the
+brightness (0 black - 1 white).
+
+The YCbCRr Colour space is used for TV and video. Y stands for
+luminance, Cb blue difference, and Cr red difference.
+
+There are several colour conversion algorithms to convert values in
+one colour space to another.
+
+TODO: Insert equations
+
+Primary colours are the set of colours combined to make a range of
+colours. Since human vision is trichromatic, we only need to use 3
+primary colours. The combination of primary colours can be additive or
+subtractive.
+
+Examples of additive combinations include overlapping projected lights
+and CRT displays. RGB is commonly used in additive combinatinos.
+Examples of subtracting combinations include mixing of color pigments
+or dyes. The primary colours used in these cases are normally cyan,
+magenta and yellow.
+
+TODO: Images of additive/subtractive colour mixing.
+
+*** Measuring Colour Differences
+
+The simplest metric is the euclidean distance between colours in the
+RGB space:
+
+\begin{equation}
+  d(C_1, C_2) = \sqrt{\left( R_1 - R_2 \right)^2 + \left( G_1 - G_2
+    \right)^2 + \left( B_1 - B_2 \right)^2}
+\end{equation}
+
+However, the RGB space is not perceptually uniform, and this is
+inappropriate if one needs to match human perception. HSV, YCbCr are
+also not perceptually uniform. Some colour spaces that are more
+perceptually uniform are the Munsell, CIELAB and CIELUB colour spaces.
+
+*** Computing Means
+The usual formula of computing means $M = \frac{1}{n}S =
+\frac{1}{n}\sum_{i=1}^n R_i$ can lead to overflow even for small $n$.
+One way to get around it is to use a floating point representation for
+$S$. The second method is to do incremental averaging:
+
+\begin{equation}
+  M_k = \frac{k-1}{k}M_{k-1} + \frac{1}{k}R_k
+\end{equation}
+
+*** Digital Cameras sensing colour
+TODO: Bayer filter
 * Change Detection
 To detect change between 2 video frames, it is straightforward to
 compute differences in pixel intensities across the two frames:
@@ -599,7 +712,7 @@ It is common to use a threshold for $D_t(x,y)$ to declare if a pixel
 has changed.
 
 To detect positional changes, the method used must be immune to
-positional change. This requires motion tracking.
+illumination change. This requires motion tracking.
 
 At the same time, to detect illumination change, the method must be
 immune to positional change. In the case of a stationary scene and
@@ -607,6 +720,8 @@ camera, the straightforward method can be used. However, in the non
 trivial case, motion tracking will be required.
 
 * Motion Tracking
+There are two approaches to motion tracking: feature-based and
+intensity-gradient based.
 
 ** Feature-based
 Feature-based motion tracking utilises distinct features that changes
@@ -620,7 +735,28 @@ are the Harris corner detector and the Tomasi corner detector.
 
 *** TODO Tomasi corner detector
 
-Examples of feature detectors include SIFT and SURF.
+\begin{equation}
+  \frac{1}{N} \sum_{u} \sum_v \begin{bmatrix}
+    I_x^2 & I_x I_y \\
+    I_x I_y & I_y^2 \\
+  \end{bmatrix}
+\end{equation}
+
+where $I_x = \frac{\partial I}{\partial x}$, $N$ is the total number
+of pixels in window of interest, $u$ and $v$ are the horizontal and
+vertical index of the pixel in the window of interest.
+
+Let the eigenvalues of the above matrix be $\lambda_{max}$ and
+$\lambda_{min}$. Then the greater $\lambda_{min}$, the more
+"cornerness" the feature.
+
+Examples of feature descriptors include SIFT and SURF. The typical
+workflow involves:
+
+1. Detecting good features
+2. Building feature descriptors on each of these features
+3. Matching these descriptors on the second image to establish the
+   corresponding points
 
 ** Gradient-based
 Gradient-based motion tracking makes 2 basic assumptions:
@@ -696,7 +832,6 @@ and setting $\frac{\partial E}{\partial d} = 0$:
   J(x) - d^T g(x) \right] g(x)
 \end{equation}
 
-
 \begin{equation}
 \sum_{x \in W} w(x)\left[ I(x) - J(x) \right] g(x) = \sum_{x \in W}
 w(x) g(x) g^T(x) d
@@ -719,6 +854,22 @@ Z = \begin{bmatrix}
   \sum_{x \in W} w(I-J)I_y
 \end{bmatrix}
 \end{equation}
+
+With 2 unknowns and 2 equations, we can solve for $d$.
+
+Lucas-Kanade algorithm is often used with Harris/Tomasi's corner
+detectors. First, corner detectors are applied to detect good
+features, then LK method is applied to compute $d$ for each pixel. $d$
+is then accepted only for good features.
+
+The math of LK tracker assumes $d$ is small, and would only work for
+small displacements. To handle large displacements, the image is
+downsampled. Usually , the Gaussian filter is used to smoothen the
+image before scaling down.
+
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-23 12:36:44
+[[file:images/computer_vision/Motion%20Tracking/screenshot_2018-11-23_12-36-44.png]]
 
 * Homography
 https://docs.opencv.org/3.4.1/d9/dab/tutorial_homography.html
