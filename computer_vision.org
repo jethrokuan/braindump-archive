@@ -450,6 +450,67 @@ makes estimating the camera model impractical, even though there are
 really only 7 degrees of freedom. Most practitioners assume a general
 $3 \times 3$ homogeneous matrix form.
 
+http://ksimek.github.io/2013/08/13/intrinsic/
+
+\begin{align}
+    P &= \overbrace{K}^\text{Intrinsic Matrix} \times \overbrace{[R \mid  \mathbf{t}]}^\text{Extrinsic Matrix} \\[0.5em]
+     &= 
+        \overbrace{
+
+            \underbrace{
+                \left (
+                \begin{array}{ c c c}
+                 1  &  0  & x_0 \\
+                 0  &  1  & y_0 \\
+                 0  &  0  & 1
+                \end{array}
+                \right )
+            }_\text{2D Translation}
+
+            \times
+
+            \underbrace{
+                \left (
+                \begin{array}{ c c c}
+                f_x &  0  & 0 \\
+                 0  & f_y & 0 \\
+                 0  &  0  & 1
+                \end{array}
+                \right )
+            }_\text{2D Scaling}
+
+            \times
+
+            \underbrace{
+                \left (
+                \begin{array}{ c c c}
+                 1  &  s/f_x  & 0 \\
+                 0  &    1    & 0 \\
+                 0  &    0    & 1
+                \end{array}
+                \right )
+            }_\text{2D Shear}
+
+        }^\text{Intrinsic Matrix}
+
+        \times
+
+        \overbrace{
+        \underbrace{
+             \left( \begin{array}{c | c} 
+            I & \mathbf{t}
+             \end{array}\right)
+        }_\text{3D Translation}
+        \times
+        \underbrace{
+             \left( \begin{array}{c | c} 
+            R & 0 \\ \hline
+            0 & 1
+             \end{array}\right)
+        }_\text{3D Rotation}
+        }^\text{Extrinsic Matrix}
+    \end{align}
+
 *** Lens distortion
 
 Thus far, it has been assumed that the cameras obey a linear
@@ -465,6 +526,223 @@ the image center by an amount proportional to their radial distance.
 #+DOWNLOADED: /tmp/screenshot.png @ 2018-08-20 18:17:31
 [[file:images/computer_vision/Image Formation/screenshot_2018-08-20_18-17-31.png]]
 
+*** Camera Calibration
+We want to use the camera to tell us things about the world, so we
+need the relationship between coordinates in the world, and
+coordinates in the image.
+
+Geometric camera calibration is composed of:
+
+- extrinsic parameters (camera pose) :: from some arbitrary world
+     coordinate system to the camera's 3D coordinate system
+- intrinsic parameters :: From the 3D coordinates in the camera frame
+     to the 2D image plane via projection
+
+**** Extrinsic Parameters
+The transform $T$ is a transform that goes from the world to the
+camera system.
+***** Translation
+The coordinate $P$ in $B$'s frame is the coordinate $P$ in frame $A$,
+and the location of the camera in frame $B$.
+
+\begin{equation}
+  ^B P = ^A P + ^B O_A
+\end{equation}
+
+\begin{equation}
+  \begin{bmatrix}
+    ^B P \\
+    1
+    \end{bmatrix} = \begin{bmatrix}
+      I_{3\times3} & ^B O_A \\
+      0^T & 1
+    \end{bmatrix} \begin{bmatrix}
+      ^A P \\
+      1
+    \end{bmatrix}
+\end{equation}
+
+***** Rotation
+We can similarly describe a rotation matrix:
+
+\begin{equation}
+^B P = ^B _A R ^AP
+\end{equation}
+
+\begin{equation}
+  ^B_A R = \begin{bmatrix}
+    ^B i_A & ^B j_A & ^B k_A
+  \end{bmatrix} =
+  \begin{bmatrix}
+    ^Ai_B^T \\
+    ^Aj_B^T \\
+    ^Ak_B^T
+  \end{bmatrix}
+\end{equation}
+
+Under homogeneous coordinates, rotation can also be expressed as a
+matrix multiplication.
+
+\begin{equation}
+  \begin{bmatrix}
+    ^B P \\
+    1
+  \end{bmatrix} = \begin{bmatrix}
+    ^B_AR & 0 \\
+    0^T & 1
+  \end{bmatrix} \begin{bmatrix}
+    ^A P \\
+    1
+  \end{bmatrix}
+\end{equation}
+
+Then, we can express rigid transformations as:
+
+\begin{equation}
+  \begin{bmatrix}
+    ^B P \\
+    1
+  \end{bmatrix} = \begin{bmatrix}
+    1 & ^BO_A \\
+    0^T & 1 \\
+  \end{bmatrix} \begin{bmatrix}
+    ^B_AR & 0 \\
+    0^T & 1 \\
+  \end{bmatrix} \begin{bmatrix}
+    ^A P \\
+    1
+  \end{bmatrix} = \begin{bmatrix}
+    ^B_AR & ^BO_A \\
+    0^T & 1
+  \end{bmatrix} \begin{bmatrix}
+    ^A P \\
+    1
+\end{equation}
+
+And we write:
+
+\begin{equation}
+^B_A T = \begin{bmatrix}
+    ^B_AR & ^BO_A \\
+    0^T & 1
+  \end{bmatrix} 
+\end{equation}
+
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-24 13:05:41
+[[file:images/computer_vision/Image%20Formation/screenshot_2018-11-24_13-05-41.png]]
+
+The world to camera transformation matrix is the extrinsic parameter
+matrix (4x4).
+
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-24 13:10:13
+[[file:images/computer_vision/Image%20Formation/screenshot_2018-11-24_13-10-13.png]]
+
+
+The rotation matrix $R$ has two important properties:
+
+1. $R$ is orthonormal: $R^T R = I$
+2. $|R| = 1$
+
+One can represent rotation using euler angles:
+
+- pitch ($\omega$) :: rotation about x-axis
+- yaw ($\phi$) :: rotation about y-axis
+- roll ($\kappa$) :: rotation about z-axis
+
+Euler angles can be converted to rotation matrix:
+
+\begin{align}
+  R &= R_x R_y R_z
+\end{align}
+
+Rotations can also be specified as a right-handed rotation by an angle
+$\theta$ about the axis specified by the unit vector $\left(\omega_x,
+\omega_y, \omega_z \right)$.
+
+This has the same disadvantage as the Euler angle representation,
+where algorithms are not numerically well-conditioned. Hence, the
+preferred way is to use [[*Unit Quarternions][quarternions]]. Rotations are represented with
+unit quarternions.
+
+**** Intrinsic Parameters
+We have looked at perspective projection, and we obtain the ideal
+coordinates:
+
+\begin{align}
+  u &= f \frac{X}{Z} \\
+  v &= f \frac{Y}{Z}
+\end{align}
+
+However, pixels are arbitrary spatial units, so we introduce an alpha
+to scale the value.
+
+\begin{align}
+  u &= \alpha \frac{X}{Z} \\
+  v &= \alpha \frac{Y}{Z}
+\end{align}
+
+However, pixels may not necessarily be square, so we have to introduce
+a different parameter for $u$ and $v$.
+
+\begin{align}
+  u &= \alpha \frac{X}{Z} \\
+  v &= \beta \frac{Y}{Z}
+\end{align}
+
+We don't know the origin of our camera pixel coordinates, so we have
+to add offsets:
+
+\begin{align}
+  u &= \alpha \frac{X}{Z} + u_0 \\
+  v &= \beta \frac{Y}{Z} + v_0
+\end{align}
+
+We also assume here that $u$ and $v$ are perpendicular. To correct for
+this, we need to introduce skew coefficients:
+
+
+\begin{align}
+  u &= \alpha \frac{X}{Z} - \alpha \cot \theta \frac{Y}{Z} + u_0 \\
+  v &= \frac{\beta}{\sin \theta} \frac{Y}{Z} + v_0
+\end{align}
+
+We can simplify this by expressing it in homogeneous coordinates:
+
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-24 13:18:11
+[[file:images/computer_vision/Image%20Formation/screenshot_2018-11-24_13-18-11.png]]
+
+The 3x4 matrix is the intrinsic matrix.
+
+This can be represented in an easier way:
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-24 13:20:19
+[[file:images/computer_vision/Image%20Formation/screenshot_2018-11-24_13-20-19.png]]
+
+And if we assume:
+
+- pixels are square
+- there is no skew
+- and the optical center is in the center, then $K$ reduces to
+
+\begin{equation}
+K = \begin{bmatrix}
+  f & 0 & 0 \\
+  0 & f & 0 \\
+  0 & 0 & 1
+\end{bmatrix}
+\end{equation}
+
+**** Combining Extrinsic and Intrinsic Calibration Parameters
+We can write:
+
+\begin{equation}
+  p' = K \begin{bmatrix}
+    ^C_WR & ^C_Wt 
+  \end{bmatrix} ^Wp
+\end{equation}
 ** Photometric image formation
 
 Images are not composed of 2D features, but of discrete color or
@@ -731,10 +1009,42 @@ next frame, to check if there is a displacement.
 Good features are called "corners". The two popular corner detectors
 are the Harris corner detector and the Tomasi corner detector.
 
-*** TODO Harris corner detector
+ Although corners are only a small percentage of the image, they
+ contain the most important features in restoring image information,
+ and they can be used to minimize the amount of processed data for
+ motion tracking, image stitching, building 2D mosaics, stereo vision,
+ image representation and other related computer vision areas.
 
-*** TODO Tomasi corner detector
+*** [[https://en.wikipedia.org/wiki/Harris_Corner_Detector][Harris corner detector]]
+Compared to the Kanade-Lucas-Tomasi corner detector, the Harris corner
+detector provides good repeatability under changing illumination and
+rotation, and therefore, it is more often used in stereo matching and
+image database retrieval.
 
+Interpreting the eigenvalues:
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-24 14:54:48
+[[file:images/computer_vision/Motion%20Tracking/screenshot_2018-11-24_14-54-48.png]]
+
+In flat regions, the eigenvalues are both small, in edges, only one of
+the eigenvalues are large. On the other hand, in corners, both
+eigenvalues are large but the 2 eigenvalues of the same magnitude, the error
+$E$ increases in all directions.
+
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-24 14:56:43
+[[file:images/computer_vision/Motion%20Tracking/screenshot_2018-11-24_14-56-43.png]]
+
+The Harris corner response function essentially filters out the corners.
+
+**** Properties
+1. Harris corner detector is invariant to rotation: Ellipse has the
+   same eigenvalues regardless of rotation.
+2. Mostly invariant to additive and multiplicative intensity changes
+   (threshold issue for multiplicative)
+3. Not invariant to image scale!
+
+*** Tomasi corner detector
 \begin{equation}
   \frac{1}{N} \sum_{u} \sum_v \begin{bmatrix}
     I_x^2 & I_x I_y \\
