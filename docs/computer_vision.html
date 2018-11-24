@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-11-19 Mon 16:53 -->
+<!-- 2018-11-24 Sat 20:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Computer Vision</title>
@@ -121,6 +121,13 @@ for the JavaScript code in this tag.
 <li><a href="#org8256be7">4.4.2. Perspective</a></li>
 <li><a href="#orgf14df1f">4.4.3. Camera Instrinsics</a></li>
 <li><a href="#orgebdeb0b">4.4.4. Lens distortion</a></li>
+<li><a href="#orga1c24cc">4.4.5. Camera Calibration</a>
+<ul>
+<li><a href="#orgb7c056e">4.4.5.1. Extrinsic Parameters</a></li>
+<li><a href="#orgea88b61">4.4.5.2. Intrinsic Parameters</a></li>
+<li><a href="#org082cbe3">4.4.5.3. Combining Extrinsic and Intrinsic Calibration Parameters</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#orgb9a89cf">4.5. Photometric image formation</a>
@@ -142,7 +149,19 @@ for the JavaScript code in this tag.
 <li><a href="#org259ca6c">5. Image Processing</a>
 <ul>
 <li><a href="#org3a94655">5.1. Point Operators</a></li>
-<li><a href="#org5883772">5.2. Histogram Equalization</a></li>
+<li><a href="#org944f247">5.2. Image Enhancement</a>
+<ul>
+<li><a href="#org5883772">5.2.1. Histogram Equalization</a></li>
+<li><a href="#org1fad2d4">5.2.2. Convolutions</a></li>
+</ul>
+</li>
+<li><a href="#orge109e63">5.3. Colour</a>
+<ul>
+<li><a href="#org9fc08e0">5.3.1. Measuring Colour Differences</a></li>
+<li><a href="#org3e0bc21">5.3.2. Computing Means</a></li>
+<li><a href="#org6ace06e">5.3.3. Digital Cameras sensing colour</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#orgb46cca5">6. Change Detection</a></li>
@@ -150,8 +169,12 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#org0b4a308">7.1. Feature-based</a>
 <ul>
-<li><a href="#org1a13c8f">7.1.1. <span class="todo TODO">TODO</span> Harris corner detector</a></li>
-<li><a href="#org656134f">7.1.2. <span class="todo TODO">TODO</span> Tomasi corner detector</a></li>
+<li><a href="#orgbfc8e9c">7.1.1. Harris corner detector</a>
+<ul>
+<li><a href="#orga087e16">7.1.1.1. Properties</a></li>
+</ul>
+</li>
+<li><a href="#org656134f">7.1.2. Tomasi corner detector</a></li>
 </ul>
 </li>
 <li><a href="#org79a1b6a">7.2. Gradient-based</a>
@@ -479,6 +502,12 @@ Parallel lines remain parallel under affine transformations.
 </p>
 
 <p>
+Affine transformations with 6 unknowns can be solved via SVD by
+forming a matrix equation of the form \(Mx = b\). Local transformations
+apply different transformations to different regions, and give finer control.
+</p>
+
+<p>
 The <b>projective transformation</b>, also known as the perspective transform
 or homography, operates on homogeneous coordinates:
 </p>
@@ -695,7 +724,7 @@ used:
 \end{equation}
 
 <p>
-This model is equivalent to first projecting the world poitns onto a
+This model is equivalent to first projecting the world points onto a
 local fronto-parallel image plane, and then scaling this image using
 regular perspective projection.
 </p>
@@ -800,6 +829,69 @@ makes estimating the camera model impractical, even though there are
 really only 7 degrees of freedom. Most practitioners assume a general
 \(3 \times 3\) homogeneous matrix form.
 </p>
+
+<p>
+<a href="http://ksimek.github.io/2013/08/13/intrinsic/">http://ksimek.github.io/2013/08/13/intrinsic/</a>
+</p>
+
+\begin{align}
+    P &= \overbrace{K}^\text{Intrinsic Matrix} \times \overbrace{[R \mid  \mathbf{t}]}^\text{Extrinsic Matrix} \\[0.5em]
+     &= 
+        \overbrace{
+
+            \underbrace{
+                \left (
+                \begin{array}{ c c c}
+                 1  &  0  & x_0 \\
+                 0  &  1  & y_0 \\
+                 0  &  0  & 1
+                \end{array}
+                \right )
+            }_\text{2D Translation}
+
+            \times
+
+            \underbrace{
+                \left (
+                \begin{array}{ c c c}
+                f_x &  0  & 0 \\
+                 0  & f_y & 0 \\
+                 0  &  0  & 1
+                \end{array}
+                \right )
+            }_\text{2D Scaling}
+
+            \times
+
+            \underbrace{
+                \left (
+                \begin{array}{ c c c}
+                 1  &  s/f_x  & 0 \\
+                 0  &    1    & 0 \\
+                 0  &    0    & 1
+                \end{array}
+                \right )
+            }_\text{2D Shear}
+
+        }^\text{Intrinsic Matrix}
+
+        \times
+
+        \overbrace{
+        \underbrace{
+             \left( \begin{array}{c | c} 
+            I & \mathbf{t}
+             \end{array}\right)
+        }_\text{3D Translation}
+        \times
+        \underbrace{
+             \left( \begin{array}{c | c} 
+            R & 0 \\ \hline
+            0 & 1
+             \end{array}\right)
+        }_\text{3D Rotation}
+        }^\text{Extrinsic Matrix}
+    \end{align}
 </div>
 </div>
 
@@ -825,8 +917,317 @@ the image center by an amount proportional to their radial distance.
 </div>
 </div>
 </div>
+
+<div id="outline-container-orga1c24cc" class="outline-4">
+<h4 id="orga1c24cc"><span class="section-number-4">4.4.5</span> Camera Calibration</h4>
+<div class="outline-text-4" id="text-4-4-5">
+<p>
+We want to use the camera to tell us things about the world, so we
+need the relationship between coordinates in the world, and
+coordinates in the image.
+</p>
+
+<p>
+Geometric camera calibration is composed of:
+</p>
+
+<dl class="org-dl">
+<dt>extrinsic parameters (camera pose)</dt><dd>from some arbitrary world
+coordinate system to the camera's 3D coordinate system</dd>
+<dt>intrinsic parameters</dt><dd>From the 3D coordinates in the camera frame
+to the 2D image plane via projection</dd>
+</dl>
 </div>
 
+<div id="outline-container-orgb7c056e" class="outline-5">
+<h5 id="orgb7c056e"><span class="section-number-5">4.4.5.1</span> Extrinsic Parameters</h5>
+<div class="outline-text-5" id="text-4-4-5-1">
+<p>
+The transform \(T\) is a transform that goes from the world to the
+camera system.
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org7ad7a48"></a>Translation<br />
+<div class="outline-text-6" id="text-4-4-5-1-1">
+<p>
+The coordinate \(P\) in \(B\)'s frame is the coordinate \(P\) in frame \(A\),
+and the location of the camera in frame \(B\).
+</p>
+
+\begin{equation}
+  ^B P = ^A P + ^B O_A
+\end{equation}
+
+\begin{equation}
+  \begin{bmatrix}
+    ^B P \\
+    1
+    \end{bmatrix} = \begin{bmatrix}
+      I_{3\times3} & ^B O_A \\
+      0^T & 1
+    \end{bmatrix} \begin{bmatrix}
+      ^A P \\
+      1
+    \end{bmatrix}
+\end{equation}
+</div>
+</li>
+
+<li><a id="org3daf536"></a>Rotation<br />
+<div class="outline-text-6" id="text-4-4-5-1-2">
+<p>
+We can similarly describe a rotation matrix:
+</p>
+
+\begin{equation}
+^B P = ^B _A R ^AP
+\end{equation}
+
+\begin{equation}
+  ^B_A R = \begin{bmatrix}
+    ^B i_A & ^B j_A & ^B k_A
+  \end{bmatrix} =
+  \begin{bmatrix}
+    ^Ai_B^T \\
+    ^Aj_B^T \\
+    ^Ak_B^T
+  \end{bmatrix}
+\end{equation}
+
+<p>
+Under homogeneous coordinates, rotation can also be expressed as a
+matrix multiplication.
+</p>
+
+\begin{equation}
+  \begin{bmatrix}
+    ^B P \\
+    1
+  \end{bmatrix} = \begin{bmatrix}
+    ^B_AR & 0 \\
+    0^T & 1
+  \end{bmatrix} \begin{bmatrix}
+    ^A P \\
+    1
+  \end{bmatrix}
+\end{equation}
+
+<p>
+Then, we can express rigid transformations as:
+</p>
+
+\begin{equation}
+  \begin{bmatrix}
+    ^B P \\
+    1
+  \end{bmatrix} = \begin{bmatrix}
+    1 & ^BO_A \\
+    0^T & 1 \\
+  \end{bmatrix} \begin{bmatrix}
+    ^B_AR & 0 \\
+    0^T & 1 \\
+  \end{bmatrix} \begin{bmatrix}
+    ^A P \\
+    1
+  \end{bmatrix} = \begin{bmatrix}
+    ^B_AR & ^BO_A \\
+    0^T & 1
+  \end{bmatrix} \begin{bmatrix}
+    ^A P \\
+    1
+\end{equation}
+
+<p>
+And we write:
+</p>
+
+\begin{equation}
+^B_A T = \begin{bmatrix}
+    ^B_AR & ^BO_A \\
+    0^T & 1
+  \end{bmatrix} 
+\end{equation}
+
+
+
+<div class="figure">
+<p><img src="images/computer_vision/Image%20Formation/screenshot_2018-11-24_13-05-41.png" alt="screenshot_2018-11-24_13-05-41.png" />
+</p>
+</div>
+
+<p>
+The world to camera transformation matrix is the extrinsic parameter
+matrix (4x4).
+</p>
+
+
+
+<div class="figure">
+<p><img src="images/computer_vision/Image%20Formation/screenshot_2018-11-24_13-10-13.png" alt="screenshot_2018-11-24_13-10-13.png" />
+</p>
+</div>
+
+
+<p>
+The rotation matrix \(R\) has two important properties:
+</p>
+
+<ol class="org-ol">
+<li>\(R\) is orthonormal: \(R^T R = I\)</li>
+<li>\(|R| = 1\)</li>
+</ol>
+
+<p>
+One can represent rotation using euler angles:
+</p>
+
+<dl class="org-dl">
+<dt>pitch (\(\omega\))</dt><dd>rotation about x-axis</dd>
+<dt>yaw (\(\phi\))</dt><dd>rotation about y-axis</dd>
+<dt>roll (\(\kappa\))</dt><dd>rotation about z-axis</dd>
+</dl>
+
+<p>
+Euler angles can be converted to rotation matrix:
+</p>
+
+\begin{align}
+  R &= R_x R_y R_z
+\end{align}
+
+<p>
+Rotations can also be specified as a right-handed rotation by an angle
+\(\theta\) about the axis specified by the unit vector \(\left(\omega_x,
+\omega_y, \omega_z \right)\).
+</p>
+
+<p>
+This has the same disadvantage as the Euler angle representation,
+where algorithms are not numerically well-conditioned. Hence, the
+preferred way is to use <a href="#org56c7059">quarternions</a>. Rotations are represented with
+unit quarternions.
+</p>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgea88b61" class="outline-5">
+<h5 id="orgea88b61"><span class="section-number-5">4.4.5.2</span> Intrinsic Parameters</h5>
+<div class="outline-text-5" id="text-4-4-5-2">
+<p>
+We have looked at perspective projection, and we obtain the ideal
+coordinates:
+</p>
+
+\begin{align}
+  u &= f \frac{X}{Z} \\
+  v &= f \frac{Y}{Z}
+\end{align}
+
+<p>
+However, pixels are arbitrary spatial units, so we introduce an alpha
+to scale the value.
+</p>
+
+\begin{align}
+  u &= \alpha \frac{X}{Z} \\
+  v &= \alpha \frac{Y}{Z}
+\end{align}
+
+<p>
+However, pixels may not necessarily be square, so we have to introduce
+a different parameter for \(u\) and \(v\).
+</p>
+
+\begin{align}
+  u &= \alpha \frac{X}{Z} \\
+  v &= \beta \frac{Y}{Z}
+\end{align}
+
+<p>
+We don't know the origin of our camera pixel coordinates, so we have
+to add offsets:
+</p>
+
+\begin{align}
+  u &= \alpha \frac{X}{Z} + u_0 \\
+  v &= \beta \frac{Y}{Z} + v_0
+\end{align}
+
+<p>
+We also assume here that \(u\) and \(v\) are perpendicular. To correct for
+this, we need to introduce skew coefficients:
+</p>
+
+
+\begin{align}
+  u &= \alpha \frac{X}{Z} - \alpha \cot \theta \frac{Y}{Z} + u_0 \\
+  v &= \frac{\beta}{\sin \theta} \frac{Y}{Z} + v_0
+\end{align}
+
+<p>
+We can simplify this by expressing it in homogeneous coordinates:
+</p>
+
+
+
+<div class="figure">
+<p><img src="images/computer_vision/Image%20Formation/screenshot_2018-11-24_13-18-11.png" alt="screenshot_2018-11-24_13-18-11.png" />
+</p>
+</div>
+
+<p>
+The 3x4 matrix is the intrinsic matrix.
+</p>
+
+<p>
+This can be represented in an easier way:
+</p>
+
+
+<div class="figure">
+<p><img src="images/computer_vision/Image%20Formation/screenshot_2018-11-24_13-20-19.png" alt="screenshot_2018-11-24_13-20-19.png" />
+</p>
+</div>
+
+<p>
+And if we assume:
+</p>
+
+<ul class="org-ul">
+<li>pixels are square</li>
+<li>there is no skew</li>
+<li>and the optical center is in the center, then \(K\) reduces to</li>
+</ul>
+
+\begin{equation}
+K = \begin{bmatrix}
+  f & 0 & 0 \\
+  0 & f & 0 \\
+  0 & 0 & 1
+\end{bmatrix}
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org082cbe3" class="outline-5">
+<h5 id="org082cbe3"><span class="section-number-5">4.4.5.3</span> Combining Extrinsic and Intrinsic Calibration Parameters</h5>
+<div class="outline-text-5" id="text-4-4-5-3">
+<p>
+We can write:
+</p>
+
+\begin{equation}
+  p' = K \begin{bmatrix}
+    ^C_WR & ^C_Wt 
+  \end{bmatrix} ^Wp
+\end{equation}
+</div>
+</div>
+</div>
+</div>
 <div id="outline-container-orgb9a89cf" class="outline-3">
 <h3 id="orgb9a89cf"><span class="section-number-3">4.5</span> Photometric image formation</h3>
 <div class="outline-text-3" id="text-4-5">
@@ -1004,11 +1405,13 @@ Examples of such operators include:
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org5883772" class="outline-3">
-<h3 id="org5883772"><span class="section-number-3">5.2</span> Histogram Equalization</h3>
+<div id="outline-container-org944f247" class="outline-3">
+<h3 id="org944f247"><span class="section-number-3">5.2</span> Image Enhancement</h3>
 <div class="outline-text-3" id="text-5-2">
+</div>
+<div id="outline-container-org5883772" class="outline-4">
+<h4 id="org5883772"><span class="section-number-4">5.2.1</span> Histogram Equalization</h4>
+<div class="outline-text-4" id="text-5-2-1">
 <p>
 <a href="https://www.math.uci.edu/icamp/courses/math77c/demos/hist_eq.pdf">https://www.math.uci.edu/icamp/courses/math77c/demos/hist_eq.pdf</a>
 </p>
@@ -1039,8 +1442,195 @@ go in the equalized distribution.
 \end{equation}
 </div>
 </div>
+
+<div id="outline-container-org1fad2d4" class="outline-4">
+<h4 id="org1fad2d4"><span class="section-number-4">5.2.2</span> Convolutions</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<p>
+Convolution is the process of adding each element of the image to its
+local neighbors, weighted by the kernel.
+</p>
+
+<p>
+Convolutions can be used to denoise, descratch, blur, unblur and even
+feature extraction. 
+</p>
+
+<p>
+Median filtering is good for removing salt-and-pepper noise, or
+scratches in image
+</p>
+
+
+
+<div class="figure">
+<p><img src="images/computer_vision/Image%20Processing/screenshot_2018-11-23_10-05-43.png" alt="screenshot_2018-11-23_10-05-43.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge109e63" class="outline-3">
+<h3 id="orge109e63"><span class="section-number-3">5.3</span> Colour</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+A human retina has 2 kinds of light receptors: rods are sensitive to
+amount of light, while cones are sensitive to wavelengths of light
+</p>
+
+<p>
+There are 3 kinds of cones:
+</p>
+
+<dl class="org-dl">
+<dt>short</dt><dd>most sensitive to blue</dd>
+<dt>medium</dt><dd>most sensitive to green</dd>
+<dt>long</dt><dd>most sensitive to red</dd>
+</dl>
+
+<p>
+Cones send signals to the brain, and the brain interprets this mixture
+of signals as colours. This gives rise to the RGB colour coding
+scheme. Different coding schemes have different colour spaces.
+</p>
+
+<p>
+Cones are sensitive to vaious colours, ranging from wavelengths of
+400nm (violet) to 700nm (red).
+</p>
+
+<p>
+TODO: insert picture of visible spectrum
+</p>
+
+<p>
+There are some regions that extend beyond the visible region, but are
+still relevant to image processing:
+</p>
+
+<ul class="org-ul">
+<li>0.7-1.0\(\mu m\): Near infrared (NIR)</li>
+<li>1.0-3.0\(\mu m\): Short-wave infrared (SWIR)</li>
+<li>3.0-5.0\(\mu m\): Mid-wave infrared (MWIR)</li>
+<li>8.0-12.0\(\mu m\): Long-wave infrared (LWIR)</li>
+<li>12.0-1000.0\(\mu m\): Far infrared or very long-wave infraerd (VLWIR)</li>
+</ul>
+
+<p>
+The range 5-8\(\mu m\) corresponds to a wavelength spectrum that is
+largely absorbed by the water in the atmosphere.
+</p>
+
+<p>
+<b>Color constancy</b> is the ability of the human visual system to be immune
+to changing illumination in perception of colour. The human colour
+receptors perceive the overall effect of the mixture of colours, and
+cannot tell its composition.
+</p>
+
+<p>
+<b>Gamut</b> is the range of colours that can be reproduced with a given
+colour reproduction system.
+</p>
+
+<p>
+TODO: image of colour systems
+</p>
+
+<p>
+In the RGB colour space, each value is an unsigned 8-bit value from
+0-255.
+</p>
+
+<p>
+In the HSV (Hue Saturation Value) colour space, hue corresponds to
+colour type from 0 (red) to 360. Saturation corresponds to the
+colourfulness (0 - 1 full colour), while value refers to the
+brightness (0 black - 1 white).
+</p>
+
+<p>
+The YCbCRr Colour space is used for TV and video. Y stands for
+luminance, Cb blue difference, and Cr red difference.
+</p>
+
+<p>
+There are several colour conversion algorithms to convert values in
+one colour space to another.
+</p>
+
+<p>
+TODO: Insert equations
+</p>
+
+<p>
+Primary colours are the set of colours combined to make a range of
+colours. Since human vision is trichromatic, we only need to use 3
+primary colours. The combination of primary colours can be additive or
+subtractive.
+</p>
+
+<p>
+Examples of additive combinations include overlapping projected lights
+and CRT displays. RGB is commonly used in additive combinatinos.
+Examples of subtracting combinations include mixing of color pigments
+or dyes. The primary colours used in these cases are normally cyan,
+magenta and yellow.
+</p>
+
+<p>
+TODO: Images of additive/subtractive colour mixing.
+</p>
 </div>
 
+<div id="outline-container-org9fc08e0" class="outline-4">
+<h4 id="org9fc08e0"><span class="section-number-4">5.3.1</span> Measuring Colour Differences</h4>
+<div class="outline-text-4" id="text-5-3-1">
+<p>
+The simplest metric is the euclidean distance between colours in the
+RGB space:
+</p>
+
+\begin{equation}
+  d(C_1, C_2) = \sqrt{\left( R_1 - R_2 \right)^2 + \left( G_1 - G_2
+    \right)^2 + \left( B_1 - B_2 \right)^2}
+\end{equation}
+
+<p>
+However, the RGB space is not perceptually uniform, and this is
+inappropriate if one needs to match human perception. HSV, YCbCr are
+also not perceptually uniform. Some colour spaces that are more
+perceptually uniform are the Munsell, CIELAB and CIELUB colour spaces.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3e0bc21" class="outline-4">
+<h4 id="org3e0bc21"><span class="section-number-4">5.3.2</span> Computing Means</h4>
+<div class="outline-text-4" id="text-5-3-2">
+<p>
+The usual formula of computing means \(M = \frac{1}{n}S =
+\frac{1}{n}\sum_{i=1}^n R_i\) can lead to overflow even for small \(n\).
+One way to get around it is to use a floating point representation for
+\(S\). The second method is to do incremental averaging:
+</p>
+
+\begin{equation}
+  M_k = \frac{k-1}{k}M_{k-1} + \frac{1}{k}R_k
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org6ace06e" class="outline-4">
+<h4 id="org6ace06e"><span class="section-number-4">5.3.3</span> Digital Cameras sensing colour</h4>
+<div class="outline-text-4" id="text-5-3-3">
+<p>
+TODO: Bayer filter
+</p>
+</div>
+</div>
+</div>
+</div>
 <div id="outline-container-orgb46cca5" class="outline-2">
 <h2 id="orgb46cca5"><span class="section-number-2">6</span> Change Detection</h2>
 <div class="outline-text-2" id="text-6">
@@ -1060,7 +1650,7 @@ has changed.
 
 <p>
 To detect positional changes, the method used must be immune to
-positional change. This requires motion tracking.
+illumination change. This requires motion tracking.
 </p>
 
 <p>
@@ -1075,7 +1665,12 @@ trivial case, motion tracking will be required.
 <div id="outline-container-org3944902" class="outline-2">
 <h2 id="org3944902"><span class="section-number-2">7</span> Motion Tracking</h2>
 <div class="outline-text-2" id="text-7">
+<p>
+There are two approaches to motion tracking: feature-based and
+intensity-gradient based.
+</p>
 </div>
+
 <div id="outline-container-org0b4a308" class="outline-3">
 <h3 id="org0b4a308"><span class="section-number-3">7.1</span> Feature-based</h3>
 <div class="outline-text-3" id="text-7-1">
@@ -1089,18 +1684,102 @@ next frame, to check if there is a displacement.
 Good features are called "corners". The two popular corner detectors
 are the Harris corner detector and the Tomasi corner detector.
 </p>
+
+<p>
+Although corners are only a small percentage of the image, they
+contain the most important features in restoring image information,
+and they can be used to minimize the amount of processed data for
+motion tracking, image stitching, building 2D mosaics, stereo vision,
+image representation and other related computer vision areas.
+</p>
 </div>
 
-<div id="outline-container-org1a13c8f" class="outline-4">
-<h4 id="org1a13c8f"><span class="section-number-4">7.1.1</span> <span class="todo TODO">TODO</span> Harris corner detector</h4>
+<div id="outline-container-orgbfc8e9c" class="outline-4">
+<h4 id="orgbfc8e9c"><span class="section-number-4">7.1.1</span> <a href="https://en.wikipedia.org/wiki/Harris_Corner_Detector">Harris corner detector</a></h4>
+<div class="outline-text-4" id="text-7-1-1">
+<p>
+Compared to the Kanade-Lucas-Tomasi corner detector, the Harris corner
+detector provides good repeatability under changing illumination and
+rotation, and therefore, it is more often used in stereo matching and
+image database retrieval.
+</p>
+
+<p>
+Interpreting the eigenvalues:
+</p>
+
+
+<div class="figure">
+<p><img src="images/computer_vision/Motion%20Tracking/screenshot_2018-11-24_14-54-48.png" alt="screenshot_2018-11-24_14-54-48.png" />
+</p>
+</div>
+
+<p>
+In flat regions, the eigenvalues are both small, in edges, only one of
+the eigenvalues are large. On the other hand, in corners, both
+eigenvalues are large but the 2 eigenvalues of the same magnitude, the error
+\(E\) increases in all directions.
+</p>
+
+
+
+<div class="figure">
+<p><img src="images/computer_vision/Motion%20Tracking/screenshot_2018-11-24_14-56-43.png" alt="screenshot_2018-11-24_14-56-43.png" />
+</p>
+</div>
+
+<p>
+The Harris corner response function essentially filters out the corners.
+</p>
+</div>
+
+<div id="outline-container-orga087e16" class="outline-5">
+<h5 id="orga087e16"><span class="section-number-5">7.1.1.1</span> Properties</h5>
+<div class="outline-text-5" id="text-7-1-1-1">
+<ol class="org-ol">
+<li>Harris corner detector is invariant to rotation: Ellipse has the
+same eigenvalues regardless of rotation.</li>
+<li>Mostly invariant to additive and multiplicative intensity changes
+(threshold issue for multiplicative)</li>
+<li>Not invariant to image scale!</li>
+</ol>
+</div>
+</div>
 </div>
 
 <div id="outline-container-org656134f" class="outline-4">
-<h4 id="org656134f"><span class="section-number-4">7.1.2</span> <span class="todo TODO">TODO</span> Tomasi corner detector</h4>
+<h4 id="org656134f"><span class="section-number-4">7.1.2</span> Tomasi corner detector</h4>
 <div class="outline-text-4" id="text-7-1-2">
+\begin{equation}
+  \frac{1}{N} \sum_{u} \sum_v \begin{bmatrix}
+    I_x^2 & I_x I_y \\
+    I_x I_y & I_y^2 \\
+  \end{bmatrix}
+\end{equation}
+
 <p>
-Examples of feature detectors include SIFT and SURF.
+where \(I_x = \frac{\partial I}{\partial x}\), \(N\) is the total number
+of pixels in window of interest, \(u\) and \(v\) are the horizontal and
+vertical index of the pixel in the window of interest.
 </p>
+
+<p>
+Let the eigenvalues of the above matrix be \(\lambda_{max}\) and
+\(\lambda_{min}\). Then the greater \(\lambda_{min}\), the more
+"cornerness" the feature.
+</p>
+
+<p>
+Examples of feature descriptors include SIFT and SURF. The typical
+workflow involves:
+</p>
+
+<ol class="org-ol">
+<li>Detecting good features</li>
+<li>Building feature descriptors on each of these features</li>
+<li>Matching these descriptors on the second image to establish the
+corresponding points</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1208,7 +1887,6 @@ and setting \(\frac{\partial E}{\partial d} = 0\):
   J(x) - d^T g(x) \right] g(x)
 \end{equation}
 
-
 \begin{equation}
 \sum_{x \in W} w(x)\left[ I(x) - J(x) \right] g(x) = \sum_{x \in W}
 w(x) g(x) g^T(x) d
@@ -1235,6 +1913,31 @@ Z = \begin{bmatrix}
   \sum_{x \in W} w(I-J)I_y
 \end{bmatrix}
 \end{equation}
+
+<p>
+With 2 unknowns and 2 equations, we can solve for \(d\).
+</p>
+
+<p>
+Lucas-Kanade algorithm is often used with Harris/Tomasi's corner
+detectors. First, corner detectors are applied to detect good
+features, then LK method is applied to compute \(d\) for each pixel. \(d\)
+is then accepted only for good features.
+</p>
+
+<p>
+The math of LK tracker assumes \(d\) is small, and would only work for
+small displacements. To handle large displacements, the image is
+downsampled. Usually , the Gaussian filter is used to smoothen the
+image before scaling down.
+</p>
+
+
+
+<div class="figure">
+<p><img src="images/computer_vision/Motion%20Tracking/screenshot_2018-11-23_12-36-44.png" alt="screenshot_2018-11-23_12-36-44.png" />
+</p>
+</div>
 </div>
 </div>
 </div>
@@ -1316,7 +2019,7 @@ features in one image with the same feature in another image.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jethro Kuan</p>
-<p class="date">Created: 2018-11-19 Mon 16:53</p>
+<p class="date">Created: 2018-11-24 Sat 20:31</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
