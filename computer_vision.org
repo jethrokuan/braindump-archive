@@ -1,15 +1,8 @@
-#+SETUPFILE: ./export_template.org
+#SETUPFILE: ./export_template.org
 #+TITLE: Computer Vision
 
-* Mathematics Fundamentals
-** Taylor Approximation
-The Taylor series of a function $f(x)$ at $x=a$ is given by:
-
-\begin{equation}
-  f(x) = \sum_{n=0}^{\infty} \frac{f^n(a)}{n!} (x-a)^n
-\end{equation}
-
-** [[file:linear_algebra.org][Linear Algebra]]
+* Prerequisites
+[[file:linear_algebra.org][Linear Algebra]]
 
 * Camera Basics
 
@@ -21,7 +14,6 @@ captured.
 #+DOWNLOADED: http://hyperphysics.phy-astr.gsu.edu/hbase/geoopt/imggo/slr2.gif @ 2018-11-18 23:35:22
 [[file:images/computer_vision/Camera%20Basics/slr2_2018-11-18_23-35-22.gif]]
 
-
 ** DSLR (Digital SLR)
 
 #+DOWNLOADED: https://sites.google.com/site/photointro/_/rsrc/1336899552607/dslrstructure/DSLR_stru.jpg?height=317&width=400 @ 2018-11-18 23:37:03
@@ -32,7 +24,7 @@ captured.
 2. Condensing lens: A lens that is used to concentrate the incoming light
 3. Pentaprism: To produce a correctly oriented, right side up image
    and project it into the viewfinder eyepiece
-4. AF sensor: accomplishes autofocus
+4. AF sensor: accomplishes auto-focus
 5. Viewfinder eyepiece: Allows us to see what will be recorded by the
    image sensor
 6. LCD Screen: display stored photos or what will be recorded by image sensor
@@ -64,7 +56,7 @@ projected onto a flat image plane.
 
 In computer vision, we want to describe the world that we see in one
 or more images and to reconstruct its properties, such as shape,
-illumination and color distributions. Some examples of computer vision
+illumination and colour distributions. Some examples of computer vision
 being used in real-world applications include Optical Character
 Recognition (OCR) , machine inspection, retail, medical imaging, and
 automotive safety.
@@ -106,7 +98,7 @@ three-dimensional shapes.
  space/.
 
 A homogeneous vector $\tilde{\mathbf{x}}$ can be converted back into an
-inhomogeneous vector $\mathbf{x}$ by diving through the last element
+in-homogeneous vector $\mathbf{x}$ by diving through the last element
 $\tilde{w}$.
 
 2D lines can be represented using homogeneous coordinates
@@ -139,7 +131,7 @@ cone) can be written using a quadric equation
   \tilde{\mathbf{x}}^T\mathbf{Q}\tilde{\mathbf{x}} = 0
 \end{equation}
 
-3D points can be written using inhomogeneous coordinates $\mathbf{x} =
+3D points can be written using in-homogeneous coordinates $\mathbf{x} =
 (x,y,z) \in \mathbb{R}^3$, or homogeneous coordinates $\tilde{\mathbf{x}} =
 (\tilde{x}, \tilde{y}, \tilde{z}, \tilde{w}) \in \mathbb{P}^3$.
 
@@ -241,7 +233,7 @@ Some transformations that cannot be classified so easily include:
 2. Planar surface flow
 3. Bilinear interpolant
 
-The set of 3D transformations are very similar to the 2D
+The set of 3D transformations are similar to the 2D
 transformations.
 
 #+DOWNLOADED: /tmp/screenshot.png @ 2018-08-19 14:05:15
@@ -345,8 +337,8 @@ or $w$, but not both. Then quarternion division can be defined as:
 
 We need to specify how 3D primitives are projected onto the image
 plane. The simplest model is orthography, which requires no division
-to get the final (inhomogeneous) result. The more commonly used model
-is perspective, since this more accurately models the behaviour of
+to get the final (in-homogeneous) result. The more commonly used model
+is perspective, since this more accurately models the behavior of
 real cameras.
 
 *** Orthography
@@ -421,7 +413,7 @@ according to the pixel sensor spacing and the relative position of the
 sensor plane to the origin.
 
 Image sensors return /pixel values/ indexed by integer pixel coordinates
-$(x_s, y_s)$. To map pixel centers to 3D coordinates, we first scalet he
+$(x_s, y_s)$. To map pixel centers to 3D coordinates, we first scale he
 $(x_s, y_s)$ values by the pixel spacings $(s_x, s_y)$, and then describe
 the orientation of the sensor array relative to the camera projection
 center $\mathbf{O}_c$ with an origin $\mathbf{c}_s$ and a 3D rotation
@@ -645,7 +637,7 @@ The rotation matrix $R$ has two important properties:
 1. $R$ is orthonormal: $R^T R = I$
 2. $|R| = 1$
 
-One can represent rotation using euler angles:
+One can represent rotation using Euler angles:
 
 - pitch ($\omega$) :: rotation about x-axis
 - yaw ($\phi$) :: rotation about y-axis
@@ -745,7 +737,7 @@ We can write:
 \end{equation}
 ** Photometric image formation
 
-Images are not composed of 2D features, but of discrete color or
+Images are not composed of 2D features, but of discrete colour or
 intensity values. Where do these values come from, and how do they
 relate to the lighting in the environment, surface properties and
 geometry, camera optics and sensor properties?
@@ -756,7 +748,7 @@ light sources.
 
 A point light source originates at a single location in space. In
 addition to its location, a point light source has an intensity and a
-color spectrum (a distribution over wavelengths).
+colour spectrum (a distribution over wavelengths).
 
 An area light source with a diffuser can be modeled as a finite
 rectangular area emitting light equally in all directions. When the
@@ -765,7 +757,7 @@ can be used instead.
 
 *** Reflectance and shading
 When light hits an object surface, it is scattered and reflected. We
-look at some more specialised models, including the diffuse, specular
+look at some more specialized models, including the diffuse, specular
 and Phong shading models.
 
 **** The Bidirectional Reflectance Distribution Function (BRDF)
@@ -785,7 +777,7 @@ split into their diffuse and specular components.
 **** Diffuse Reflection
 The diffuse component scatters light uniformly in all directions and
 is the phenomenon we most normally associate with shading. Diffuse
-reflection also often imparts a strong body color to the light.
+reflection also often imparts a strong body colour to the light.
 
 When light is scattered uniformly in all directions, the BRDF is
 constant:
@@ -814,7 +806,7 @@ accounts for the fact that objects are generally illuminated not only
 by point light sources but also by a general diffuse illumination
 corresponding to inter-reflection or distance sources. In the Phong
 model, the ambient term does not depend on surface orientation, but
-depends on the color of both the ambient illumination $L_a(\lambda)$
+depends on the colour of both the ambient illumination $L_a(\lambda)$
 and the object $k_a(\lambda)$,
 
 \begin{equation}
@@ -844,7 +836,8 @@ pixel's value depends only on the corresponding input pixel value.
 Examples of such operators include:
 
 - brightness and contrast adjustments
-- color correction and transformations
+- colour correction and transformations
+
 ** Image Enhancement
 *** Histogram Equalization
 https://www.math.uci.edu/icamp/courses/math77c/demos/hist_eq.pdf
@@ -881,7 +874,7 @@ scratches in image
 
 #+DOWNLOADED: /tmp/screenshot.png @ 2018-11-23 10:05:43
 [[file:images/computer_vision/Image%20Processing/screenshot_2018-11-23_10-05-43.png]]
-** Colour
+** Color
 A human retina has 2 kinds of light receptors: rods are sensitive to
 amount of light, while cones are sensitive to wavelengths of light
 
@@ -895,10 +888,8 @@ Cones send signals to the brain, and the brain interprets this mixture
 of signals as colours. This gives rise to the RGB colour coding
 scheme. Different coding schemes have different colour spaces.
 
-Cones are sensitive to vaious colours, ranging from wavelengths of
+Cones are sensitive to various colours, ranging from wavelengths of
 400nm (violet) to 700nm (red).
-
-TODO: insert picture of visible spectrum
 
 There are some regions that extend beyond the visible region, but are
 still relevant to image processing:
@@ -907,7 +898,7 @@ still relevant to image processing:
 - 1.0-3.0$\mu m$: Short-wave infrared (SWIR)
 - 3.0-5.0$\mu m$: Mid-wave infrared (MWIR)
 - 8.0-12.0$\mu m$: Long-wave infrared (LWIR)
-- 12.0-1000.0$\mu m$: Far infrared or very long-wave infraerd (VLWIR)
+- 12.0-1000.0$\mu m$: Far infrared or very long-wave infrared (VLWIR)
 
 The range 5-8$\mu m$ corresponds to a wavelength spectrum that is
 largely absorbed by the water in the atmosphere.
@@ -919,8 +910,6 @@ cannot tell its composition.
 
 *Gamut* is the range of colours that can be reproduced with a given
 colour reproduction system.
-
-TODO: image of colour systems
 
 In the RGB colour space, each value is an unsigned 8-bit value from
 0-255.
@@ -936,8 +925,6 @@ luminance, Cb blue difference, and Cr red difference.
 There are several colour conversion algorithms to convert values in
 one colour space to another.
 
-TODO: Insert equations
-
 Primary colours are the set of colours combined to make a range of
 colours. Since human vision is trichromatic, we only need to use 3
 primary colours. The combination of primary colours can be additive or
@@ -948,8 +935,6 @@ and CRT displays. RGB is commonly used in additive combinatinos.
 Examples of subtracting combinations include mixing of color pigments
 or dyes. The primary colours used in these cases are normally cyan,
 magenta and yellow.
-
-TODO: Images of additive/subtractive colour mixing.
 
 *** Measuring Colour Differences
 
@@ -979,8 +964,8 @@ $S$. The second method is to do incremental averaging:
 *** Digital Cameras sensing colour
 TODO: Bayer filter
 * Change Detection
-To detect change between 2 video frames, it is straightforward to
-compute differences in pixel intensities across the two frames:
+Detecting change between 2 video frames is straightforward -- compute
+the differences in pixel intensities across the two frames:
 
 \begin{equation}
   D_t(x, y) = | I(x,y,t+1)  - I(x,y,t)|
@@ -1230,5 +1215,7 @@ of images taken with varying camera positions, we can extract 3D
 information of the scene. This requires us to match (associate)
 features in one image with the same feature in another image.
 
-* COMMENT References
-[[file:~/Dropbox/NUS/CS4243/SzeliskiBook_20100903_draft.pdf][Computer Vision]]
+* References
+- [[file:~/Dropbox/NUS/CS4243/SzeliskiBook_20100903_draft.pdf][Computer Vision]]
+- [[http://web.stanford.edu/class/cs231a/course_notes.html][CS231A: Computer Vision, From 3D Reconstruction to Recognition]]
+- [[https://www.amazon.com/Computer-Vision-Linda-G-Shapiro/dp/0130307963][Computer Vision: Linda G. Shapiro, George C. Stockman]]

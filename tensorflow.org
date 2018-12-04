@@ -426,7 +426,7 @@ Finalizing the graph ensures that no new nodes are being added to the
 graph on each session run, by marking the graph as read-only. Anything
 that tries to modify the graph will raise an Exception.
 
-** Use [[goog-perftools.sourceforge.net/][tcmalloc]]
+** Use [[https://goog-perftools.sourceforge.net/][tcmalloc]]
 
 tcmalloc suffers less from fragmentation when allocating and
 deallocating large objects (such as tensors). Some memory-intensive

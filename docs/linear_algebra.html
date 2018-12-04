@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-11-19 Mon 16:53 -->
+<!-- 2018-11-26 Mon 09:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Linear Algebra</title>
@@ -91,31 +91,31 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6176daf">1. Definitions</a></li>
-<li><a href="#org05e1604">2. Linear Independence</a></li>
-<li><a href="#orgf7095fb">3. Span</a></li>
-<li><a href="#org82e2b61">4. Basis</a></li>
-<li><a href="#org352addf">5. Special Matrices</a></li>
-<li><a href="#orgcbd2be1">6. Matrix properties</a></li>
-<li><a href="#orge24c731">7. Solutions to linear systems</a></li>
-<li><a href="#orge1136e8">8. Matrices as Linear Transformations</a></li>
-<li><a href="#org0ec2f71">9. Matrix Multiplication as Composition</a></li>
-<li><a href="#org5e82856">10. Determinant</a></li>
-<li><a href="#orgbd29e76">11. Matrices for solving linear equations</a></li>
-<li><a href="#org11077f4">12. Rank</a></li>
-<li><a href="#org06c6585">13. Column Space</a></li>
-<li><a href="#orgded891b">14. Dot Product</a></li>
-<li><a href="#orgc2a6654">15. Cross Product</a></li>
-<li><a href="#org85f5c6f">16. How to translate a matrix</a></li>
-<li><a href="#orgf22e5aa">17. Eigenvectors and eigenvalues</a></li>
-<li><a href="#org9ec102c">18. Null Space</a></li>
-<li><a href="#orgfedd36f">19. Singular Value Decomposition</a></li>
-<li><a href="#orgdc23293">20. References</a></li>
+<li><a href="#orga926e42">1. Definitions</a></li>
+<li><a href="#org9e11752">2. Linear Independence</a></li>
+<li><a href="#org25a1cf2">3. Span</a></li>
+<li><a href="#org822316e">4. Basis</a></li>
+<li><a href="#org158124d">5. Special Matrices</a></li>
+<li><a href="#org1d7746c">6. Matrix properties</a></li>
+<li><a href="#orgb1537f0">7. Solutions to linear systems</a></li>
+<li><a href="#orgec22357">8. Matrices as Linear Transformations</a></li>
+<li><a href="#orgb582203">9. Matrix Multiplication as Composition</a></li>
+<li><a href="#orgad7b827">10. Determinant</a></li>
+<li><a href="#orgd79e8ef">11. Matrices for solving linear equations</a></li>
+<li><a href="#org54d2c7b">12. Rank</a></li>
+<li><a href="#org7b0bec3">13. Column Space</a></li>
+<li><a href="#org8ca3cc1">14. Dot Product</a></li>
+<li><a href="#orgbfbb891">15. Cross Product</a></li>
+<li><a href="#orga1805e3">16. How to translate a matrix</a></li>
+<li><a href="#orgb6a3670">17. Eigenvectors and eigenvalues</a></li>
+<li><a href="#org77b4a91">18. Null Space</a></li>
+<li><a href="#org8377a36">19. Singular Value Decomposition</a></li>
+<li><a href="#org7267534">20. References</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org6176daf" class="outline-2">
-<h2 id="org6176daf"><span class="section-number-2">1</span> Definitions</h2>
+<div id="outline-container-orga926e42" class="outline-2">
+<h2 id="orga926e42"><span class="section-number-2">1</span> Definitions</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 A matrix of dimensions M-by-N looks like:
@@ -145,8 +145,8 @@ a_2^2 + \dots + a_n^2}\).
 </p>
 </div>
 </div>
-<div id="outline-container-org05e1604" class="outline-2">
-<h2 id="org05e1604"><span class="section-number-2">2</span> Linear Independence</h2>
+<div id="outline-container-org9e11752" class="outline-2">
+<h2 id="org9e11752"><span class="section-number-2">2</span> Linear Independence</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A set of vectors \(\mathbf{x}\) is linearly dependent if there exist a set of
@@ -157,8 +157,8 @@ the set of vectors \(\mathbf{x}\) is linearly independent.
 </div>
 </div>
 
-<div id="outline-container-orgf7095fb" class="outline-2">
-<h2 id="orgf7095fb"><span class="section-number-2">3</span> Span</h2>
+<div id="outline-container-org25a1cf2" class="outline-2">
+<h2 id="org25a1cf2"><span class="section-number-2">3</span> Span</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 The "span" of \(\hat{v}\) and \(\hat{w}\) is the set of all their linear
@@ -171,8 +171,8 @@ combinations:
 </div>
 </div>
 
-<div id="outline-container-org82e2b61" class="outline-2">
-<h2 id="org82e2b61"><span class="section-number-2">4</span> Basis</h2>
+<div id="outline-container-org822316e" class="outline-2">
+<h2 id="org822316e"><span class="section-number-2">4</span> Basis</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 The basis of a vector space is a set of linearly independent vectors
@@ -186,8 +186,8 @@ written as \(x = \sum^n_{i=1}c_i v_i\) for some scalar \(c_i\).
 </div>
 </div>
 
-<div id="outline-container-org352addf" class="outline-2">
-<h2 id="org352addf"><span class="section-number-2">5</span> Special Matrices</h2>
+<div id="outline-container-org158124d" class="outline-2">
+<h2 id="org158124d"><span class="section-number-2">5</span> Special Matrices</h2>
 <div class="outline-text-2" id="text-5">
 <dl class="org-dl">
 <dt>diagonal matrix</dt><dd>a matrix with all off-diagonal entries equal to 0.</dd>
@@ -198,8 +198,8 @@ written as \(x = \sum^n_{i=1}c_i v_i\) for some scalar \(c_i\).
 </div>
 </div>
 
-<div id="outline-container-orgcbd2be1" class="outline-2">
-<h2 id="orgcbd2be1"><span class="section-number-2">6</span> Matrix properties</h2>
+<div id="outline-container-org1d7746c" class="outline-2">
+<h2 id="org1d7746c"><span class="section-number-2">6</span> Matrix properties</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>\((AB)^-1 = B^-1 A^{-1}\)</li>
@@ -213,8 +213,8 @@ written as \(x = \sum^n_{i=1}c_i v_i\) for some scalar \(c_i\).
 </div>
 </div>
 
-<div id="outline-container-orge24c731" class="outline-2">
-<h2 id="orge24c731"><span class="section-number-2">7</span> Solutions to linear systems</h2>
+<div id="outline-container-orgb1537f0" class="outline-2">
+<h2 id="orgb1537f0"><span class="section-number-2">7</span> Solutions to linear systems</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Given the matrix \(A\) and vector \(b\), the problem \(Ax=b\) has a solution
@@ -231,8 +231,8 @@ solution to \(x\) is given by \(x = (A^T A)^{-1} A^T b\).
 </div>
 </div>
 
-<div id="outline-container-orge1136e8" class="outline-2">
-<h2 id="orge1136e8"><span class="section-number-2">8</span> Matrices as Linear Transformations</h2>
+<div id="outline-container-orgec22357" class="outline-2">
+<h2 id="orgec22357"><span class="section-number-2">8</span> Matrices as Linear Transformations</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 A transformation is linear if it fulfills two properties:
@@ -257,8 +257,8 @@ only by recording how the basis vectors are transformed.
 </div>
 </div>
 
-<div id="outline-container-org0ec2f71" class="outline-2">
-<h2 id="org0ec2f71"><span class="section-number-2">9</span> Matrix Multiplication as Composition</h2>
+<div id="outline-container-orgb582203" class="outline-2">
+<h2 id="orgb582203"><span class="section-number-2">9</span> Matrix Multiplication as Composition</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 Often, we want to describe the effects of multiple linear
@@ -286,8 +286,8 @@ final basis vectors land.
 </div>
 </div>
 
-<div id="outline-container-org5e82856" class="outline-2">
-<h2 id="org5e82856"><span class="section-number-2">10</span> Determinant</h2>
+<div id="outline-container-orgad7b827" class="outline-2">
+<h2 id="orgad7b827"><span class="section-number-2">10</span> Determinant</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 The fact that linear transformations leave grid lines parallel and
@@ -333,8 +333,8 @@ det \left( \begin{bmatrix}
 </div>
 </div>
 
-<div id="outline-container-orgbd29e76" class="outline-2">
-<h2 id="orgbd29e76"><span class="section-number-2">11</span> Matrices for solving linear equations</h2>
+<div id="outline-container-orgd79e8ef" class="outline-2">
+<h2 id="orgd79e8ef"><span class="section-number-2">11</span> Matrices for solving linear equations</h2>
 <div class="outline-text-2" id="text-11">
 
 <div class="figure">
@@ -358,8 +358,8 @@ it does not have an inverse. However, solutions can still exist.
 </div>
 </div>
 
-<div id="outline-container-org11077f4" class="outline-2">
-<h2 id="org11077f4"><span class="section-number-2">12</span> Rank</h2>
+<div id="outline-container-org54d2c7b" class="outline-2">
+<h2 id="org54d2c7b"><span class="section-number-2">12</span> Rank</h2>
 <div class="outline-text-2" id="text-12">
 <p>
 The rank is the number of dimensions of the output of the
@@ -377,8 +377,8 @@ corresponds to the maximal number of linearly independent columns of
 </div>
 </div>
 
-<div id="outline-container-org06c6585" class="outline-2">
-<h2 id="org06c6585"><span class="section-number-2">13</span> Column Space</h2>
+<div id="outline-container-org7b0bec3" class="outline-2">
+<h2 id="org7b0bec3"><span class="section-number-2">13</span> Column Space</h2>
 <div class="outline-text-2" id="text-13">
 <p>
 The column space of the matrix \(A\) is the set of all possible outputs of
@@ -387,8 +387,8 @@ The column space of the matrix \(A\) is the set of all possible outputs of
 </div>
 </div>
 
-<div id="outline-container-orgded891b" class="outline-2">
-<h2 id="orgded891b"><span class="section-number-2">14</span> Dot Product</h2>
+<div id="outline-container-org8ca3cc1" class="outline-2">
+<h2 id="org8ca3cc1"><span class="section-number-2">14</span> Dot Product</h2>
 <div class="outline-text-2" id="text-14">
 <p>
 The dot product \(\vec{w} \cdot \vec{v}\) can be viewed as the
@@ -426,8 +426,8 @@ product here.
 </div>
 </div>
 
-<div id="outline-container-orgc2a6654" class="outline-2">
-<h2 id="orgc2a6654"><span class="section-number-2">15</span> Cross Product</h2>
+<div id="outline-container-orgbfbb891" class="outline-2">
+<h2 id="orgbfbb891"><span class="section-number-2">15</span> Cross Product</h2>
 <div class="outline-text-2" id="text-15">
 <p>
 The cross product of \(\vec{v}\) and \(\vec{w}\), denoted \(\vec{v} \times
@@ -463,8 +463,8 @@ cross product.
 </div>
 </div>
 
-<div id="outline-container-org85f5c6f" class="outline-2">
-<h2 id="org85f5c6f"><span class="section-number-2">16</span> How to translate a matrix</h2>
+<div id="outline-container-orga1805e3" class="outline-2">
+<h2 id="orga1805e3"><span class="section-number-2">16</span> How to translate a matrix</h2>
 <div class="outline-text-2" id="text-16">
 <p>
 Suppose someone uses a different coordinate system (i.e. different
@@ -551,8 +551,8 @@ eigenvectors and eigenvalues.
 </div>
 </div>
 
-<div id="outline-container-orgf22e5aa" class="outline-2">
-<h2 id="orgf22e5aa"><span class="section-number-2">17</span> Eigenvectors and eigenvalues</h2>
+<div id="outline-container-orgb6a3670" class="outline-2">
+<h2 id="orgb6a3670"><span class="section-number-2">17</span> Eigenvectors and eigenvalues</h2>
 <div class="outline-text-2" id="text-17">
 <p>
 Consider the span of a particular vector, that is, the set of vectors
@@ -594,8 +594,8 @@ Eigenvectors of a real symmetric matrix are orthogonal and real.
 </div>
 </div>
 
-<div id="outline-container-org9ec102c" class="outline-2">
-<h2 id="org9ec102c"><span class="section-number-2">18</span> Null Space</h2>
+<div id="outline-container-org77b4a91" class="outline-2">
+<h2 id="org77b4a91"><span class="section-number-2">18</span> Null Space</h2>
 <div class="outline-text-2" id="text-18">
 <p>
 The null space of a matrix \(A\) consists of all vectors \(x\) such that
@@ -605,8 +605,8 @@ for \(x\).
 </div>
 </div>
 
-<div id="outline-container-orgfedd36f" class="outline-2">
-<h2 id="orgfedd36f"><span class="section-number-2">19</span> Singular Value Decomposition</h2>
+<div id="outline-container-org8377a36" class="outline-2">
+<h2 id="org8377a36"><span class="section-number-2">19</span> Singular Value Decomposition</h2>
 <div class="outline-text-2" id="text-19">
 <p>
 Given an input data matrix \(A\) consisting of \(m\) documents and \(n\)
@@ -675,8 +675,8 @@ of \(V^T\) corresponding to zero singular values.
 </div>
 </div>
 
-<div id="outline-container-orgdc23293" class="outline-2">
-<h2 id="orgdc23293"><span class="section-number-2">20</span> References</h2>
+<div id="outline-container-org7267534" class="outline-2">
+<h2 id="org7267534"><span class="section-number-2">20</span> References</h2>
 <div class="outline-text-2" id="text-20">
 <ol class="org-ol">
 <li><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">Essence of Linear Algebra</a></li>
@@ -687,7 +687,7 @@ of \(V^T\) corresponding to zero singular values.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jethro Kuan</p>
-<p class="date">Created: 2018-11-19 Mon 16:53</p>
+<p class="date">Created: 2018-11-26 Mon 09:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

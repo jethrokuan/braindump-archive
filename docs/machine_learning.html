@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-25 Thu 19:32 -->
+<!-- 2018-11-26 Mon 09:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Machine Learning</title>
@@ -91,146 +91,146 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org47ba749">1. The Learning Problem</a>
+<li><a href="#org17e50d1">1. The Learning Problem</a>
 <ul>
-<li><a href="#org9d20cae">1.1. What is Learning?</a>
+<li><a href="#orgc9317a6">1.1. What is Learning?</a>
 <ul>
-<li><a href="#org34c240a">1.1.1. Inductive Bias</a></li>
+<li><a href="#orgdba1676">1.1.1. Inductive Bias</a></li>
 </ul>
 </li>
-<li><a href="#org70dc96c">1.2. Types of Learning</a>
+<li><a href="#org1c3e95f">1.2. Types of Learning</a>
 <ul>
-<li><a href="#org4b6cf0e">1.2.1. Active vs Passive Learning</a></li>
-<li><a href="#org7cc1b9d">1.2.2. Online vs Batch Learning</a></li>
-<li><a href="#org610bda4">1.2.3. Reinforcement Learning</a></li>
-<li><a href="#orgd15fa7d">1.2.4. Supervised Learning</a>
+<li><a href="#orgeaaa62b">1.2.1. Active vs Passive Learning</a></li>
+<li><a href="#org64946d4">1.2.2. Online vs Batch Learning</a></li>
+<li><a href="#org8ccf3c7">1.2.3. Reinforcement Learning</a></li>
+<li><a href="#org892b8d2">1.2.4. Supervised Learning</a>
 <ul>
-<li><a href="#org3ac2fe6">1.2.4.1. Measure of success</a></li>
-<li><a href="#org775da52">1.2.4.2. Empirical Risk Minimisation (ERM)</a></li>
-<li><a href="#org76fc303">1.2.4.3. Assumptions Made ⚠</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org4e06735">1.3. Is Learning Feasible?</a>
-<ul>
-<li><a href="#orgc3bc35d">1.3.1. Probabilistic View</a></li>
+<li><a href="#org746ceba">1.2.4.1. Measure of success</a></li>
+<li><a href="#org29a1227">1.2.4.2. Empirical Risk Minimisation (ERM)</a></li>
+<li><a href="#org8d71aa9">1.2.4.3. Assumptions Made ⚠</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgbbaf8db">2. Training vs Testing</a>
+<li><a href="#org3bed5e0">1.3. Is Learning Feasible?</a>
 <ul>
-<li><a href="#orgb1ec93c">2.1. Generalisation Error</a></li>
-<li><a href="#orgc1abd7f">2.2. Growth Function</a></li>
-</ul>
-</li>
-<li><a href="#orgde3ff13">3. Concept Learning</a>
-<ul>
-<li><a href="#org65092e7">3.1. Hypothesis</a></li>
-<li><a href="#org9349c17">3.2. Inductive Learning</a></li>
-<li><a href="#orga2ea524">3.3. Concept Learning is Search</a></li>
-<li><a href="#orgd42bbc9">3.4. Exploit Structure in Concept Learning</a></li>
-<li><a href="#org834d34f">3.5. Find-S Algorithm</a>
-<ul>
-<li><a href="#org37095e4">3.5.1. Limitations</a></li>
-</ul>
-</li>
-<li><a href="#org168335f">3.6. Version Space</a></li>
-<li><a href="#org8ef46c6">3.7. List-Then-Eliminate Algorithm</a></li>
-<li><a href="#org5afd5ad">3.8. Candidate-Elimination Algorithm</a></li>
-</ul>
-</li>
-<li><a href="#orgf2ca9ee">4. Decision Tree Learning</a>
-<ul>
-<li><a href="#orga10461e">4.1. ID3 algorithm</a>
-<ul>
-<li><a href="#org01753fa">4.1.1. Which is the best attribute?</a></li>
-<li><a href="#orgf3de7d7">4.1.2. Hypothesis Space Search</a></li>
-<li><a href="#orge55f6fd">4.1.3. Inductive bias</a></li>
-<li><a href="#org8116a7a">4.1.4. Why Prefer Shorter Hypotheses?</a></li>
+<li><a href="#org4707bfd">1.3.1. Probabilistic View</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orga76cd44">5. Density Estimation</a></li>
-<li><a href="#org8e9c163">6. Unsupervised Learning</a>
+<li><a href="#org848fb0d">2. Training vs Testing</a>
 <ul>
-<li><a href="#orgf4a397e">6.1. K-means Clustering</a></li>
-<li><a href="#orga30ab18">6.2. Gaussian Mixture Model</a></li>
-<li><a href="#org9f33fe1">6.3. Expectation Maximization</a></li>
+<li><a href="#org4ae71f2">2.1. Generalisation Error</a></li>
+<li><a href="#org9c73e2e">2.2. Growth Function</a></li>
 </ul>
 </li>
-<li><a href="#org8f2dbe4">7. Refile</a>
+<li><a href="#org7e95520">3. Concept Learning</a>
 <ul>
-<li><a href="#org3a4bc05">7.1. Data Compression</a></li>
-<li><a href="#org224c0eb">7.2. Generative Learning Algorithms</a>
+<li><a href="#org62452d1">3.1. Hypothesis</a></li>
+<li><a href="#org2c04be3">3.2. Inductive Learning</a></li>
+<li><a href="#orge60a534">3.3. Concept Learning is Search</a></li>
+<li><a href="#orgf2b1a20">3.4. Exploit Structure in Concept Learning</a></li>
+<li><a href="#orgbd89779">3.5. Find-S Algorithm</a>
 <ul>
-<li><a href="#org24c1be2">7.2.1. Multivariate Normal Distribution</a></li>
-<li><a href="#org1d62a80">7.2.2. <span class="todo TODO">TODO</span> Gaussian Discriminant Analysis</a></li>
+<li><a href="#org3c69f82">3.5.1. Limitations</a></li>
 </ul>
 </li>
+<li><a href="#orgd48228e">3.6. Version Space</a></li>
+<li><a href="#org56435e6">3.7. List-Then-Eliminate Algorithm</a></li>
+<li><a href="#orgd66e663">3.8. Candidate-Elimination Algorithm</a></li>
 </ul>
 </li>
-<li><a href="#org70fe1b7">8. Riken AIP Workshop</a>
+<li><a href="#org70f9fbc">4. Decision Tree Learning</a>
 <ul>
-<li><a href="#org45b5a6c">8.1. Weakly Supervised Classification</a>
+<li><a href="#org1063906">4.1. ID3 algorithm</a>
 <ul>
-<li><a href="#orgd2f8813">8.1.1. Motivation</a></li>
-<li><a href="#org59545d0">8.1.2. Supervised Classification</a></li>
-<li><a href="#orgd092f34">8.1.3. Unsupervised Classification</a></li>
-<li><a href="#org63f28eb">8.1.4. Semi-supervised Classification</a></li>
-<li><a href="#org69a7e0d">8.1.5. Positive Unlabelled Classification</a></li>
-<li><a href="#org06d5e92">8.1.6. PNU Classification</a></li>
-<li><a href="#org6b54e60">8.1.7. Pconf Classification</a></li>
-</ul>
-</li>
-<li><a href="#orgcbeb8a0">8.2. Fast Computation of Uncertainty in Deep Learning</a>
-<ul>
-<li><a href="#orgcaec024">8.2.1. Uncertainty in Deep Learning</a></li>
-<li><a href="#org03e70e5">8.2.2. Approximating Inference with Gradients</a></li>
-</ul>
-</li>
-<li><a href="#org88d6628">8.3. Data-efficient Probabilistic Machine Learning</a>
-<ul>
-<li><a href="#org52a777a">8.3.1. Gaussian Process</a></li>
-<li><a href="#org9a83db5">8.3.2. Task Setting</a></li>
-<li><a href="#orge3a9351">8.3.3. Lipschitz Continuous Reward Functions</a></li>
+<li><a href="#org5cd62ba">4.1.1. Which is the best attribute?</a></li>
+<li><a href="#orgd4958ea">4.1.2. Hypothesis Space Search</a></li>
+<li><a href="#org1c815bc">4.1.3. Inductive bias</a></li>
+<li><a href="#org2fc8968">4.1.4. Why Prefer Shorter Hypotheses?</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org95a86c7">9. The Natural Language Decathlon: Multitask Learning as Question Answering: Richard Socher</a>
+<li><a href="#org7538680">5. Density Estimation</a></li>
+<li><a href="#org520b142">6. Unsupervised Learning</a>
 <ul>
-<li><a href="#org7d8e0d1">9.1. Limits of Single-task Learning</a></li>
-<li><a href="#orgc7ea353">9.2. Why has weight &amp; model sharing not happened so much in NLP?</a></li>
-<li><a href="#org7879fc8">9.3. Motivation for Single Multitask model</a></li>
-<li><a href="#org7cd0bb2">9.4. The 3 equivalent supertasks of NLP</a></li>
-<li><a href="#org1f51fe5">9.5. Multitask learning as QA</a></li>
-<li><a href="#orgca2742c">9.6. Designing a model for decaNLP</a></li>
-<li><a href="#orgd9b826e">9.7. Learnings</a></li>
-<li><a href="#org7708eee">9.8. Training Strategies</a></li>
+<li><a href="#orgfd82d45">6.1. K-means Clustering</a></li>
+<li><a href="#orge1d4ddc">6.2. Gaussian Mixture Model</a></li>
+<li><a href="#orge86edaa">6.3. Expectation Maximization</a></li>
+</ul>
+</li>
+<li><a href="#orgf6ef7b1">7. Refile</a>
+<ul>
+<li><a href="#org05cfe76">7.1. Data Compression</a></li>
+<li><a href="#orga5a103c">7.2. Generative Learning Algorithms</a>
+<ul>
+<li><a href="#org45ce777">7.2.1. Multivariate Normal Distribution</a></li>
+<li><a href="#org8911738">7.2.2. <span class="todo TODO">TODO</span> Gaussian Discriminant Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org8de0370">8. Riken AIP Workshop</a>
+<ul>
+<li><a href="#org22c1531">8.1. Weakly Supervised Classification</a>
+<ul>
+<li><a href="#orgd5c2786">8.1.1. Motivation</a></li>
+<li><a href="#org0603408">8.1.2. Supervised Classification</a></li>
+<li><a href="#orgb297668">8.1.3. Unsupervised Classification</a></li>
+<li><a href="#orgd3535f1">8.1.4. Semi-supervised Classification</a></li>
+<li><a href="#org14dc54f">8.1.5. Positive Unlabelled Classification</a></li>
+<li><a href="#org47587ed">8.1.6. PNU Classification</a></li>
+<li><a href="#orgfe8523a">8.1.7. Pconf Classification</a></li>
+</ul>
+</li>
+<li><a href="#org49f14c1">8.2. Fast Computation of Uncertainty in Deep Learning</a>
+<ul>
+<li><a href="#org8f142ed">8.2.1. Uncertainty in Deep Learning</a></li>
+<li><a href="#org3375c95">8.2.2. Approximating Inference with Gradients</a></li>
+</ul>
+</li>
+<li><a href="#orgde4f822">8.3. Data-efficient Probabilistic Machine Learning</a>
+<ul>
+<li><a href="#orgb4f7ce4">8.3.1. Gaussian Process</a></li>
+<li><a href="#org4b257bb">8.3.2. Task Setting</a></li>
+<li><a href="#orge8783eb">8.3.3. Lipschitz Continuous Reward Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgcf5cc0b">9. The Natural Language Decathlon: Multitask Learning as Question Answering: Richard Socher</a>
+<ul>
+<li><a href="#org73db713">9.1. Limits of Single-task Learning</a></li>
+<li><a href="#orga912169">9.2. Why has weight &amp; model sharing not happened so much in NLP?</a></li>
+<li><a href="#org3d65a89">9.3. Motivation for Single Multitask model</a></li>
+<li><a href="#org5192a97">9.4. The 3 equivalent supertasks of NLP</a></li>
+<li><a href="#orgda75a00">9.5. Multitask learning as QA</a></li>
+<li><a href="#org6d62c30">9.6. Designing a model for decaNLP</a></li>
+<li><a href="#org9126e90">9.7. Learnings</a></li>
+<li><a href="#org1110000">9.8. Training Strategies</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org47ba749" class="outline-2">
-<h2 id="org47ba749"><span class="section-number-2">1</span> The Learning Problem</h2>
+<div id="outline-container-org17e50d1" class="outline-2">
+<h2 id="org17e50d1"><span class="section-number-2">1</span> The Learning Problem</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org9d20cae" class="outline-3">
-<h3 id="org9d20cae"><span class="section-number-3">1.1</span> What is Learning?</h3>
+<div id="outline-container-orgc9317a6" class="outline-3">
+<h3 id="orgc9317a6"><span class="section-number-3">1.1</span> What is Learning?</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 An agent is said to be <i>learning</i> if it improves its performance P on
 task T based on experience/observations/data E. T must be fixed, P
-must be measurable, E must exist. See <a href="artificial_intelligence.html#org3546d1f">Learning Agents</a>.
+must be measurable, E must exist. See <a href="artificial_intelligence.html#orgf2d2103">Learning Agents</a>.
 </p>
 </div>
-<div id="outline-container-org34c240a" class="outline-4">
-<h4 id="org34c240a"><span class="section-number-4">1.1.1</span> Inductive Bias</h4>
+<div id="outline-container-orgdba1676" class="outline-4">
+<h4 id="orgdba1676"><span class="section-number-4">1.1.1</span> Inductive Bias</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 The incorporation of prior knowledge biases the learning mechanism.
@@ -243,12 +243,12 @@ further examples.
 </div>
 </div>
 </div>
-<div id="outline-container-org70dc96c" class="outline-3">
-<h3 id="org70dc96c"><span class="section-number-3">1.2</span> Types of Learning</h3>
+<div id="outline-container-org1c3e95f" class="outline-3">
+<h3 id="org1c3e95f"><span class="section-number-3">1.2</span> Types of Learning</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org4b6cf0e" class="outline-4">
-<h4 id="org4b6cf0e"><span class="section-number-4">1.2.1</span> Active vs Passive Learning</h4>
+<div id="outline-container-orgeaaa62b" class="outline-4">
+<h4 id="orgeaaa62b"><span class="section-number-4">1.2.1</span> Active vs Passive Learning</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 An active learner interacts with the environment at training time,
@@ -257,8 +257,8 @@ learner only observes the information provided by the environment.
 </p>
 </div>
 </div>
-<div id="outline-container-org7cc1b9d" class="outline-4">
-<h4 id="org7cc1b9d"><span class="section-number-4">1.2.2</span> Online vs Batch Learning</h4>
+<div id="outline-container-org64946d4" class="outline-4">
+<h4 id="org64946d4"><span class="section-number-4">1.2.2</span> Online vs Batch Learning</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 In online learning, the hypothesis has to be updated each time a new
@@ -266,8 +266,8 @@ label is received.
 </p>
 </div>
 </div>
-<div id="outline-container-org610bda4" class="outline-4">
-<h4 id="org610bda4"><span class="section-number-4">1.2.3</span> Reinforcement Learning</h4>
+<div id="outline-container-org8ccf3c7" class="outline-4">
+<h4 id="org8ccf3c7"><span class="section-number-4">1.2.3</span> Reinforcement Learning</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Each action in a state has an associated cost and a probability
@@ -280,12 +280,12 @@ minimizes the sum of expected current and future costs.
 </p>
 </div>
 </div>
-<div id="outline-container-orgd15fa7d" class="outline-4">
-<h4 id="orgd15fa7d"><span class="section-number-4">1.2.4</span> Supervised Learning</h4>
+<div id="outline-container-org892b8d2" class="outline-4">
+<h4 id="org892b8d2"><span class="section-number-4">1.2.4</span> Supervised Learning</h4>
 <div class="outline-text-4" id="text-1-2-4">
 </div>
-<div id="outline-container-org3ac2fe6" class="outline-5">
-<h5 id="org3ac2fe6"><span class="section-number-5">1.2.4.1</span> Measure of success</h5>
+<div id="outline-container-org746ceba" class="outline-5">
+<h5 id="org746ceba"><span class="section-number-5">1.2.4.1</span> Measure of success</h5>
 <div class="outline-text-5" id="text-1-2-4-1">
 <p>
 A loss function helps measure our success. Given a set \(H\) of
@@ -308,8 +308,8 @@ or expected loss.
 </p>
 </div>
 </div>
-<div id="outline-container-org775da52" class="outline-5">
-<h5 id="org775da52"><span class="section-number-5">1.2.4.2</span> Empirical Risk Minimisation (ERM)</h5>
+<div id="outline-container-org29a1227" class="outline-5">
+<h5 id="org29a1227"><span class="section-number-5">1.2.4.2</span> Empirical Risk Minimisation (ERM)</h5>
 <div class="outline-text-5" id="text-1-2-4-2">
 <ul class="org-ul">
 <li>The training set error is often called the <i>empirical error</i> or
@@ -319,8 +319,8 @@ minimizes the empirical risk is a simple learning strategy.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org76fc303" class="outline-5">
-<h5 id="org76fc303"><span class="section-number-5">1.2.4.3</span> Assumptions Made ⚠</h5>
+<div id="outline-container-org8d71aa9" class="outline-5">
+<h5 id="org8d71aa9"><span class="section-number-5">1.2.4.3</span> Assumptions Made ⚠</h5>
 <div class="outline-text-5" id="text-1-2-4-3">
 <ol class="org-ol">
 <li>One common assumption is that the data in the data generation
@@ -348,8 +348,8 @@ lower training and test error.</li>
 </div>
 </div>
 </div>
-<div id="outline-container-org4e06735" class="outline-3">
-<h3 id="org4e06735"><span class="section-number-3">1.3</span> Is Learning Feasible?</h3>
+<div id="outline-container-org3bed5e0" class="outline-3">
+<h3 id="org3bed5e0"><span class="section-number-3">1.3</span> Is Learning Feasible?</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 The target function \(f\) that we want to learn is unknown. The
@@ -362,8 +362,8 @@ As long as \(f\) is unknown, knowing \(D\) cannot exclude any patterns of
 \(f\) outside of \(D\), and the predictions of \(g\) would be meaningless.
 </p>
 </div>
-<div id="outline-container-orgc3bc35d" class="outline-4">
-<h4 id="orgc3bc35d"><span class="section-number-4">1.3.1</span> Probabilistic View</h4>
+<div id="outline-container-org4707bfd" class="outline-4">
+<h4 id="org4707bfd"><span class="section-number-4">1.3.1</span> Probabilistic View</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 If we accept a probabilistic answer, that is \(D\) tells us something
@@ -382,12 +382,12 @@ Therefore, we still need to ensure \(E_{in}(g) \approx 0\).
 </div>
 </div>
 
-<div id="outline-container-orgbbaf8db" class="outline-2">
-<h2 id="orgbbaf8db"><span class="section-number-2">2</span> Training vs Testing</h2>
+<div id="outline-container-org848fb0d" class="outline-2">
+<h2 id="org848fb0d"><span class="section-number-2">2</span> Training vs Testing</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgb1ec93c" class="outline-3">
-<h3 id="orgb1ec93c"><span class="section-number-3">2.1</span> Generalisation Error</h3>
+<div id="outline-container-org4ae71f2" class="outline-3">
+<h3 id="org4ae71f2"><span class="section-number-3">2.1</span> Generalisation Error</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 We can define generalisation error as the discrepancy between \(E_in\)
@@ -431,8 +431,8 @@ number, even while \(M\) is infinite.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc1abd7f" class="outline-3">
-<h3 id="orgc1abd7f"><span class="section-number-3">2.2</span> Growth Function</h3>
+<div id="outline-container-org9c73e2e" class="outline-3">
+<h3 id="org9c73e2e"><span class="section-number-3">2.2</span> Growth Function</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 The <i>growth function</i> is the quantity that will formalize the
@@ -451,8 +451,8 @@ H(x_1, \dots, x_n) = \left\{ h(x_1), h(x_2), \dots, h(x_n) | h \in H \right\}
 </div>
 </div>
 
-<div id="outline-container-orgde3ff13" class="outline-2">
-<h2 id="orgde3ff13"><span class="section-number-2">3</span> Concept Learning</h2>
+<div id="outline-container-org7e95520" class="outline-2">
+<h2 id="org7e95520"><span class="section-number-2">3</span> Concept Learning</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 A concept is a boolean-valued function over a set of input instances
@@ -461,8 +461,8 @@ supervised learning. Infer an unknown boolean-valued function from
 training-examples.
 </p>
 </div>
-<div id="outline-container-org65092e7" class="outline-3">
-<h3 id="org65092e7"><span class="section-number-3">3.1</span> Hypothesis</h3>
+<div id="outline-container-org62452d1" class="outline-3">
+<h3 id="org62452d1"><span class="section-number-3">3.1</span> Hypothesis</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 There is a trade-off between <i>expressive power</i> and smaller
@@ -477,8 +477,8 @@ A hypothesis \(h\) is consistent with a set of training examples \(D\) iff
 </p>
 </div>
 </div>
-<div id="outline-container-org9349c17" class="outline-3">
-<h3 id="org9349c17"><span class="section-number-3">3.2</span> Inductive Learning</h3>
+<div id="outline-container-org2c04be3" class="outline-3">
+<h3 id="org2c04be3"><span class="section-number-3">3.2</span> Inductive Learning</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Any hypothesis found to approximate the target function well over a
@@ -487,8 +487,8 @@ target function well over other <b>unobserved examples</b>.
 </p>
 </div>
 </div>
-<div id="outline-container-orga2ea524" class="outline-3">
-<h3 id="orga2ea524"><span class="section-number-3">3.3</span> Concept Learning is Search</h3>
+<div id="outline-container-orge60a534" class="outline-3">
+<h3 id="orge60a534"><span class="section-number-3">3.3</span> Concept Learning is Search</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 The goal is to search for a hypothesis \(h \in H\) that is consistent
@@ -496,8 +496,8 @@ with \(D\).
 </p>
 </div>
 </div>
-<div id="outline-container-orgd42bbc9" class="outline-3">
-<h3 id="orgd42bbc9"><span class="section-number-3">3.4</span> Exploit Structure in Concept Learning</h3>
+<div id="outline-container-orgf2b1a20" class="outline-3">
+<h3 id="orgf2b1a20"><span class="section-number-3">3.4</span> Exploit Structure in Concept Learning</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 \(h_j\) is more general than or equal to \(h_k\) (denoted \(h_j \ge_{g}
@@ -511,8 +511,8 @@ This is relation is a <b>partial order</b>.
 </div>
 </div>
 
-<div id="outline-container-org834d34f" class="outline-3">
-<h3 id="org834d34f"><span class="section-number-3">3.5</span> Find-S Algorithm</h3>
+<div id="outline-container-orgbd89779" class="outline-3">
+<h3 id="orgbd89779"><span class="section-number-3">3.5</span> Find-S Algorithm</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 Intuition: Start with the most specific hypothesis \(h\). Whenever it
@@ -520,8 +520,8 @@ wrongly classifies a positive training example, we "minimally"
 generalize it to satisfy its input instance.
 </p>
 </div>
-<div id="outline-container-org37095e4" class="outline-4">
-<h4 id="org37095e4"><span class="section-number-4">3.5.1</span> Limitations</h4>
+<div id="outline-container-org3c69f82" class="outline-4">
+<h4 id="org3c69f82"><span class="section-number-4">3.5.1</span> Limitations</h4>
 <div class="outline-text-4" id="text-3-5-1">
 <ol class="org-ol">
 <li>Can't tell whether Find-S has learnt the target concept</li>
@@ -532,8 +532,8 @@ generalize it to satisfy its input instance.
 </div>
 </div>
 </div>
-<div id="outline-container-org168335f" class="outline-3">
-<h3 id="org168335f"><span class="section-number-3">3.6</span> Version Space</h3>
+<div id="outline-container-orgd48228e" class="outline-3">
+<h3 id="orgd48228e"><span class="section-number-3">3.6</span> Version Space</h3>
 <div class="outline-text-3" id="text-3-6">
 \begin{equation*}
   VS_{H,D} = {h \in H | h \text{ is consistent with }D}
@@ -564,8 +564,8 @@ members of \(H\) consistent with \(D\).
 </div>
 </div>
 
-<div id="outline-container-org8ef46c6" class="outline-3">
-<h3 id="org8ef46c6"><span class="section-number-3">3.7</span> List-Then-Eliminate Algorithm</h3>
+<div id="outline-container-org56435e6" class="outline-3">
+<h3 id="org56435e6"><span class="section-number-3">3.7</span> List-Then-Eliminate Algorithm</h3>
 <div class="outline-text-3" id="text-3-7">
 <p>
 Iterate through all hypotheses in \(H\), and eliminate any hypothesis
@@ -575,8 +575,8 @@ prohibitively expensive.
 </div>
 </div>
 
-<div id="outline-container-org5afd5ad" class="outline-3">
-<h3 id="org5afd5ad"><span class="section-number-3">3.8</span> Candidate-Elimination Algorithm</h3>
+<div id="outline-container-orgd66e663" class="outline-3">
+<h3 id="orgd66e663"><span class="section-number-3">3.8</span> Candidate-Elimination Algorithm</h3>
 <div class="outline-text-3" id="text-3-8">
 <p>
 Start with most general and specific hypotheses. Each training example
@@ -586,8 +586,8 @@ hypotheses from version space.
 </div>
 </div>
 </div>
-<div id="outline-container-orgf2ca9ee" class="outline-2">
-<h2 id="orgf2ca9ee"><span class="section-number-2">4</span> Decision Tree Learning</h2>
+<div id="outline-container-org70f9fbc" class="outline-2">
+<h2 id="org70f9fbc"><span class="section-number-2">4</span> Decision Tree Learning</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 <i>Decision Tree Learning</i> is a method of learning which approximates
@@ -606,8 +606,8 @@ It is most appropriate when:
 <li>The training data may contain missing attribute values</li>
 </ol>
 </div>
-<div id="outline-container-orga10461e" class="outline-3">
-<h3 id="orga10461e"><span class="section-number-3">4.1</span> ID3 algorithm</h3>
+<div id="outline-container-org1063906" class="outline-3">
+<h3 id="org1063906"><span class="section-number-3">4.1</span> ID3 algorithm</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 ID3 learns decision trees by constructing them top down. Each instance
@@ -616,8 +616,8 @@ it alone classifies the examples. The best attribute is selected and
 used as the test at the root node of the tree.
 </p>
 </div>
-<div id="outline-container-org01753fa" class="outline-4">
-<h4 id="org01753fa"><span class="section-number-4">4.1.1</span> Which is the best attribute?</h4>
+<div id="outline-container-org5cd62ba" class="outline-4">
+<h4 id="org5cd62ba"><span class="section-number-4">4.1.1</span> Which is the best attribute?</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <p>
 A statistical property called <i>information gain</i> measures how well a
@@ -649,8 +649,8 @@ For example:
 \end{align}
 </div>
 </div>
-<div id="outline-container-orgf3de7d7" class="outline-4">
-<h4 id="orgf3de7d7"><span class="section-number-4">4.1.2</span> Hypothesis Space Search</h4>
+<div id="outline-container-orgd4958ea" class="outline-4">
+<h4 id="orgd4958ea"><span class="section-number-4">4.1.2</span> Hypothesis Space Search</h4>
 <div class="outline-text-4" id="text-4-1-2">
 <p>
 ID3 can be characterised as searching a space of hypotheses for one
@@ -683,8 +683,8 @@ based decisions, unlike other algorithms that make decisions incrementally.
 </p>
 </div>
 </div>
-<div id="outline-container-orge55f6fd" class="outline-4">
-<h4 id="orge55f6fd"><span class="section-number-4">4.1.3</span> Inductive bias</h4>
+<div id="outline-container-org1c815bc" class="outline-4">
+<h4 id="org1c815bc"><span class="section-number-4">4.1.3</span> Inductive bias</h4>
 <div class="outline-text-4" id="text-4-1-3">
 <p>
 The inductive bias of decision tree learning is that shorter trees are
@@ -704,8 +704,8 @@ the definition of its search space. (<i>restriction bias</i>).
 </p>
 </div>
 </div>
-<div id="outline-container-org8116a7a" class="outline-4">
-<h4 id="org8116a7a"><span class="section-number-4">4.1.4</span> Why Prefer Shorter Hypotheses?</h4>
+<div id="outline-container-org2fc8968" class="outline-4">
+<h4 id="org2fc8968"><span class="section-number-4">4.1.4</span> Why Prefer Shorter Hypotheses?</h4>
 <div class="outline-text-4" id="text-4-1-4">
 <ol class="org-ol">
 <li>fewer shorter hypothesis than larger ones, means it's less likely
@@ -715,8 +715,8 @@ to over-generalise</li>
 </div>
 </div>
 </div>
-<div id="outline-container-orga76cd44" class="outline-2">
-<h2 id="orga76cd44"><span class="section-number-2">5</span> Density Estimation</h2>
+<div id="outline-container-org7538680" class="outline-2">
+<h2 id="org7538680"><span class="section-number-2">5</span> Density Estimation</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 <i>Density Estimation</i> refers to the problem of modeling the probability
@@ -748,8 +748,8 @@ beta distribution as the prior.
 </p>
 </div>
 </div>
-<div id="outline-container-org8e9c163" class="outline-2">
-<h2 id="org8e9c163"><span class="section-number-2">6</span> Unsupervised Learning</h2>
+<div id="outline-container-org520b142" class="outline-2">
+<h2 id="org520b142"><span class="section-number-2">6</span> Unsupervised Learning</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 In unsupervised learning, given a training set \(S = \left(x_1, \dots,
@@ -767,8 +767,8 @@ noise (e.g. PCA)</li>
 <li>minimises description length of data</li>
 </ul>
 </div>
-<div id="outline-container-orgf4a397e" class="outline-3">
-<h3 id="orgf4a397e"><span class="section-number-3">6.1</span> K-means Clustering</h3>
+<div id="outline-container-orgfd82d45" class="outline-3">
+<h3 id="orgfd82d45"><span class="section-number-3">6.1</span> K-means Clustering</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 Input: \(\{x^{(1), x^{(2)}, x^{(3)}, \dots, x^{(m)}}\}\).
@@ -797,8 +797,8 @@ algorithm converges.
 </p>
 </div>
 </div>
-<div id="outline-container-orga30ab18" class="outline-3">
-<h3 id="orga30ab18"><span class="section-number-3">6.2</span> Gaussian Mixture Model</h3>
+<div id="outline-container-orge1d4ddc" class="outline-3">
+<h3 id="orge1d4ddc"><span class="section-number-3">6.2</span> Gaussian Mixture Model</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 By Bayes' Theorem:
@@ -818,8 +818,8 @@ X^{(i)} | Z^{(j)} \sim \mathcal{N}(\mu_j, \Sigma_j)
 </div>
 </div>
 
-<div id="outline-container-org9f33fe1" class="outline-3">
-<h3 id="org9f33fe1"><span class="section-number-3">6.3</span> Expectation Maximization</h3>
+<div id="outline-container-orge86edaa" class="outline-3">
+<h3 id="orge86edaa"><span class="section-number-3">6.3</span> Expectation Maximization</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 <a href="https://www.cs.utah.edu/~piyush/teaching/EM_algorithm.pdf">https://www.cs.utah.edu/~piyush/teaching/EM_algorithm.pdf</a>
@@ -881,12 +881,12 @@ Repeat until convergence:
 </div>
 </div>
 
-<div id="outline-container-org8f2dbe4" class="outline-2">
-<h2 id="org8f2dbe4"><span class="section-number-2">7</span> Refile</h2>
+<div id="outline-container-orgf6ef7b1" class="outline-2">
+<h2 id="orgf6ef7b1"><span class="section-number-2">7</span> Refile</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org3a4bc05" class="outline-3">
-<h3 id="org3a4bc05"><span class="section-number-3">7.1</span> Data Compression</h3>
+<div id="outline-container-org05cfe76" class="outline-3">
+<h3 id="org05cfe76"><span class="section-number-3">7.1</span> Data Compression</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 In <i>lossy compression</i>, we seek to trade off code length with
@@ -908,8 +908,8 @@ some of the dimensions.
 </p>
 </div>
 </div>
-<div id="outline-container-org224c0eb" class="outline-3">
-<h3 id="org224c0eb"><span class="section-number-3">7.2</span> Generative Learning Algorithms</h3>
+<div id="outline-container-orga5a103c" class="outline-3">
+<h3 id="orga5a103c"><span class="section-number-3">7.2</span> Generative Learning Algorithms</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 Discriminative algorithms model \(p(y | x)\) directly from the training
@@ -923,8 +923,8 @@ p(y|x) = argmax_y \frac{p(x|y)p(y)}{p(x)} = argmax_y p(x|y)p(y)\).
 </div>
 
 
-<div id="outline-container-org24c1be2" class="outline-4">
-<h4 id="org24c1be2"><span class="section-number-4">7.2.1</span> Multivariate Normal Distribution</h4>
+<div id="outline-container-org45ce777" class="outline-4">
+<h4 id="org45ce777"><span class="section-number-4">7.2.1</span> Multivariate Normal Distribution</h4>
 <div class="outline-text-4" id="text-7-2-1">
 <p>
 A multivariate normal distribution is parameterized by a mean vector
@@ -934,12 +934,12 @@ A multivariate normal distribution is parameterized by a mean vector
 </div>
 </div>
 
-<div id="outline-container-org1d62a80" class="outline-4">
-<h4 id="org1d62a80"><span class="section-number-4">7.2.2</span> <span class="todo TODO">TODO</span> Gaussian Discriminant Analysis</h4>
+<div id="outline-container-org8911738" class="outline-4">
+<h4 id="org8911738"><span class="section-number-4">7.2.2</span> <span class="todo TODO">TODO</span> Gaussian Discriminant Analysis</h4>
 <div class="outline-text-4" id="text-7-2-2">
 <p>
 In Gaussian Discriminant Analysis, p(x | y) is distributed to a
-<a href="#org24c1be2">multivariate normal distribution</a>.
+<a href="#org45ce777">multivariate normal distribution</a>.
 </p>
 
 \begin{align}
@@ -975,16 +975,16 @@ We maximize \(l\) with respect to the parameters.
 </div>
 </div>
 
-<div id="outline-container-org70fe1b7" class="outline-2">
-<h2 id="org70fe1b7"><span class="section-number-2">8</span> Riken AIP Workshop</h2>
+<div id="outline-container-org8de0370" class="outline-2">
+<h2 id="org8de0370"><span class="section-number-2">8</span> Riken AIP Workshop</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-org45b5a6c" class="outline-3">
-<h3 id="org45b5a6c"><span class="section-number-3">8.1</span> Weakly Supervised Classification</h3>
+<div id="outline-container-org22c1531" class="outline-3">
+<h3 id="org22c1531"><span class="section-number-3">8.1</span> Weakly Supervised Classification</h3>
 <div class="outline-text-3" id="text-8-1">
 </div>
-<div id="outline-container-orgd2f8813" class="outline-4">
-<h4 id="orgd2f8813"><span class="section-number-4">8.1.1</span> Motivation</h4>
+<div id="outline-container-orgd5c2786" class="outline-4">
+<h4 id="orgd5c2786"><span class="section-number-4">8.1.1</span> Motivation</h4>
 <div class="outline-text-4" id="text-8-1-1">
 <ul class="org-ul">
 <li>Machine learning from big data is already successful</li>
@@ -994,8 +994,8 @@ We maximize \(l\) with respect to the parameters.
 </div>
 </div>
 
-<div id="outline-container-org59545d0" class="outline-4">
-<h4 id="org59545d0"><span class="section-number-4">8.1.2</span> Supervised Classification</h4>
+<div id="outline-container-org0603408" class="outline-4">
+<h4 id="org0603408"><span class="section-number-4">8.1.2</span> Supervised Classification</h4>
 <div class="outline-text-4" id="text-8-1-2">
 <p>
 A large number of labeled samples yield better classification
@@ -1005,8 +1005,8 @@ Optimal convergence rate is \(O(n^{-\frac{1}{2}})\).
 </div>
 </div>
 
-<div id="outline-container-orgd092f34" class="outline-4">
-<h4 id="orgd092f34"><span class="section-number-4">8.1.3</span> Unsupervised Classification</h4>
+<div id="outline-container-orgb297668" class="outline-4">
+<h4 id="orgb297668"><span class="section-number-4">8.1.3</span> Unsupervised Classification</h4>
 <div class="outline-text-4" id="text-8-1-3">
 <p>
 Since collecting labelled samples is costly, we can learn a classifier
@@ -1015,8 +1015,8 @@ from unlabelled data. This is equivalent to clustering
 </div>
 </div>
 
-<div id="outline-container-org63f28eb" class="outline-4">
-<h4 id="org63f28eb"><span class="section-number-4">8.1.4</span> Semi-supervised Classification</h4>
+<div id="outline-container-orgd3535f1" class="outline-4">
+<h4 id="orgd3535f1"><span class="section-number-4">8.1.4</span> Semi-supervised Classification</h4>
 <div class="outline-text-4" id="text-8-1-4">
 <ul class="org-ul">
 <li>Use a large number of unlabelled samples and a small number of
@@ -1027,8 +1027,8 @@ unlabelled samples.</li>
 </div>
 </div>
 
-<div id="outline-container-org69a7e0d" class="outline-4">
-<h4 id="org69a7e0d"><span class="section-number-4">8.1.5</span> Positive Unlabelled Classification</h4>
+<div id="outline-container-org14dc54f" class="outline-4">
+<h4 id="org14dc54f"><span class="section-number-4">8.1.5</span> Positive Unlabelled Classification</h4>
 <div class="outline-text-4" id="text-8-1-5">
 <p>
 Given positive and unlabelled samples:
@@ -1075,8 +1075,8 @@ than PN provided a large number of PU data.
 </div>
 </div>
 
-<div id="outline-container-org06d5e92" class="outline-4">
-<h4 id="org06d5e92"><span class="section-number-4">8.1.6</span> PNU Classification</h4>
+<div id="outline-container-org47587ed" class="outline-4">
+<h4 id="org47587ed"><span class="section-number-4">8.1.6</span> PNU Classification</h4>
 <div class="outline-text-4" id="text-8-1-6">
 <ul class="org-ul">
 <li>Train PU, PN, and NU classification, and combine them.</li>
@@ -1087,8 +1087,8 @@ regularisation.</li>
 </div>
 </div>
 
-<div id="outline-container-org6b54e60" class="outline-4">
-<h4 id="org6b54e60"><span class="section-number-4">8.1.7</span> Pconf Classification</h4>
+<div id="outline-container-orgfe8523a" class="outline-4">
+<h4 id="orgfe8523a"><span class="section-number-4">8.1.7</span> Pconf Classification</h4>
 <div class="outline-text-4" id="text-8-1-7">
 <p>
 Only positive data is available:
@@ -1109,8 +1109,8 @@ Others: Similar-unlabelled etc.
 </div>
 </div>
 
-<div id="outline-container-orgcbeb8a0" class="outline-3">
-<h3 id="orgcbeb8a0"><span class="section-number-3">8.2</span> Fast Computation of Uncertainty in Deep Learning</h3>
+<div id="outline-container-org49f14c1" class="outline-3">
+<h3 id="org49f14c1"><span class="section-number-3">8.2</span> Fast Computation of Uncertainty in Deep Learning</h3>
 <div class="outline-text-3" id="text-8-2">
 <p>
 Emtiyaz Khan
@@ -1122,8 +1122,8 @@ i.e., how much it does not know.
 </p>
 </div>
 
-<div id="outline-container-orgcaec024" class="outline-4">
-<h4 id="orgcaec024"><span class="section-number-4">8.2.1</span> Uncertainty in Deep Learning</h4>
+<div id="outline-container-org8f142ed" class="outline-4">
+<h4 id="org8f142ed"><span class="section-number-4">8.2.1</span> Uncertainty in Deep Learning</h4>
 <div class="outline-text-4" id="text-8-2-1">
 <p>
 <a href="https://emtiyaz.github.io/">https://emtiyaz.github.io/</a>
@@ -1142,8 +1142,8 @@ Data given parameters,  output given NN(input)
 </div>
 </div>
 
-<div id="outline-container-org03e70e5" class="outline-4">
-<h4 id="org03e70e5"><span class="section-number-4">8.2.2</span> Approximating Inference with Gradients</h4>
+<div id="outline-container-org3375c95" class="outline-4">
+<h4 id="org3375c95"><span class="section-number-4">8.2.2</span> Approximating Inference with Gradients</h4>
 <div class="outline-text-4" id="text-8-2-2">
 \begin{equation}
   p(\theta | D) \approx q(\theta) = N(\theta | \mu, \sigma^2)
@@ -1167,8 +1167,8 @@ gradients methods.
 </div>
 </div>
 
-<div id="outline-container-org88d6628" class="outline-3">
-<h3 id="org88d6628"><span class="section-number-3">8.3</span> Data-efficient Probabilistic Machine Learning</h3>
+<div id="outline-container-orgde4f822" class="outline-3">
+<h3 id="orgde4f822"><span class="section-number-3">8.3</span> Data-efficient Probabilistic Machine Learning</h3>
 <div class="outline-text-3" id="text-8-3">
 <p>
 Bryan Low
@@ -1179,8 +1179,8 @@ Gaussian Process (GP) Models for Big Data.
 </p>
 </div>
 
-<div id="outline-container-org52a777a" class="outline-4">
-<h4 id="org52a777a"><span class="section-number-4">8.3.1</span> Gaussian Process</h4>
+<div id="outline-container-orgb4f7ce4" class="outline-4">
+<h4 id="orgb4f7ce4"><span class="section-number-4">8.3.1</span> Gaussian Process</h4>
 <div class="outline-text-4" id="text-8-3-1">
 <ul class="org-ul">
 <li>Is a rich class of Bayesian, non-parametric models</li>
@@ -1190,8 +1190,8 @@ univariate</li>
 </div>
 </div>
 
-<div id="outline-container-org9a83db5" class="outline-4">
-<h4 id="org9a83db5"><span class="section-number-4">8.3.2</span> Task Setting</h4>
+<div id="outline-container-org4b257bb" class="outline-4">
+<h4 id="org4b257bb"><span class="section-number-4">8.3.2</span> Task Setting</h4>
 <div class="outline-text-4" id="text-8-3-2">
 <ul class="org-ul">
 <li>Agent explores unknown environment modelled by GP</li>
@@ -1200,8 +1200,8 @@ univariate</li>
 </div>
 </div>
 
-<div id="outline-container-orge3a9351" class="outline-4">
-<h4 id="orge3a9351"><span class="section-number-4">8.3.3</span> Lipschitz Continuous Reward Functions</h4>
+<div id="outline-container-orge8783eb" class="outline-4">
+<h4 id="orge8783eb"><span class="section-number-4">8.3.3</span> Lipschitz Continuous Reward Functions</h4>
 <div class="outline-text-4" id="text-8-3-3">
 \begin{equation}
   R(z_t, s_t) \overset{\Delta}{=}  R_1(z_t) + R_2(z_t) + R_3(s_t)
@@ -1217,8 +1217,8 @@ univariate</li>
 </div>
 </div>
 
-<div id="outline-container-org95a86c7" class="outline-2">
-<h2 id="org95a86c7"><span class="section-number-2">9</span> The Natural Language Decathlon: Multitask Learning as Question Answering: Richard Socher</h2>
+<div id="outline-container-orgcf5cc0b" class="outline-2">
+<h2 id="orgcf5cc0b"><span class="section-number-2">9</span> The Natural Language Decathlon: Multitask Learning as Question Answering: Richard Socher</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 <a href="https://einstein.ai/static/images/pages/research/decaNLP/decaNLP.pdf">pawper</a>
@@ -1229,8 +1229,8 @@ univariate</li>
 </ul>
 </div>
 
-<div id="outline-container-org7d8e0d1" class="outline-3">
-<h3 id="org7d8e0d1"><span class="section-number-3">9.1</span> Limits of Single-task Learning</h3>
+<div id="outline-container-org73db713" class="outline-3">
+<h3 id="org73db713"><span class="section-number-3">9.1</span> Limits of Single-task Learning</h3>
 <div class="outline-text-3" id="text-9-1">
 <ul class="org-ul">
 <li>We can hill climb to local optima if \(|dataset| > 100 \times C\)</li>
@@ -1245,8 +1245,8 @@ only retraining the final few layers.
 </div>
 </div>
 
-<div id="outline-container-orgc7ea353" class="outline-3">
-<h3 id="orgc7ea353"><span class="section-number-3">9.2</span> Why has weight &amp; model sharing not happened so much in NLP?</h3>
+<div id="outline-container-orga912169" class="outline-3">
+<h3 id="orga912169"><span class="section-number-3">9.2</span> Why has weight &amp; model sharing not happened so much in NLP?</h3>
 <div class="outline-text-3" id="text-9-2">
 <ol class="org-ol">
 <li>NLP requires many types of reasoning: logical, linguistic etc.</li>
@@ -1259,8 +1259,8 @@ requires supervision in nature.</li>
 </div>
 </div>
 
-<div id="outline-container-org7879fc8" class="outline-3">
-<h3 id="org7879fc8"><span class="section-number-3">9.3</span> Motivation for Single Multitask model</h3>
+<div id="outline-container-org3d65a89" class="outline-3">
+<h3 id="org3d65a89"><span class="section-number-3">9.3</span> Motivation for Single Multitask model</h3>
 <div class="outline-text-3" id="text-9-3">
 <ol class="org-ol">
 <li>Step towards AGI</li>
@@ -1282,8 +1282,8 @@ first).
 </div>
 </div>
 
-<div id="outline-container-org7cd0bb2" class="outline-3">
-<h3 id="org7cd0bb2"><span class="section-number-3">9.4</span> The 3 equivalent supertasks of NLP</h3>
+<div id="outline-container-org5192a97" class="outline-3">
+<h3 id="org5192a97"><span class="section-number-3">9.4</span> The 3 equivalent supertasks of NLP</h3>
 <div class="outline-text-3" id="text-9-4">
 <p>
 Any NLP task can be mapped to these 3 super tasks:
@@ -1297,8 +1297,8 @@ Any NLP task can be mapped to these 3 super tasks:
 </div>
 </div>
 
-<div id="outline-container-org1f51fe5" class="outline-3">
-<h3 id="org1f51fe5"><span class="section-number-3">9.5</span> Multitask learning as QA</h3>
+<div id="outline-container-orgda75a00" class="outline-3">
+<h3 id="orgda75a00"><span class="section-number-3">9.5</span> Multitask learning as QA</h3>
 <div class="outline-text-3" id="text-9-5">
 <ul class="org-ul">
 <li>Question Answering</li>
@@ -1316,8 +1316,8 @@ Meta supervised learning: {x, y} to {x, t, y}
 </div>
 </div>
 
-<div id="outline-container-orgca2742c" class="outline-3">
-<h3 id="orgca2742c"><span class="section-number-3">9.6</span> Designing a model for decaNLP</h3>
+<div id="outline-container-org6d62c30" class="outline-3">
+<h3 id="org6d62c30"><span class="section-number-3">9.6</span> Designing a model for decaNLP</h3>
 <div class="outline-text-3" id="text-9-6">
 <ul class="org-ul">
 <li>No task-specific modules or parameters because task ID assumed to be unavailable</li>
@@ -1342,8 +1342,8 @@ Meta supervised learning: {x, y} to {x, t, y}
 </div>
 </div>
 
-<div id="outline-container-orgd9b826e" class="outline-3">
-<h3 id="orgd9b826e"><span class="section-number-3">9.7</span> Learnings</h3>
+<div id="outline-container-org9126e90" class="outline-3">
+<h3 id="org9126e90"><span class="section-number-3">9.7</span> Learnings</h3>
 <div class="outline-text-3" id="text-9-7">
 <ul class="org-ul">
 <li>Transformer Layers yield benefits in single-task and multitask
@@ -1360,8 +1360,8 @@ classification for some subtasks</li>
 </div>
 </div>
 
-<div id="outline-container-org7708eee" class="outline-3">
-<h3 id="org7708eee"><span class="section-number-3">9.8</span> Training Strategies</h3>
+<div id="outline-container-org1110000" class="outline-3">
+<h3 id="org1110000"><span class="section-number-3">9.8</span> Training Strategies</h3>
 <div class="outline-text-3" id="text-9-8">
 <ul class="org-ul">
 <li>Fully Joint</li>
@@ -1377,7 +1377,7 @@ classification for some subtasks</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jethro Kuan</p>
-<p class="date">Created: 2018-10-25 Thu 19:32</p>
+<p class="date">Created: 2018-11-26 Mon 09:54</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

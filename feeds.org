@@ -4,6 +4,7 @@
 ** Computer Science                                                      :cs:
 ** Tech                                                               :tech:
 *** https://hnrss.org/newest?points=100
+*** https://increment.com/feed.xml
 ** Emacs                                                              :emacs:
 *** http://planet.emacsen.org/atom.xml
 *** https://www.reddit.com/r/emacs/
@@ -22,10 +23,6 @@
 *** https://www.fs.blog/feed/
 *** http://feedproxy.google.com/brainpickings/rss
 *** http://feeds.feedburner.com/MeltingAsphalt
-*** https://www.artofmanliness.com/feed/
-*** https://www.bakadesuyo.com/feed/
-*** https://www.marieforleo.com/feed/
-*** http://feeds.feedburner.com/zenhabits/
 *** https://commoncog.com/blog/rss/
 ** Company Blogs                                                    :company:
 *** https://blogs.dropbox.com/tech/feed/
